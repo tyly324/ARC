@@ -5,7 +5,7 @@
 // Description: The first stage in pipleline, 
 // 				fetch the instruction from memory.
 //
-// Vision: Ver 1.0.1 - Add content
+// Vision: Ver 1.0.2 - Correct error
 // Comments: 
 //
 ////////////////////////////////////////////////
@@ -27,7 +27,7 @@ assign o_data_Instr = fetch_instruction;
 assign o_addr_PC = incremental_PC;
 
 //store value into pipeline
-always_ff @(posedge clk) 
+always_ff @(posedge i_clk) 
 begin : store_pipeline
 	incremental_PC <= i_addr_PC;
 	fetch_instruction <= i_data_Instr;
