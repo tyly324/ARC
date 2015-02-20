@@ -4,8 +4,8 @@
 // Module: Register bank
 // Description: 
 //
-// Vision: Ver 1.0.1 - Add register list
-// Comments: 
+// Vision: Ver 1.0.2 - Error corrected
+// Comments: Sythesisable
 //
 ////////////////////////////////////////////////
 //Number	Name		Comments
@@ -42,14 +42,14 @@ module register_bank(
 logic [31:0] regs [31:0];
 
 //Register data output 
-assign o_data_Rt = regs(i_addr_Rt);
-assign o_data_Rs = regs(i_addr_Rs);
+assign o_data_Rt = regs[i_addr_Rt];
+assign o_data_Rs = regs[i_addr_Rs];
 
 //Register write
 always_ff @(posedge i_clk) 
 begin : reg_write
 	if(i_con_RegWr) 
-		regs(i_addr_Rd) <= i_data_Rd;
+		regs[i_addr_Rd] <= i_data_Rd;
 end
 
 endmodule
