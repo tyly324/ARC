@@ -11,26 +11,45 @@
 ////////////////////////////////////////////////
 module fetch(
 	input i_clk,
-	input [31:0] i_addr_PC,
+	input [31:0] i_addr_AddRst
+	input [31:0] i_con_PCSrc,
 	input [31:0] i_data_Instr,
 
 	output o_data_Instr,
+	output o_addr_NextPC,
 	output o_addr_PC
 	);
 
+//wire
+wire mux0;
+wire mux1;
+wire pc_in;
+wire pc_out;
+wire add_out;
+
 //registers in pipeline
-logic [31:0] incremental_PC;
+logic [31:0] next_PC;
 logic [31:0] fetch_instruction;
 
 //outputs
 assign o_data_Instr = fetch_instruction;
-assign o_addr_PC = incremental_PC;
+assign o_addr_NextPC = next_PC;
 
 //store value into pipeline
 always_ff @(posedge i_clk) 
 begin : store_pipeline
-	incremental_PC <= i_addr_PC;
+	next_PC <= add_out;
 	fetch_instruction <= i_data_Instr;
 end
+
+mux u_mux(#32)( .d0(mux0),
+				.d1(mux1),
+				.s(i_con_PCSrc),
+				.y(pc_in)
+);
+
+pc_add u_pc_add(	.i_addr_pc(pc_out), 
+					.o_addr_pcadd4(add_out)
+);
 
 endmodule
