@@ -176,3 +176,5 @@ register_bank u_register_bank(	.i_clk(i_clk),
 								.o_data_Rs(rs_value),
 								.o_data_Rt(rt_value)
 );
+
+endmodule
