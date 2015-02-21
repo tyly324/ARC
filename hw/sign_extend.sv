@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////
 
 module sign_extend(input [15:0] i_data_immD,
-                   input i_con_signext,
                    output reg [31:0] o_data_immD);
                    
 
