@@ -74,7 +74,7 @@ execute u_execute(
 	.i_data_rt(id_data_rt),
 	.i_data_SignExt(id_data_SignExt),
 	.i_addr_mux_0(id_addr_mux_0),
-	.i_addr_mux_1(id_addr_mux_1)
+	.i_addr_mux_1(id_addr_mux_1),
 
 	.o_con_mem_branch(ex_con_mem_branch),
 	.o_con_mem_memread(ex_con_mem_memread),
