@@ -16,27 +16,27 @@ module decode(
 	input [31:0] i_addr_NextPC,
 	input [31:0] i_data_Instr,
 	input [4:0] i_addr_WrReg,
-	input [31:0] i_data_WrData
+	input [31:0] i_data_WrData,
 
 	//control
-	output o_con_ex_regdst;
-	output o_con_mem_branch;
-	output o_con_mem_memread;
-	output o_con_wb_memtoreg;
-	output o_con_mem_memwrite;
-	output o_con_ex_alusrc;
-	output o_con_wb_regwrite; 
-	output [1:0] o_con_ex_aluop;
+	output o_con_ex_regdst,
+	output o_con_mem_branch,
+	output o_con_mem_memread,
+	output o_con_wb_memtoreg,
+	output o_con_mem_memwrite,
+	output o_con_ex_alusrc,
+	output o_con_wb_regwrite,
+	output [1:0] o_con_ex_aluop,
 	//Next PC
-	output [31:0] o_addr_NextPC;
+	output [31:0] o_addr_NextPC,
 	// registers
-	output [31:0] o_data_rs;
-	output [31:0] o_data_rt;
+	output [31:0] o_data_rs,
+	output [31:0] o_data_rt,
 	//sign-extend
-	output [31:0] o_data_SignExt;
+	output [31:0] o_data_SignExt,
 	//rd address
-	output [4:0] o_addr_mux_0;
-	output [4:0] o_addr_mux_1;
+	output [4:0] o_addr_mux_0,
+	output [4:0] o_addr_mux_1
 	);
 // ====================
 // wire
