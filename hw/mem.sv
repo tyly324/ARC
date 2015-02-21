@@ -22,6 +22,7 @@ module mem(
 	output o_con_wb_memtoreg,
 	output o_con_wb_regwrite,
 	output o_con_Branch,
+	output [31:0] o_data_Memory,
 	output [31:0] o_data_ALU_Rst,
 	output [4:0] o_addr_MuxRst
 );
@@ -56,6 +57,7 @@ logic [4:0] cache_mux_result;
 assign o_con_wb_memtoreg = cache_control_wb_memtoreg;
 assign o_con_wb_regwrite = cache_control_wb_regwrite;
 assign o_con_Branch = i_con_mem_branch & i_con_Zero;
+assign o_data_Memory = cache_data_mem;
 assign o_data_ALU_Rst = cache_alu_result;
 assign o_addr_MuxRst = cache_mux_result;
 
