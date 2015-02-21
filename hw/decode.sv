@@ -97,6 +97,7 @@ assign rs_address = i_data_Instr[25:21];
 assign rt_address = i_data_Instr[20:16];
 assign rd_address = i_addr_WrReg;
 assign rd_value = i_data_WrData;
+assign register_write = i_con_RegWr;
 
 assign sign_ext_in = i_data_Instr[15:0];
 

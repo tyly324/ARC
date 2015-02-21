@@ -11,7 +11,7 @@
 ////////////////////////////////////////////////
 module fetch(
 	input i_clk,
-	input [31:0] i_addr_AddRst
+	input [31:0] i_addr_AddRst,
 	input [31:0] i_con_PCSrc,
 	input [31:0] i_data_Instr,
 
@@ -50,7 +50,7 @@ IF_pcmux u_mux(
 		.o_addr_nextpc(pc_in)
 );
 
-pc_add u_pc_add(  
+IF_pc_add u_pc_add(  
 		.i_addr_pc(pc_out), 
 		.o_addr_pcadd4(add_out)
 );
