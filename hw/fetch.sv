@@ -42,14 +42,14 @@ begin : store_pipeline
 	fetch_instruction <= i_data_Instr;
 end
 
-mux u_mux(#32)( .d0(mux0),
-				.d1(mux1),
-				.s(i_con_PCSrc),
-				.y(pc_in)
+IF_pcmux u_mux( .i_addr_pcadd4(mux0),
+		.i_addr_pcbranchM(mux1),
+		.i_con_pcsrc(i_con_PCSrc),
+		.o_addr_nextpc(pc_in)
 );
 
-pc_add u_pc_add(	.i_addr_pc(pc_out), 
-					.o_addr_pcadd4(add_out)
+pc_add u_pc_add(  .i_addr_pc(pc_out), 
+		  .o_addr_pcadd4(add_out)
 );
 
 endmodule
