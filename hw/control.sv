@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////
 module control
-(output o_control_regdst, o_control_branch, o_control_memread, o_control_memtoreg, 
-        o_control_memwrite, o_control_alusrc, o_control_regwrite,
-        o_control_aluop[4:0],
-        i_control_instru[5:0),
-//WB: o_control_memtoreg, o_control_regwrite,
-//MB: o_control_memread, o_control_memwrite, o_control_branch,
-//EX: o_control_aluop, o_control_alusrc, o_control_regdst,
+(output o_con_regdst, o_con_branch, o_con_memread, o_con_memtoreg, 
+        o_con_memwrite, o_con_alusrc, o_con_regwrite,
+        o_con_aluop[4:0],
+        i_con_instru[5:0),
+//WB: o_con_memtoreg, o_con_regwrite,
+//MB: o_con_memread, o_con_memwrite, o_con_branch,
+//EX: o_con_aluop, o_con_alusrc, o_con_regdst,
