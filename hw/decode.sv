@@ -102,24 +102,24 @@ assign sign_ext_in = i_data_Instr[15:0];
 
 //Output
 //control 
-assign o_con_ex_regdst <= cache_control_ex_regdst;
-assign o_con_mem_branch <= cache_control_mem_branch;
-assign o_con_mem_memread <= cache_control_mem_memread;
-assign o_con_wb_memtoreg <= cache_control_wb_memtoreg;
-assign o_con_mem_memwrite <= cache_control_mem_memwrite;
-assign o_con_ex_alusrc <= cache_control_ex_alusrc;
-assign o_con_wb_regwrite <= cache_control_wb_regwrite;  
-assign o_con_ex_aluop <= cache_control_ex_aluop;
+assign o_con_ex_regdst = cache_control_ex_regdst;
+assign o_con_mem_branch = cache_control_mem_branch;
+assign o_con_mem_memread = cache_control_mem_memread;
+assign o_con_wb_memtoreg = cache_control_wb_memtoreg;
+assign o_con_mem_memwrite = cache_control_mem_memwrite;
+assign o_con_ex_alusrc = cache_control_ex_alusrc;
+assign o_con_wb_regwrite = cache_control_wb_regwrite;  
+assign o_con_ex_aluop = cache_control_ex_aluop;
 //Next PC 
-assign o_addr_NextPC <= cache_NextPC;
+assign o_addr_NextPC = cache_NextPC;
 // registers 
-assign o_data_rs <= cache_registers_rs;
-assign o_data_rt <= cache_registers_rt;
+assign o_data_rs = cache_registers_rs;
+assign o_data_rt = cache_registers_rt;
 //sign-extend 
-assign o_data_SignExt <= cache_sign_ext;
+assign o_data_SignExt = cache_sign_ext;
 //rd address 
-assign o_addr_mux_0 <= cache_mux_0;
-assign o_addr_mux_1 <= cache_mux_1;
+assign o_addr_mux_0 = cache_mux_0;
+assign o_addr_mux_1 = cache_mux_1;
 
 // ====================
 // Store data in cache
