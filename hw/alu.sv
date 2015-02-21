@@ -18,8 +18,9 @@ always_comb
 			1:	o_data_AluRes = i_data_A | i_data_B;
 			2:	o_data_AluRes = i_data_A + i_data_B;
 			6:	o_data_AluRes = i_data_A - i_data_B;
-			7:	o_data_AluRes = i_data_A < i_data_B	? 1:0;
-			12:	o_data_AluRes = ~(A|B);
+			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;
+			12:	o_data_AluRes = ~(i_data_A|i_data_B);
+			13: o_data_AluRes = i_data_A ^ i_data_B;
 			default: o_data_AluRes = 0;
 		endcase
 	end
