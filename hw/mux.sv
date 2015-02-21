@@ -19,7 +19,7 @@ endmodule
 
 mux2 #(32) IF_pcmux (.d0 (i_addr_pcadd4),
                      .d1 (i_addr_pcbranchM), 
-                     .s  (i_con_PCSrc), 
+                     .s  (i_con_pcsrc), 
                      .y  (o_addr_nextpc));
                      
                      
@@ -30,9 +30,13 @@ mux2 #(32) EX_alumux (.d0 (i_data_writeE),
                      .y  (o_data_scrb));
                      
                      
-mux2 #(5)  EX_writemux (.d0 (instr[20:16]),
-                       .d1 (i_data_immE), 
-                       .s  (i_con_alusrc), 
-                       .y  (o_data_scrb));                 
+mux2 #(5)  EX_writemux (.d0 (instruction[20:16]),
+                       .d1  (instruction[15:11]), 
+                       .s  (i_con_regdst), 
+                       .y  (o_data_writeE));                 
                      
                      
+mux2 #(32)  WB_resmux (.d0 (i_data_aluresW),
+                       .d1 (i_data_readW), 
+                       .s  (i_con_memtoreg), 
+                       .y  (o_data_result));   
