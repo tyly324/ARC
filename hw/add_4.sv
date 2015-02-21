@@ -8,10 +8,10 @@
 // Comments: 
 //
 ////////////////////////////////////////////////
-module pc_add(input [31:0] pc, 
-              output [31:0] pcadd4);
+module pc_add(input [31:0]i_addr_pc, 
+              output [31:0] o_addr_pcadd4);
       
-    assign pcadd4 = pc + 32'b100;
+    assign o_addr_pcadd4 =i_addr_pc + 32'b100;
     
 endmodule
     
