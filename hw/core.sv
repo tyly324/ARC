@@ -12,7 +12,7 @@ module core(input logic clk, )
 
 fetch fetch_inst(
 	.i_clk					(clk),
-	.i_addr_AddRst			(io_),
+	.i_addr_AddRst			(),
 	.i_con_PCSrc			(),
 	.i_data_Instr			(),
 	.o_data_Instr			(),
