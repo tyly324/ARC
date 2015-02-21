@@ -10,6 +10,7 @@
 //
 ////////////////////////////////////////////////
 module execute(
+	input i_clk,
 	//control
 	input i_con_ex_regdst,
 	input i_con_mem_branch,
