@@ -15,12 +15,16 @@ module core(
 
 	output logic [31:0] instruction_address,
 	output logic [31:0] data_address,
-	output logic [31:0] write_data
+	output logic [31:0] write_data,
+	output logic mem_write,
+	output logic mem_read
 	);
 
 assign instruction_address = if_addr_PC;
 assign data_address = ex_data_ALU_Rst;
 assign write_data = ex_data_rt;
+assign mem_write = ex_con_mem_memwrite;
+assign mem_read = ex_con_mem_memread;
 
 fetch u_fetch(
 	.i_clk(clk),
