@@ -34,6 +34,7 @@ logic [31:0] fetch_instruction;
 //outputs
 assign o_data_Instr = fetch_instruction;
 assign o_addr_NextPC = next_PC;
+assign o_addr_PC = pc_out;
 
 //store value into pipeline
 always_ff @(posedge i_clk) 
@@ -50,6 +51,11 @@ IF_pcmux u_mux( .i_addr_pcadd4(mux0),
 
 pc_add u_pc_add(  .i_addr_pc(pc_out), 
 		  .o_addr_pcadd4(add_out)
+);
+
+pc u_pc(	.clock(i_clk),
+          	.next_pc(pc_in),
+          	.pc(pc_out)
 );
 
 endmodule
