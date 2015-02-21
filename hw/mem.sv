@@ -64,7 +64,7 @@ assign o_addr_MuxRst = cache_mux_result;
 // ====================
 // Store data in cache
 // ====================
-always_ff @(posedge clk) 
+always_ff @(posedge i_clk) 
 begin
 	//control
 	cache_control_wb_memtoreg <= i_con_wb_memtoreg;
