@@ -50,7 +50,7 @@ IF_pcmux u_mux(
 		.o_addr_nextpc(pc_in)
 );
 
-IF_pc_add u_pc_add(  
+IF_pcadd u_pc_add(  
 		.i_addr_pc(pc_out), 
 		.o_addr_pcadd4(add_out)
 );
