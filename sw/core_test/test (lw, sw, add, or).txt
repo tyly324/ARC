@@ -1,7 +1,7 @@
 lui $v0 0x0000                           0x3c020000
 addiu $v0 $v0 0x0024                     0x24420024
-lui  $v1 0xFFFF                          0x3c03ffff
-addiu $v1 $v1 0x2010                     0x24632010
+lui  $v1 0x0000                          0x3c030000
+addiu $v1 $v1 0x0008                     0x24630008
 
 sw $v0, ($v1)                            0xac620000
 
