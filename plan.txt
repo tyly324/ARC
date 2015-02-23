@@ -1,0 +1,39 @@
+VLSI Design Project Plan
+
+Group B, member: Guan Shanyue, Jiang Zhiyuan, Yang Haoxiang, Zhang Yue
+
+This plan including the main task timeline of the project and primary job distribution of the group members from Feb 17th to May 12th 2015. This plan is just a primary plan, and will be revised in the following weeks.
+Week 1 (17th Feb to 23rd Feb)
+All the instruction pattern will be set, and the register sets between each stage will be built to unify all the signal names. After Sunday the coding of individual module design will start. The building of main parts of the processor should be finished at the end of the week 1.  
+Week 2 (24th Feb to 2nd Mar)
+Basic module building will be continued at the start of week 2, if there is still some remaining work of it. Senior units, which is going to introduce higher performance to processor, will be built and tested.  
+
+Verification of individual module will be started at week 2, each piece of code will be verified by the code writer first before the verification of different group member. The procedure of writer verification will filter obvious errors to make the whole verification more effectively. 
+Week 3 (3rd Mar to 9th Mar)
+
+Individual verification of the basic modules should be finished by Sunday. Top level coding will be started to put components together. Work of whole processor verification should be started at the end of week 3.
+Week 4 (10th Mar to 16th Mar)
+
+Verification work will carry on in week 4. 
+Extra unit such as data forwarding unit will be investigated in week 4 if the verification work made good progress.
+Week 5 (17th Mar to 23rd Mar)
+Processor verification will be finished in week 5, a processor that is able to run correctly with basic functions should be provided.
+
+Easter_Week 6-9 (24th Mar to 20th April)
+Extra units will be tried to add to the processor to improve its performance during the Easter holiday.
+Week 10 (21st April to 27th April)
+A processor that works correctly and is able to achieve expected performance should be finished in week 10. 
+If the extra unit hasn’t been added to the processor successfully, a processor with basic functions will be provided.  
+Week 11 (28th April to 4th May)
+
+Report writing.
+Week 12 (5th May to 11th May)
+Report writing.
+
+Job distribution
+Jiang Zhiyuan: building of all the registers between stages and set the names of all the signal.
+Yang Haoxiang: building of ALU module and ALU control module.
+Zhang Yue: building of control unit.
+Guan Shanyue: building of other module in the processor including shifters and multiplexers.
+
+This distributions is just the job distribution of the first stage of project, further distribution will be updated in the following weeks.
