@@ -13,7 +13,7 @@ module fetch(
 	input i_clk,
 	input i_rst_n,
 	input [31:0] i_addr_AddRst,
-	input [31:0] i_con_PCSrc,
+	input i_con_PCSrc,
 	input [31:0] i_data_Instr,
 
 	output [31:0] o_data_Instr,
@@ -31,6 +31,13 @@ wire [31:0] add_out;
 //registers in pipeline
 logic [31:0] next_PC;
 logic [31:0] fetch_instruction;
+
+// ====================
+// Interconnection
+// ====================
+// inputs
+assign mux0 = add_out;
+assign mux1 = i_addr_AddRst;
 
 //outputs
 assign o_data_Instr = fetch_instruction;
@@ -50,7 +57,10 @@ begin : store_pipeline
 	end
 end
 
-IF_pcmux u_mux( 
+// ====================
+// Hirearchy
+// ====================
+IF_pcmux u_pcmux( 
 		.i_addr_pcadd4(mux0),
 		.i_addr_pcbranchM(mux1),
 		.i_con_pcsrc(i_con_PCSrc),
@@ -65,8 +75,8 @@ IF_pcadd u_pc_add(
 pc u_pc(
 		.i_clk(i_clk),
 		.i_rst_n(i_rst_n),
-        .next_pc(pc_in),
-        .pc(pc_out)
+        .i_addr_next_pc(pc_in),
+        .o_addr_pc(pc_out)
 );
 
 endmodule

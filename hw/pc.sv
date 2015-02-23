@@ -11,18 +11,21 @@
 module pc(
 	input i_clk,
 	input i_rst_n,
-    input [31:0] next_pc,
-    output [31:0] pc);
+	input [31:0] i_addr_next_pc,
+	output [31:0] o_addr_pc
+);
 
-logic [31:0] pc;
+logic [31:0] program_counter;
+
+assign o_addr_pc = program_counter;
 
 always_ff @(posedge i_clk or negedge i_rst_n) 
 begin
 	if(~i_rst_n) begin
-		pc <= 0;
+		program_counter <= 0;
 	end 
 	else begin
-		pc <= next_pc;
+		program_counter <= i_addr_next_pc;
 	end
 end
       

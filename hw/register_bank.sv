@@ -52,7 +52,7 @@ begin : reg_write
 	if(~i_rst_n) begin
 		regs[i_addr_Rd] <= 0;
 	end 
-	else begin
+	else if (i_con_RegWr) begin
 		regs[i_addr_Rd] <= i_data_Rd;;
 	end
 end

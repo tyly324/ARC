@@ -8,8 +8,8 @@
 // Comments: 
 //
 ////////////////////////////////////////////////
-module shiftleft2 (input  [31:0] i_data_immE,
+module shiftleft2 (input  [29:0] i_data_immE,
                    output [31:0] o_data_immshiftl);
 
-  assign  o_data_immshiftl = i_data_immE<<2;
+  assign  o_data_immshiftl = {i_data_immE,2'b0};
 endmodule
