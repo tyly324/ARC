@@ -6,12 +6,14 @@
 // 				decode the instruction and read
 //				data from registers bank.
 //
-// Vision: Ver 1.0.2 - Add content
+// Vision: Ver 1.0.3 - Add reset signal
 // Comments: 
 //
 ////////////////////////////////////////////////
 module decode(
 	input i_clk,
+	input i_rst_n,
+
 	input i_con_RegWr,
 	input [31:0] i_addr_NextPC,
 	input [31:0] i_data_Instr,
@@ -127,29 +129,54 @@ assign o_data_shamt = cache_shamt;
 // ====================
 // Store data in cache
 // ====================
-always_ff @(posedge i_clk) 
+always_ff @(posedge i_clk or negedge i_rst_n) 
 begin
-	//control
-	cache_control_ex_regdst <= control_ex_regdst;
-	cache_control_mem_branch <= control_mem_branch;
-	cache_control_mem_memread <= control_mem_memread;
-	cache_control_wb_memtoreg <= control_wb_memtoreg;
-	cache_control_mem_memwrite <= control_mem_memwrite;
-	cache_control_ex_alusrc <= control_ex_alusrc;
-	cache_control_wb_regwrite <= control_wb_regwrite; 
-	cache_control_ex_aluop <= control_ex_aluop;
-	//NextPC
-	cache_NextPC <= i_addr_NextPC;
-	//registers
-	cache_registers_rs <= rs_value;
-	cache_registers_rt <= rt_value;
-	//sign ext
-	cache_sign_ext <= sign_ext_out;
-	//mux address
-	cache_mux_0 <= i_data_Instr[20:16];
-	cache_mux_1 <= i_data_Instr[15:11];
-	//shamt data (added on 12:45 23/02/2015 by hy7g14 )
-	cache_shamt <= i_data_Instr[10:6];
+	if(~i_rst_n) begin
+		//control
+		cache_control_ex_regdst <= 0;
+		cache_control_mem_branch <= 0;
+		cache_control_mem_memread <= 0;
+		cache_control_wb_memtoreg <= 0;
+		cache_control_mem_memwrite <= 0;
+		cache_control_ex_alusrc <= 0;
+		cache_control_wb_regwrite <= 0; 
+		cache_control_ex_aluop <= 0;
+		//NextPC
+		cache_NextPC <= 0;
+		//registers
+		cache_registers_rs <= 0;
+		cache_registers_rt <= 0;
+		//sign ext
+		cache_sign_ext <= 0;
+		//mux address
+		cache_mux_0 <= '0;
+		cache_mux_1 <= '0;
+		//shamt data (added on 12:45 23/02/2015 by hy7g14 )
+		cache_shamt <= '0;
+	end 
+	else begin
+		//control
+		cache_control_ex_regdst <= control_ex_regdst;
+		cache_control_mem_branch <= control_mem_branch;
+		cache_control_mem_memread <= control_mem_memread;
+		cache_control_wb_memtoreg <= control_wb_memtoreg;
+		cache_control_mem_memwrite <= control_mem_memwrite;
+		cache_control_ex_alusrc <= control_ex_alusrc;
+		cache_control_wb_regwrite <= control_wb_regwrite; 
+		cache_control_ex_aluop <= control_ex_aluop;
+		//NextPC
+		cache_NextPC <= i_addr_NextPC;
+		//registers
+		cache_registers_rs <= rs_value;
+		cache_registers_rt <= rt_value;
+		//sign ext
+		cache_sign_ext <= sign_ext_out;
+		//mux address
+		cache_mux_0 <= i_data_Instr[20:16];
+		cache_mux_1 <= i_data_Instr[15:11];
+		//shamt data (added on 12:45 23/02/2015 by hy7g14 )
+		cache_shamt <= i_data_Instr[10:6];;
+	end
 end
 
 // ====================

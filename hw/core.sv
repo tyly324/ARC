@@ -1,15 +1,16 @@
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
-// Designer: 
-// Module: 
-// Description: 
+// Designer: Zhiyuan Jiang
+// Module: core
+// Description: Top-level of the processor
 //
-// Vision: Ver 1.0.1 - First version
+// Vision: Ver 1.0.2 - Add reset signal
 // Comments: 
 //
 ////////////////////////////////////////////////
 module core(
 	input logic clk,
+	input logic rst_n,
 	input logic [31:0] read_instruction,
 	input logic [31:0] read_data,
 
@@ -28,6 +29,7 @@ assign mem_read = ex_con_mem_memread;
 
 fetch u_fetch(
 	.i_clk(clk),
+	.i_rst_n(i_rst_n),
 	.i_addr_AddRst(ex_data_AddRst),
 	.i_con_PCSrc(mem_control_PCSrc),
 	.i_data_Instr(read_instruction),
@@ -40,6 +42,7 @@ fetch u_fetch(
 
 decode u_decode(
 	.i_clk(clk),
+	.i_rst_n(i_rst_n),
 	.i_con_RegWr(mem_con_wb_regwrite),
 	.i_addr_NextPC(if_addr_NextPC),
 	.i_data_Instr(if_data_Instr),
@@ -66,6 +69,7 @@ decode u_decode(
 
 execute u_execute(
 	.i_clk(clk),
+	.i_rst_n(i_rst_n),
 	.i_con_ex_regdst(id_con_ex_regdst),
 	.i_con_mem_branch(id_con_mem_branch),
 	.i_con_mem_memread(id_con_mem_memread),
@@ -98,6 +102,7 @@ execute u_execute(
 
 mem u_mem(
 	.i_clk(clk),
+	.i_rst_n(i_rst_n),
 	.i_con_mem_branch(ex_con_mem_branch),
 	.i_con_wb_memtoreg(ex_con_wb_memtoreg),
 	.i_con_wb_regwrite(ex_con_wb_regwrite),

@@ -5,12 +5,14 @@
 // Description: The forth stage in pipleline, 
 // 				access an operand in data memory.
 //
-// Vision: Ver 1.0.1 - First version
+// Vision: Ver 1.0.2 - Add reset signal
 // Comments: 
 //
 ////////////////////////////////////////////////
 module mem(
 	input i_clk,
+	input i_rst_n,
+
 	input i_con_mem_branch,
 	input i_con_wb_memtoreg,
 	input i_con_wb_regwrite,
@@ -64,17 +66,29 @@ assign o_addr_MuxRst = cache_mux_result;
 // ====================
 // Store data in cache
 // ====================
-always_ff @(posedge i_clk) 
-begin
-	//control
-	cache_control_wb_memtoreg <= i_con_wb_memtoreg;
-	cache_control_wb_regwrite <= i_con_wb_regwrite;
-	//data memory
-	cache_data_mem <= i_data_Memory;
-	//alu result
-	cache_alu_result <= i_data_ALU_Rst;
-	//mux
-	cache_mux_result <= i_addr_MuxRst;
+always_ff @(posedge i_clk or negedge i_rst_n) begin : proc_
+	if(~i_rst_n) begin
+		//control
+		cache_control_wb_memtoreg <= 0;
+		cache_control_wb_regwrite <= 0;
+		//data memory
+		cache_data_mem <= 0;
+		//alu result
+		cache_alu_result <= 0;
+		//mux
+		cache_mux_result <= 0;
+	end 
+	else begin
+		//control
+		cache_control_wb_memtoreg <= i_con_wb_memtoreg;
+		cache_control_wb_regwrite <= i_con_wb_regwrite;
+		//data memory
+		cache_data_mem <= i_data_Memory;
+		//alu result
+		cache_alu_result <= i_data_ALU_Rst;
+		//mux
+		cache_mux_result <= i_addr_MuxRst;
+	end
 end
 
 // ====================

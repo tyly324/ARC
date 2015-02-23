@@ -5,12 +5,13 @@
 // Description: The third stage in pipleline, 
 // 				execute the instruction.
 //
-// Vision: Ver 1.0.1 - First version
+// Vision: Ver 1.0.2 - Add reset signal
 // Comments: 
 //
 ////////////////////////////////////////////////
 module execute(
 	input i_clk,
+	input i_rst_n,
 	//control
 	input i_con_ex_regdst,
 	input i_con_mem_branch,
@@ -139,24 +140,44 @@ assign o_addr_MuxRst = cache_mux_result;
 // ====================
 // Store data in cache
 // ====================
-always_ff @(posedge i_clk)
+always_ff @(posedge i_clk or negedge i_rst_n) 
 begin
-	//control
-	cache_control_mem_branch <= i_con_mem_branch;
-	cache_control_mem_memread <= i_con_mem_memread;
-	cache_control_wb_memtoreg <= i_con_wb_memtoreg;
-	cache_control_mem_memwrite <= i_con_mem_memwrite;
-	cache_control_wb_regwrite <= i_con_wb_regwrite;
-	//add 
-	cache_add_result <= add_out;
-	//ALU
-	cache_zero <= alu_out_zero;
-	cache_alu_result <= alu_out_result;
-	//rt
-	cache_rt <= i_data_rt;
-	//mux result
-	cache_mux_result <= mux_out;
+	if(~i_rst_n) begin
+		//control
+		cache_control_mem_branch <= 0;
+		cache_control_mem_memread <= 0;
+		cache_control_wb_memtoreg <= 0;
+		cache_control_mem_memwrite <= 0;
+		cache_control_wb_regwrite <= 0;
+		//add 
+		cache_add_result <= 0;
+		//ALU
+		cache_zero <= 0;
+		cache_alu_result <= 0;
+		//rt
+		cache_rt <= 0;
+		//mux result
+		cache_mux_result <= 0;
+	end 
+	else begin
+		//control
+		cache_control_mem_branch <= i_con_mem_branch;
+		cache_control_mem_memread <= i_con_mem_memread;
+		cache_control_wb_memtoreg <= i_con_wb_memtoreg;
+		cache_control_mem_memwrite <= i_con_mem_memwrite;
+		cache_control_wb_regwrite <= i_con_wb_regwrite;
+		//add 
+		cache_add_result <= add_out;
+		//ALU
+		cache_zero <= alu_out_zero;
+		cache_alu_result <= alu_out_result;
+		//rt
+		cache_rt <= i_data_rt;
+		//mux result
+		cache_mux_result <= mux_out;
+	end
 end
+
 
 // ====================
 // Hirearchy

@@ -16,7 +16,7 @@ module mux2 #(parameter WIDTH = 32)
   assign y = s ? d1 : d0; 
 
 endmodule
-
+/*
 mux2 #(32) IF_pcmux (.d0 (i_addr_pcadd4),
                      .d1 (i_addr_pcbranchM), 
                      .s  (i_con_pcsrc), 
@@ -40,3 +40,4 @@ mux2 #(32)  WB_resmux (.d0 (i_data_aluresW),
                        .d1 (i_data_readW), 
                        .s  (i_con_memtoreg), 
                        .y  (o_data_result));   
+*/
