@@ -1,0 +1,4 @@
+name/*****/type/****/control_done/****/alu_done/****/control_output      
+ADD        R-type         Y                          1100000'10
+ADDU       R-type         Y                          1100000'10
+ADDI
