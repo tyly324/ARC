@@ -59,7 +59,8 @@ decode u_decode(
 	.o_data_rt(id_data_rt),
 	.o_data_SignExt(id_data_SignExt),
 	.o_addr_mux_0(id_addr_mux_0),
-	.o_addr_mux_1(id_addr_mux_1)
+	.o_addr_mux_1(id_addr_mux_1),
+	.o_data_shamt(id_data_shamt)	//(added on 12:45 23/02/2015 by hy7g14 )
 );
 
 
@@ -79,6 +80,7 @@ execute u_execute(
 	.i_data_SignExt(id_data_SignExt),
 	.i_addr_mux_0(id_addr_mux_0),
 	.i_addr_mux_1(id_addr_mux_1),
+	.i_data_shamt(id_data_shamt),	//(added on 12:45 23/02/2015 by hy7g14 )
 
 	.o_con_mem_branch(ex_con_mem_branch),
 	.o_con_mem_memread(ex_con_mem_memread),

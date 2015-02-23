@@ -36,7 +36,8 @@ module decode(
 	output [31:0] o_data_SignExt,
 	//rd address
 	output [4:0] o_addr_mux_0,
-	output [4:0] o_addr_mux_1
+	output [4:0] o_addr_mux_1,
+	output [4:0] o_data_shamt // (added on 12:45 23/02/2015 by hy7g14 )
 	);
 // ====================
 // wire
@@ -85,8 +86,8 @@ logic [31:0] cache_sign_ext;
 //rd address
 logic [4:0] cache_mux_0;
 logic [4:0] cache_mux_1;
-
-
+//shamt data (added on 12:45 23/02/2015 by hy7g14 )
+logic [4:0] cache_shamt;
 // ====================
 // Interconnection
 // ====================
@@ -121,7 +122,8 @@ assign o_data_SignExt = cache_sign_ext;
 //rd address 
 assign o_addr_mux_0 = cache_mux_0;
 assign o_addr_mux_1 = cache_mux_1;
-
+//shamt data (added on 12:45 23/02/2015 by hy7g14 )
+assign o_data_shamt = cache_shamt;
 // ====================
 // Store data in cache
 // ====================
@@ -146,6 +148,8 @@ begin
 	//mux address
 	cache_mux_0 <= i_data_Instr[20:16];
 	cache_mux_1 <= i_data_Instr[15:11];
+	//shamt data (added on 12:45 23/02/2015 by hy7g14 )
+	cache_shamt <= i_data_Instr[10:6];
 end
 
 // ====================

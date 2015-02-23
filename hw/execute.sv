@@ -30,6 +30,8 @@ module execute(
 	//rd address
 	input [4:0] i_addr_mux_0,
 	input [4:0] i_addr_mux_1,
+	//data shamt (added on 12:45 23/02/2015 by hy7g14 )
+	input [4:0] i_data_shamt,
 
 	output o_con_mem_branch,
 	output o_con_mem_memread,
@@ -59,6 +61,7 @@ wire [31:0] shifter_out;
 wire [31:0] alu_in_up;
 wire [31:0] alu_in_down;
 wire [3:0] alu_in_control;
+wire [4:0] alu_in_shamt;//(added on 12:45 23/02/2015 by hy7g14 )
 wire alu_out_zero;
 wire [31:0] alu_out_result;
 //alumux
@@ -107,6 +110,7 @@ assign shifter_in = i_data_SignExt;
 assign alu_in_up = i_data_rs;
 assign alu_in_down = alumux_out;
 assign alu_in_control = alucontrol_out;
+assign alu_in_shamt = i_data_shamt;//(added on 12:45 23/02/2015 by hy7g14 )
 //alumux
 assign alumux_in_0 = i_data_rt;
 assign alumux_in_1 = i_data_SignExt;
@@ -170,7 +174,8 @@ alu u_alu(	.o_data_AluRes(alu_out_result),
 			.o_con_Zero(alu_out_zero), 
 			.i_data_A(alu_in_up), 
 			.i_data_B(alu_in_down), 
-			.i_con_AluCtrl(alu_in_control)
+			.i_con_AluCtrl(alu_in_control),
+			.i_data_shamt(alu_in_shamt)   //(added on 12:45 23/02/2015 by hy7g14 )
 );
 
 EX_alumux u_ex_alumux(	.i_data_writeE(alumux_in_0),
