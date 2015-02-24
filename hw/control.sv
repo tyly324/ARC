@@ -20,38 +20,77 @@ module control
 always
 begin
   case (i_con_instru)
-    001000  :  begin o_con_regdst <= 0;
-                     o_con_regwrite <= 1;
-                     o_con_alusrc <= 1;
-                     o_con_branch <= 0;
-                     o_con_memread <= 0;
-                     o_con_memwrite <= 0;
-                     o_con_memtoreg <= 0;
-                     o_con_aluop <= 2'b00; end
-
+///////////////////// addition operations and R-type start //////////////////////////////////////////
+    6'b001000  :  begin o_con_regdst <= 0;
+                        o_con_regwrite <= 1;
+                        o_con_alusrc <= 1;
+                        o_con_branch <= 0;
+                        o_con_memread <= 0;
+                        o_con_memwrite <= 0;
+                        o_con_memtoreg <= 0;
+                        o_con_aluop <= 2'b00;  end
 ///////////////////// ADDI ///////////////////////////////////////////////////////////////////////////
 
-    001001  :  begin o_con_regdst <= 0;
-                     o_con_regwrite <= 1;
-                     o_con_alusrc <= 1;
-                     o_con_branch <= 0;
-                     o_con_memread <= 0;
-                     o_con_memwrite <= 0;
-                     o_con_memtoreg <= 0;
-                     o_con_aluop <= 2'b00; end
-
+    6'b001001  :  begin o_con_regdst <= 0;
+                        o_con_regwrite <= 1;
+                        o_con_alusrc <= 1;
+                        o_con_branch <= 0;
+                        o_con_memread <= 0;
+                        o_con_memwrite <= 0;
+                        o_con_memtoreg <= 0;
+                        o_con_aluop <= 2'b00;  end
 //////////////////// ADDIU ////////////////////////////////////////////////////////////////////////////
 
-    000000  :  begin o_con_regdst <= 1;
-                     o_con_regwrite <= 1;
-                     o_con_alusrc <= 0;
-                     o_con_branch <= 0;
-                     o_con_memread <= 0;
-                     o_con_memwrite <= 0;
-                     o_con_memtoreg <= 0;
-                     o_con_aluop <= 2'b10; end
-
+    6'b000000  :  begin o_con_regdst <= 1;
+                        o_con_regwrite <= 1;
+                        o_con_alusrc <= 0;
+                        o_con_branch <= 0;
+                        o_con_memread <= 0;
+                        o_con_memwrite <= 0;
+                        o_con_memtoreg <= 0;
+                        o_con_aluop <= 2'b10;  end
 ///////////////////// R-type command //////////////////////////////////////////////////////////////////
+/*/////////////////// addition operations and R-type finished ///////////////////////////////////////*/
+
+
+
+///////////////////// logical operations start/////////////////////////////////////////////////////////
+    6'b0011xx  :  begin o_con_regdst <= 0;
+                        o_con_regwrite <= 1;
+                        o_con_alusrc <= 1;
+                        o_con_branch <= 0;
+                        o_con_memread <= 0;
+                        o_con_memwrite <= 0;
+                        o_con_memtoreg <= 0;
+                        o_con_aluop <= 2'b10;  end
+//////////////////// ANDI ORI and XORI /////////////////////////////////////////////////////////////////
+
+///////////////////// NOT //////////////////////////////////////////////////////////////////////////////
+/*/////////////////// logical operations finished ////////////////////////////////////////////////////*/
+
+
+
+///////////////////// load and store operations start////////////////////////////////////////////////////
+    6'b100xxx  :  begin o_con_regdst <= 0;
+                        o_con_regwrite <= 1;
+                        o_con_alusrc <= 1;
+                        o_con_branch <= 0;
+                        o_con_memread <= 1;
+                        o_con_memwrite <= 0;
+                        o_con_memtoreg <= 1;
+                        o_con_aluop <= 2'b00;  end 
+///////////////////// load operations ////////////////////////////////////////////////////////////////////
+
+    6'b101xxx  :  begin o_con_regdst <= 0;
+                        o_con_regwrite <= 0;
+                        o_con_alusrc <= 1;
+                        o_con_branch <= 0;
+                        o_con_memread <= 0;
+                        o_con_memwrite <= 1;
+                        o_con_memtoreg <= 1;
+                        o_con_aluop <= 2'b00;  end 
+///////////////////// store operations ///////////////////////////////////////////////////////////////////
+/*/////////////////// load and store operations finished ///////////////////////////////////////////////*/
   
   endcase
 end
