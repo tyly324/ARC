@@ -21,17 +21,37 @@ module core(
 	output logic mem_read
 	);
 
+wire [31:0] if_data_Instr, 
+	if_addr_NextPC, 
+	if_addr_PC;
+wire [1:0] id_con_ex_aluop;
+wire [31:0] id_addr_NextPC, 
+	id_data_rs,
+	id_data_rt,
+	id_data_SignExt;
+wire [4:0] id_addr_mux_0,
+	id_addr_mux_1;
+wire [31:0] ex_data_AddRst,
+	ex_data_ALU_Rst,
+	ex_data_rt;
+wire [4:0] ex_addr_MuxRst;
+wire [31:0] mem_data_Memory,
+	mem_data_ALU_Rst;
+wire [4:0] mem_addr_MuxRst;
+wire [31:0] wb_data_MuxRst;
+
 assign instruction_address = if_addr_PC;
 assign data_address = ex_data_ALU_Rst;
 assign write_data = ex_data_rt;
 assign mem_write = ex_con_mem_memwrite;
 assign mem_read = ex_con_mem_memread;
 
+
 fetch u_fetch(
 	.i_clk(clk),
-	.i_rst_n(i_rst_n),
+	.i_rst_n(rst_n),
 	.i_addr_AddRst(ex_data_AddRst),
-	.i_con_PCSrc(mem_control_PCSrc),
+	.i_con_PCSrc(mem_con_PCSrc),
 	.i_data_Instr(read_instruction),
 	
 	.o_data_Instr(if_data_Instr),
@@ -42,7 +62,7 @@ fetch u_fetch(
 
 decode u_decode(
 	.i_clk(clk),
-	.i_rst_n(i_rst_n),
+	.i_rst_n(rst_n),
 	.i_con_RegWr(mem_con_wb_regwrite),
 	.i_addr_NextPC(if_addr_NextPC),
 	.i_data_Instr(if_data_Instr),
@@ -62,14 +82,13 @@ decode u_decode(
 	.o_data_rt(id_data_rt),
 	.o_data_SignExt(id_data_SignExt),
 	.o_addr_mux_0(id_addr_mux_0),
-	.o_addr_mux_1(id_addr_mux_1),
-	.o_data_shamt(id_data_shamt)	//(added on 12:45 23/02/2015 by hy7g14 )
+	.o_addr_mux_1(id_addr_mux_1)
 );
 
 
 execute u_execute(
 	.i_clk(clk),
-	.i_rst_n(i_rst_n),
+	.i_rst_n(rst_n),
 	.i_con_ex_regdst(id_con_ex_regdst),
 	.i_con_mem_branch(id_con_mem_branch),
 	.i_con_mem_memread(id_con_mem_memread),
@@ -84,7 +103,6 @@ execute u_execute(
 	.i_data_SignExt(id_data_SignExt),
 	.i_addr_mux_0(id_addr_mux_0),
 	.i_addr_mux_1(id_addr_mux_1),
-	.i_data_shamt(id_data_shamt),	//(added on 12:45 23/02/2015 by hy7g14 )
 
 	.o_con_mem_branch(ex_con_mem_branch),
 	.o_con_mem_memread(ex_con_mem_memread),
@@ -97,12 +115,11 @@ execute u_execute(
 	.o_data_ALU_Rst(ex_data_ALU_Rst),
 	.o_data_rt(ex_data_rt),
 	.o_addr_MuxRst(ex_addr_MuxRst)
-
-	);
+);
 
 mem u_mem(
 	.i_clk(clk),
-	.i_rst_n(i_rst_n),
+	.i_rst_n(rst_n),
 	.i_con_mem_branch(ex_con_mem_branch),
 	.i_con_wb_memtoreg(ex_con_wb_memtoreg),
 	.i_con_wb_regwrite(ex_con_wb_regwrite),
