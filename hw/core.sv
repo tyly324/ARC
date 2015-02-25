@@ -35,6 +35,7 @@ wire [31:0] ex_data_AddRst,
 	ex_data_ALU_Rst,
 	ex_data_rt;
 wire [4:0] ex_addr_MuxRst;
+wire ex_con_mem_memwrite, ex_con_mem_memread;
 wire [31:0] mem_data_Memory,
 	mem_data_ALU_Rst;
 wire [4:0] mem_addr_MuxRst;

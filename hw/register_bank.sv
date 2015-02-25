@@ -50,7 +50,8 @@ assign o_data_Rs = regs[i_addr_Rs];
 always_ff @(posedge i_clk or negedge i_rst_n) 
 begin : reg_write
 	if(~i_rst_n) begin
-		regs[i_addr_Rd] <= 0;
+		for (int i = 31; i >= 0; i--)
+			regs[i] <= '0;
 	end 
 	else if (i_con_RegWr) begin
 		regs[i_addr_Rd] <= i_data_Rd;;
