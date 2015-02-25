@@ -110,14 +110,14 @@ begin
 
 
 ///////////////////// branch operations ///////////////////////////////////////////////////////////////////
-    6'b000100  :  begin o_con_regdst = 0;
+/*    6'b000100  :  begin o_con_regdst = 0;
                         o_con_regwrite = 0;
                         o_con_alusrc = 0;
                         o_con_branch = 1;
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b01;  end
+                        o_con_aluop = 2'b01;  end*/
 ///////////////////// beq, b, beqz, bgez, bgtz operations /////////////////////////////////////////////////
     6'b000100  :  begin o_con_regdst = 0;
                         o_con_regwrite = 0;
