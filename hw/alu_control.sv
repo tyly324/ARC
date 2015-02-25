@@ -19,18 +19,18 @@ always_comb
 						0:	o_con_AluCtrl=3; 	//R /sll(shift left logic)
 						2:	o_con_AluCtrl=4; 	//R /srl(shift right logic)
 						///////////////////////////////////////
-						8:	o_con_AluCtrl=; 	//R /jr (jump register)
+						//8:	o_con_AluCtrl=14; 	//R /jr (jump register)
 						///////////////////////////////////////
-						32:	o_con_AluCtrl=2;	//R /add	
-						34:	o_con_AluCtrl=6;	//R /sub
+						32,33:	o_con_AluCtrl=2;	//R /add /addu	
+						34,35:	o_con_AluCtrl=6;	//R /sub /subu
 						///////////////////////////////////////
 						36:	o_con_AluCtrl=0;	//R /AND
 						37:	o_con_AluCtrl=1;	//R /OR
 						38:	o_con_AluCtrl=13;	//R /xor
 						39:	o_con_AluCtrl=12;	//R /nor
 						///////////////////////////////////////
-						42:	o_con_AluCtrl=7;	//R /slt(set on less than)
-						43:	o_con_AluCtrl=;		//R /sltu(set on less than)
+						42,43:	o_con_AluCtrl=7;	//R /slt(set on less than) /sltu 
+						
 
 
 						default:   	o_con_AluCtrl=15; 	//shouldnt happend
