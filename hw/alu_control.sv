@@ -18,12 +18,12 @@ always_comb
 					case(i_con_FuncCode)
 						0:	o_con_AluCtrl=3; 	//R /sll(shift left logic)
 						2:	o_con_AluCtrl=4; 	//R /srl(shift right logic)
-						////////////////////////////////////////
+						///////////////////////////////////////
 						8:	o_con_AluCtrl=; 	//R /jr (jump register)
 						///////////////////////////////////////
 						32:	o_con_AluCtrl=2;	//R /add	
 						34:	o_con_AluCtrl=6;	//R /sub
-						////////////////////////////////////////
+						///////////////////////////////////////
 						36:	o_con_AluCtrl=0;	//R /AND
 						37:	o_con_AluCtrl=1;	//R /OR
 						38:	o_con_AluCtrl=13;	//R /xor

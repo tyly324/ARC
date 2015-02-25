@@ -30,8 +30,6 @@ module execute(
 	//rd address
 	input [4:0] i_addr_mux_0,
 	input [4:0] i_addr_mux_1,
-	//data shamt (added on 12:45 23/02/2015 by hy7g14 )
-	input [4:0] i_data_shamt,
 
 	output o_con_mem_branch,
 	output o_con_mem_memread,
@@ -110,7 +108,7 @@ assign shifter_in = i_data_SignExt;
 assign alu_in_up = i_data_rs;
 assign alu_in_down = alumux_out;
 assign alu_in_control = alucontrol_out;
-assign alu_in_shamt = i_data_shamt;//(added on 12:45 23/02/2015 by hy7g14 )
+assign alu_in_shamt = i_data_SignExt[10:6];//(added on 09:24 25/02/2015 by hy7g14 )
 //alumux
 assign alumux_in_0 = i_data_rt;
 assign alumux_in_1 = i_data_SignExt;
