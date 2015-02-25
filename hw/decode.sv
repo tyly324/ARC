@@ -46,7 +46,7 @@ module decode(
 // wire
 // ====================
 // control
-wire [5:1] control_input;
+wire [5:0] control_input;
 wire control_ex_regdst;
 wire control_mem_branch;
 wire control_mem_memread;
