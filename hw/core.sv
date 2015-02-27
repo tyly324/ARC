@@ -54,6 +54,7 @@ decode u_decode(
 	.o_con_ex_alusrc(id_con_ex_alusrc),
 	.o_con_wb_regwrite(id_con_wb_regwrite),
 	.o_con_ex_aluop(id_con_ex_aluop),
+	.o_con_ex_other(id_con_ex_other),//added for other control
 	.o_addr_NextPC(id_addr_NextPC),
 	.o_data_rs(id_data_rs),
 	.o_data_rt(id_data_rt),
@@ -73,6 +74,7 @@ execute u_execute(
 	.i_con_ex_alusrc(id_con_ex_alusrc),
 	.i_con_wb_regwrite(id_con_wb_regwrite),
 	.i_con_ex_aluop(id_con_ex_aluop),
+	.i_con_ex_other(id_con_ex_other),//added for other control
 	.i_addr_NextPC(id_addr_NextPC),
 	.i_data_rs(id_data_rs),
 	.i_data_rt(id_data_rt),

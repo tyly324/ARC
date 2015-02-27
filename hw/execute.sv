@@ -20,6 +20,7 @@ module execute(
 	input i_con_ex_alusrc,
 	input i_con_wb_regwrite,
 	input [1:0] i_con_ex_aluop,
+	input [3:0] i_con_ex_other,//added for other control
 	//Next PC
 	input [31:0] i_addr_NextPC,
 	// registers
@@ -30,6 +31,7 @@ module execute(
 	//rd address
 	input [4:0] i_addr_mux_0,
 	input [4:0] i_addr_mux_1,
+
 
 	output o_con_mem_branch,
 	output o_con_mem_memread,
@@ -71,6 +73,7 @@ wire [31:0] alumux_out;
 wire [5:0] alucontrol_function;
 wire [1:0] alucontrol_op;
 wire [3:0] alucontrol_out;
+wire [3:0] alucontrol_other;//added for other control
 //mux
 wire [4:0] mux_in_0;
 wire [4:0] mux_in_1;
@@ -116,6 +119,7 @@ assign alumux_select = i_con_ex_alusrc;
 //alucontrol
 assign alucontrol_function = i_data_SignExt[5:0];
 assign alucontrol_op = i_con_ex_aluop;
+assign alucontrol_other = i_con_ex_other;//added for other control
 //mux
 assign mux_in_0 = i_addr_mux_0;
 assign mux_in_1 = i_addr_mux_1;
@@ -184,7 +188,8 @@ EX_alumux u_ex_alumux(	.i_data_writeE(alumux_in_0),
 
 alu_control u_alu_control(	.o_con_AluCtrl(alucontrol_out), 
 							.i_con_AluOp(alucontrol_op), 
-							.i_con_FuncCode(alucontrol_function)
+							.i_con_FuncCode(alucontrol_function),
+							.i_con_Other(alucontrol_other))//added for other control
 );
 
 EX_writemux u_ex_writemux(	.i_data_rtE(mux_in_0),
