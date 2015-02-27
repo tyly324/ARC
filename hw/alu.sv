@@ -1,4 +1,3 @@
-`timescale 1ns / 1ps
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
 // Designer: 
@@ -20,6 +19,7 @@ always_comb
 			2:	o_data_AluRes = i_data_A + i_data_B;	//add,addu
 			3:	o_data_AluRes = i_data_B <<i_data_shamt;//sll
 			4:	o_data_AluRes = i_data_B >>i_data_shamt;//srl
+			5:	o_data_AluRes = (i_data_A==i_data_B) ? 1:0;//for bne
 			6:	o_data_AluRes = i_data_A - i_data_B;	//sub
 			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;// slt, sltu
 			12:	o_data_AluRes = ~(i_data_A|i_data_B);	//nor
