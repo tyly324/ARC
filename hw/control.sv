@@ -151,8 +151,8 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0100; end  // beq //
+                        o_con_aluop = 2'b01;  
+                        o_con_other = 4'b0000; end  // beq //
 
     6'b000101  :  begin o_con_regwrite = 0;
                         o_con_alusrc = 0;

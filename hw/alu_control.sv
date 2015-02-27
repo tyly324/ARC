@@ -43,7 +43,7 @@ always_comb
                         2:  o_con_AluCtrl=1;    // ori
                         3:  o_con_AluCtrl=13;   // xori
                         ///////////////////////////////////////
-                        4:  o_con_AluCtrl=6;    // beq
+                        5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
                         6:  o_con_AluCtrl=7;    // slti
                     endcase
