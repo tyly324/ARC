@@ -44,6 +44,8 @@ always_comb
                         3:  o_con_AluCtrl=13;   // xori
                         ///////////////////////////////////////
                         4:  o_con_AluCtrl=6;    // beq
+                        ///////////////////////////////////////
+                        6:  o_con_AluCtrl=7;    // slti
                     endcase
 			        end
 			default:	o_con_AluCtrl=15;
