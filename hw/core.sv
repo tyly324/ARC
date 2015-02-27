@@ -5,7 +5,7 @@
 // Module: core
 // Description: Top-level of the processor
 //
-// Vision: Ver 1.0.2 - Add reset signal
+// Vision: Ver 1.1.1 - Add control 'other' signal
 // Comments: 
 //
 ////////////////////////////////////////////////
@@ -26,6 +26,7 @@ wire [31:0] if_data_Instr,
 	if_addr_NextPC, 
 	if_addr_PC;
 wire [1:0] id_con_ex_aluop;
+wire [3:0] id_con_ex_other;
 wire [31:0] id_addr_NextPC, 
 	id_data_rs,
 	id_data_rt,
@@ -79,6 +80,7 @@ decode u_decode(
 	.o_con_ex_alusrc(id_con_ex_alusrc),
 	.o_con_wb_regwrite(id_con_wb_regwrite),
 	.o_con_ex_aluop(id_con_ex_aluop),
+	.o_con_ex_other(id_con_ex_other),
 	.o_addr_NextPC(id_addr_NextPC),
 	.o_data_rs(id_data_rs),
 	.o_data_rt(id_data_rt),
@@ -99,6 +101,7 @@ execute u_execute(
 	.i_con_ex_alusrc(id_con_ex_alusrc),
 	.i_con_wb_regwrite(id_con_wb_regwrite),
 	.i_con_ex_aluop(id_con_ex_aluop),
+	.i_con_ex_other(id_con_ex_other),
 	.i_addr_NextPC(id_addr_NextPC),
 	.i_data_rs(id_data_rs),
 	.i_data_rt(id_data_rt),

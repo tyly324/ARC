@@ -97,7 +97,7 @@ begin
 		read_data <= data_mem[local_data_address];
 end
 
-//hierarvhy the processor core
+//hierarchy the processor core
 core u_core(.*);
 
 endmodule

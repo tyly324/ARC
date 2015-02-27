@@ -6,7 +6,7 @@
 // Description: The third stage in pipleline, 
 // 				execute the instruction.
 //
-// Vision: Ver 1.0.2 - Add reset signal
+// Vision: Ver 1.1.1 - Add alu_control 'other' signal
 // Comments: 
 //
 ////////////////////////////////////////////////
@@ -22,6 +22,7 @@ module execute(
 	input i_con_ex_alusrc,
 	input i_con_wb_regwrite,
 	input [1:0] i_con_ex_aluop,
+	input [3:0] i_con_ex_other,
 	//Next PC
 	input [31:0] i_addr_NextPC,
 	// registers
@@ -69,9 +70,10 @@ wire [31:0] alumux_in_1;
 wire alumux_select;
 wire [31:0] alumux_out;
 //alu control
-wire [5:0] alucontrol_function;
-wire [1:0] alucontrol_op;
+wire [5:0] alucontrol_in_function;
+wire [1:0] alucontrol_in_op;
 wire [3:0] alucontrol_out;
+wire [3:0] alucontrol_in_other;
 //mux
 wire [4:0] mux_in_0;
 wire [4:0] mux_in_1;
@@ -115,8 +117,9 @@ assign alumux_in_0 = i_data_rt;
 assign alumux_in_1 = i_data_SignExt;
 assign alumux_select = i_con_ex_alusrc;
 //alucontrol
-assign alucontrol_function = i_data_SignExt[5:0];
-assign alucontrol_op = i_con_ex_aluop;
+assign alucontrol_in_function = i_data_SignExt[5:0];
+assign alucontrol_in_op = i_con_ex_aluop;
+assign alucontrol_in_other = i_con_ex_other;
 //mux
 assign mux_in_0 = i_addr_mux_0;
 assign mux_in_1 = i_addr_mux_1;
@@ -204,8 +207,9 @@ EX_alumux u_ex_alumux(	.i_data_writeE(alumux_in_0),
 );
 
 alu_control u_alu_control(	.o_con_AluCtrl(alucontrol_out), 
-							.i_con_AluOp(alucontrol_op), 
-							.i_con_FuncCode(alucontrol_function)
+							.i_con_AluOp(alucontrol_in_op), 
+							.i_con_FuncCode(alucontrol_in_function),
+							.i_con_Other(alucontrol_in_other)
 );
 
 EX_writemux u_ex_writemux(	.i_data_rtE(mux_in_0),
