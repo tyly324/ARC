@@ -27,6 +27,9 @@ module decode(
 	output o_con_ex_alusrc,
 	output o_con_wb_regwrite,
 	output [1:0] o_con_ex_aluop,
+    ////////////////
+    output [3:0] o_con_ex_other  // added by zhangyue to add 'other' signal to alu //
+    ////////////////
 	//Next PC
 	output [31:0] o_addr_NextPC,
 	// registers
@@ -51,6 +54,9 @@ wire control_mem_memwrite;
 wire control_ex_alusrc;
 wire control_wb_regwrite; 
 wire [1:0] control_ex_aluop;
+///////////////
+wire [3:0] control_ex_other;  // added by zhangyue to add 'other' signal to alu //
+///////////////
 // registers
 wire [4:0] rs_address;
 wire [4:0] rt_address;
@@ -75,6 +81,9 @@ logic cache_control_mem_memwrite;
 logic cache_control_ex_alusrc;
 logic cache_control_wb_regwrite; 
 logic [1:0] cache_control_ex_aluop;
+////////////////
+logic [3:0] cache_control_ex_other;  // added to provide 'other' signal to alu //
+////////////////
 //Next PC
 logic [31:0] cache_NextPC;
 // registers
@@ -109,6 +118,9 @@ assign o_con_mem_memwrite = cache_control_mem_memwrite;
 assign o_con_ex_alusrc = cache_control_ex_alusrc;
 assign o_con_wb_regwrite = cache_control_wb_regwrite;  
 assign o_con_ex_aluop = cache_control_ex_aluop;
+/////////////////////
+assign o_con_ex_other = cache_control_ex_other;  // added to provide 'other' signal to alu //
+/////////////////////
 //Next PC 
 assign o_addr_NextPC = cache_NextPC;
 // registers 
@@ -133,6 +145,9 @@ begin
 	cache_control_ex_alusrc <= control_ex_alusrc;
 	cache_control_wb_regwrite <= control_wb_regwrite; 
 	cache_control_ex_aluop <= control_ex_aluop;
+	/////////////////////
+    cache_control_ex_other <= control_ex_other;  // added to provide 'other' signal to alu //
+    /////////////////////
 	//NextPC
 	cache_NextPC <= i_addr_NextPC;
 	//registers
@@ -162,6 +177,7 @@ control u_control (	.o_con_regdst(control_ex_regdst),
 					.o_con_alusrc(control_ex_alusrc), 
 					.o_con_regwrite(control_wb_regwrite), 
         			.o_con_aluop(control_ex_aluop), 
+        			.o_con_other(control_ex_other),
 					.i_con_instru(control_input)
 );
 
