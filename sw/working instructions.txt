@@ -1,5 +1,7 @@
-LW
-SW
+Rtype        Itype
+
+              LW
+              SW
 ADD
 OR
 AND
