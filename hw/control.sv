@@ -168,6 +168,21 @@ begin
 //2. The calculation result is zero, excutions like branch or others stuff will be made if 'zero' is set//
 //3. Opposite to 2 next step will be taken if 'zero' is 0//
 //for 3 I suggest we set aluop '11' for this kind of instructions//
+
+
+
+///////////////////// slti //////////////////////////////////////////////////////////////////////////////
+    6'b001010  :  begin o_con_regdst = 0;
+                        o_con_regwrite = 1;
+                        o_con_alusrc = 1;
+                        o_con_branch = 0;
+                        o_con_memread = 0;
+                        o_con_memwrite = 0;
+                        o_con_memtoreg = 0;
+                        o_con_aluop = 2'b11;  
+                        o_con_other = 4'b0110; end  // SLTI /////////
+
+
   
   endcase
 end
