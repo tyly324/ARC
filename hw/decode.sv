@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
 // Designer: Zhiyuan Jiang
@@ -6,12 +7,14 @@
 // 				decode the instruction and read
 //				data from registers bank.
 //
-// Vision: Ver 1.0.2 - Add content
+// Vision: Ver 1.0.3 - Add reset signal
 // Comments: 
 //
 ////////////////////////////////////////////////
 module decode(
 	input i_clk,
+	input i_rst_n,
+
 	input i_con_RegWr,
 	input [31:0] i_addr_NextPC,
 	input [31:0] i_data_Instr,
@@ -38,11 +41,13 @@ module decode(
 	output [4:0] o_addr_mux_0,
 	output [4:0] o_addr_mux_1
 	);
+
+
 // ====================
 // wire
 // ====================
 // control
-wire control_input;
+wire [5:0] control_input;
 wire control_ex_regdst;
 wire control_mem_branch;
 wire control_mem_memread;
@@ -62,6 +67,7 @@ wire register_write;
 // sign_extend
 wire [15:0] sign_ext_in;
 wire [31:0] sign_ext_out;
+
 
 // ====================
 // registers
@@ -85,6 +91,11 @@ logic [31:0] cache_sign_ext;
 //rd address
 logic [4:0] cache_mux_0;
 logic [4:0] cache_mux_1;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> testbench
 // ====================
 // Interconnection
 // ====================
@@ -119,11 +130,17 @@ assign o_data_SignExt = cache_sign_ext;
 //rd address 
 assign o_addr_mux_0 = cache_mux_0;
 assign o_addr_mux_1 = cache_mux_1;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> testbench
 // ====================
 // Store data in cache
 // ====================
-always_ff @(posedge i_clk) 
+always_ff @(posedge i_clk or negedge i_rst_n) 
 begin
+<<<<<<< HEAD
 	//control
 	cache_control_ex_regdst <= control_ex_regdst;
 	cache_control_mem_branch <= control_mem_branch;
@@ -143,13 +160,56 @@ begin
 	//mux address
 	cache_mux_0 <= i_data_Instr[20:16];
 	cache_mux_1 <= i_data_Instr[15:11];
+=======
+	if(~i_rst_n) begin
+		//control
+		cache_control_ex_regdst <= 0;
+		cache_control_mem_branch <= 0;
+		cache_control_mem_memread <= 0;
+		cache_control_wb_memtoreg <= 0;
+		cache_control_mem_memwrite <= 0;
+		cache_control_ex_alusrc <= 0;
+		cache_control_wb_regwrite <= 0; 
+		cache_control_ex_aluop <= 0;
+		//NextPC
+		cache_NextPC <= 0;
+		//registers
+		cache_registers_rs <= 0;
+		cache_registers_rt <= 0;
+		//sign ext
+		cache_sign_ext <= 0;
+		//mux address
+		cache_mux_0 <= '0;
+		cache_mux_1 <= '0;
+	end 
+	else begin
+		//control
+		cache_control_ex_regdst <= control_ex_regdst;
+		cache_control_mem_branch <= control_mem_branch;
+		cache_control_mem_memread <= control_mem_memread;
+		cache_control_wb_memtoreg <= control_wb_memtoreg;
+		cache_control_mem_memwrite <= control_mem_memwrite;
+		cache_control_ex_alusrc <= control_ex_alusrc;
+		cache_control_wb_regwrite <= control_wb_regwrite; 
+		cache_control_ex_aluop <= control_ex_aluop;
+		//NextPC
+		cache_NextPC <= i_addr_NextPC;
+		//registers
+		cache_registers_rs <= rs_value;
+		cache_registers_rt <= rt_value;
+		//sign ext
+		cache_sign_ext <= sign_ext_out;
+		//mux address
+		cache_mux_0 <= i_data_Instr[20:16];
+		cache_mux_1 <= i_data_Instr[15:11];
+	end
+>>>>>>> testbench
 end
+
 
 // ====================
 // hirearchy
 // ====================
-
-
 sign_extend u_sign_ext(	.i_data_immD(sign_ext_in),
                    		.o_data_immD(sign_ext_out)
 );
@@ -166,6 +226,7 @@ control u_control (	.o_con_regdst(control_ex_regdst),
 );
 
 register_bank u_register_bank(	.i_clk(i_clk),
+								.i_rst_n(i_rst_n),
 								.i_addr_Rs(rs_address), 
 								.i_addr_Rt(rt_address),
 								.i_con_RegWr(register_write),

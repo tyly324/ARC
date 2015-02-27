@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
 // Designer: Zhiyuan Jiang
@@ -5,12 +6,13 @@
 // Description: The third stage in pipleline, 
 // 				execute the instruction.
 //
-// Vision: Ver 1.0.1 - First version
+// Vision: Ver 1.0.2 - Add reset signal
 // Comments: 
 //
 ////////////////////////////////////////////////
 module execute(
 	input i_clk,
+	input i_rst_n,
 	//control
 	input i_con_ex_regdst,
 	input i_con_mem_branch,
@@ -42,8 +44,7 @@ module execute(
 	output [31:0] o_data_ALU_Rst,
 	output [31:0] o_data_rt,
 	output [4:0] o_addr_MuxRst
-
-	);
+);
 
 // ====================
 // wire
@@ -53,13 +54,13 @@ wire [31:0] add_in_up;
 wire [31:0] add_in_down;
 wire [31:0] add_out;
 //shifter
-wire [31:0] shifter_in;
+wire [29:0] shifter_in;
 wire [31:0] shifter_out;
 //ALU
 wire [31:0] alu_in_up;
 wire [31:0] alu_in_down;
 wire [3:0] alu_in_control;
-wire [4:0] alu_in_shamt;//(added on 12:45 23/02/2015 by hy7g14 )
+wire [4:0] alu_in_shamt;
 wire alu_out_zero;
 wire [31:0] alu_out_result;
 //alumux
@@ -103,12 +104,16 @@ logic [4:0] cache_mux_result;
 assign add_in_up = i_addr_NextPC;
 assign add_in_down = shifter_out;
 //shifter
-assign shifter_in = i_data_SignExt;
+assign shifter_in = i_data_SignExt[29:0];
 //alu
 assign alu_in_up = i_data_rs;
 assign alu_in_down = alumux_out;
 assign alu_in_control = alucontrol_out;
+<<<<<<< HEAD
 assign alu_in_shamt = i_data_SignExt[10:6];//(added on 09:24 25/02/2015 by hy7g14 )
+=======
+assign alu_in_shamt = i_data_SignExt[10:6];
+>>>>>>> testbench
 //alumux
 assign alumux_in_0 = i_data_rt;
 assign alumux_in_1 = i_data_SignExt;
@@ -137,24 +142,44 @@ assign o_addr_MuxRst = cache_mux_result;
 // ====================
 // Store data in cache
 // ====================
-always_ff @(posedge i_clk)
+always_ff @(posedge i_clk or negedge i_rst_n) 
 begin
-	//control
-	cache_control_mem_branch <= i_con_mem_branch;
-	cache_control_mem_memread <= i_con_mem_memread;
-	cache_control_wb_memtoreg <= i_con_wb_memtoreg;
-	cache_control_mem_memwrite <= i_con_mem_memwrite;
-	cache_control_wb_regwrite <= i_con_wb_regwrite;
-	//add 
-	cache_add_result <= add_out;
-	//ALU
-	cache_zero <= alu_out_zero;
-	cache_alu_result <= alu_out_result;
-	//rt
-	cache_rt <= i_data_rt;
-	//mux result
-	cache_mux_result <= mux_out;
+	if(~i_rst_n) begin
+		//control
+		cache_control_mem_branch <= 0;
+		cache_control_mem_memread <= 0;
+		cache_control_wb_memtoreg <= 0;
+		cache_control_mem_memwrite <= 0;
+		cache_control_wb_regwrite <= 0;
+		//add 
+		cache_add_result <= 0;
+		//ALU
+		cache_zero <= 0;
+		cache_alu_result <= 0;
+		//rt
+		cache_rt <= 0;
+		//mux result
+		cache_mux_result <= 0;
+	end 
+	else begin
+		//control
+		cache_control_mem_branch <= i_con_mem_branch;
+		cache_control_mem_memread <= i_con_mem_memread;
+		cache_control_wb_memtoreg <= i_con_wb_memtoreg;
+		cache_control_mem_memwrite <= i_con_mem_memwrite;
+		cache_control_wb_regwrite <= i_con_wb_regwrite;
+		//add 
+		cache_add_result <= add_out;
+		//ALU
+		cache_zero <= alu_out_zero;
+		cache_alu_result <= alu_out_result;
+		//rt
+		cache_rt <= i_data_rt;
+		//mux result
+		cache_mux_result <= mux_out;
+	end
 end
+
 
 // ====================
 // Hirearchy
@@ -173,7 +198,7 @@ alu u_alu(	.o_data_AluRes(alu_out_result),
 			.i_data_A(alu_in_up), 
 			.i_data_B(alu_in_down), 
 			.i_con_AluCtrl(alu_in_control),
-			.i_data_shamt(alu_in_shamt)   //(added on 12:45 23/02/2015 by hy7g14 )
+			.i_data_shamt(alu_in_shamt)
 );
 
 EX_alumux u_ex_alumux(	.i_data_writeE(alumux_in_0),

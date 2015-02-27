@@ -1,0 +1,13 @@
+Rtype        Itype
+
+              LW
+              SW
+ADD
+OR
+AND
+SRL
+SLL
+SLT
+NOR
+XOR
+SUB

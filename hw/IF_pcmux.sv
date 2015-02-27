@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module IF_pcmux 
               (input  [31:0] i_addr_pcadd4, i_addr_pcbranchM, 
                input         i_con_pcsrc, 

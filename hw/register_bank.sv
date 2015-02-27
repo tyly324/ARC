@@ -1,10 +1,11 @@
+`timescale 1ns / 1ps
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
 // Designer: Zhiyuan Jiang
 // Module: Register bank
 // Description: 
 //
-// Vision: Ver 1.0.2 - Error corrected
+// Vision: Ver 1.0.3 - Add reset signal
 // Comments: Sythesisable
 //
 ////////////////////////////////////////////////
@@ -25,6 +26,7 @@
 
 module register_bank(
 	input i_clk,
+	input i_rst_n,
 
 	input [4:0] i_addr_Rs,
 	input [4:0] i_addr_Rt,
@@ -46,10 +48,15 @@ assign o_data_Rt = regs[i_addr_Rt];
 assign o_data_Rs = regs[i_addr_Rs];
 
 //Register write
-always_ff @(posedge i_clk) 
+always_ff @(posedge i_clk or negedge i_rst_n) 
 begin : reg_write
-	if(i_con_RegWr) 
-		regs[i_addr_Rd] <= i_data_Rd;
+	if(~i_rst_n) begin
+		for (int i = 31; i >= 0; i--)
+			regs[i] <= '0;
+	end 
+	else if (i_con_RegWr) begin
+		regs[i_addr_Rd] <= i_data_Rd;;
+	end
 end
 
 endmodule

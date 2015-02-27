@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
 // Designer: 
@@ -17,9 +18,21 @@ module control
 //MB: o_con_memread, o_con_memwrite, o_con_branch, 3bits
 //EX: o_con_aluop, o_con_alusrc, o_con_regdst, 4bits
 
-always
+always_comb
 begin
+<<<<<<< HEAD
   case (i_con_instru)
+=======
+    o_con_regdst = 0;
+    o_con_regwrite = 0;
+    o_con_alusrc = 0;
+    o_con_branch = 0;
+    o_con_memread = 0;
+    o_con_memwrite = 0;
+    o_con_memtoreg = 0;
+    o_con_aluop = 2'b00;
+  casez (i_con_instru)
+>>>>>>> testbench
 ///////////////////// addition operations and R-type start //////////////////////////////////////////
     6'b001000  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
@@ -49,7 +62,11 @@ begin
                         o_con_aluop = 2'b10;  end
 ///////////////////// R-type command //////////////////////////////////////////////////////////////////
 //
+<<<<<<< HEAD
     6'b011xxx  :  begin o_con_regdst = 1;
+=======
+    6'b011???  :  begin o_con_regdst = 1;
+>>>>>>> testbench
                         o_con_regwrite = 1;
                         o_con_alusrc = 0;
                         o_con_branch = 0;
@@ -64,7 +81,11 @@ begin
 
 
 ///////////////////// logical operations start/////////////////////////////////////////////////////////
+<<<<<<< HEAD
     6'b0011xx  :  begin o_con_regdst = 0;
+=======
+    6'b0011??  :  begin o_con_regdst = 0;
+>>>>>>> testbench
                         o_con_regwrite = 1;
                         o_con_alusrc = 1;
                         o_con_branch = 0;
@@ -79,7 +100,11 @@ begin
 
 
 ///////////////////// load and store operations start////////////////////////////////////////////////////
+<<<<<<< HEAD
     6'b100xxx  :  begin o_con_regdst = 0;
+=======
+    6'b100???  :  begin o_con_regdst = 0;
+>>>>>>> testbench
                         o_con_regwrite = 1;
                         o_con_alusrc = 1;
                         o_con_branch = 0;
@@ -88,7 +113,11 @@ begin
                         o_con_memtoreg = 1;
                         o_con_aluop = 2'b00;  end 
 ///////////////////// load operations ////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
     6'b101xxx  :  begin o_con_regdst = 0;
+=======
+    6'b101???  :  begin o_con_regdst = 0;
+>>>>>>> testbench
                         o_con_regwrite = 0;
                         o_con_alusrc = 1;
                         o_con_branch = 0;
@@ -102,14 +131,22 @@ begin
 
 
 ///////////////////// branch operations ///////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
     6'b000100  :  begin o_con_regdst = 0;
+=======
+/*    6'b000100  :  begin o_con_regdst = 0;
+>>>>>>> testbench
                         o_con_regwrite = 0;
                         o_con_alusrc = 0;
                         o_con_branch = 1;
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
+<<<<<<< HEAD
                         o_con_aluop = 2'b01;  end
+=======
+                        o_con_aluop = 2'b01;  end*/
+>>>>>>> testbench
 ///////////////////// beq, b, beqz, bgez, bgtz operations /////////////////////////////////////////////////
     6'b000100  :  begin o_con_regdst = 0;
                         o_con_regwrite = 0;
