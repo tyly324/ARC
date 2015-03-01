@@ -49,14 +49,23 @@ initial
 begin
 	instruction_mem = {	
 	32'h8c020000,32'h8c030004,32'h0,32'h0,
+//lw $v0 #0; lw $v1 #4
 	32'h0,32'h0,32'h0,32'h0,
+//wait more than five clock, to avoid hazard
 	32'hac430000,32'h0,32'h0,32'h0,
+//sw $v1, ($v0)
 	32'h8c080010,32'h8c090014,32'h0,32'h0,
+//lw $t0 0x0010; lw  $t1 0x0014
 	32'h0,32'h0,32'h0,32'h0,
+////wait more than five clock, to avoid hazard
 	32'h01288020,32'h01288825,32'h01289024,32'h00099842,
+//add $s0,$t1,$t0; or $s1,$t1,$t0; and $s2,$t1,$t0; srl$s3,$t1,#1
 	32'h0009a040,32'h0128a82a,32'h0109b02a,32'h0128b827,
+//sll $s4,$t1,#1; slt $s5,$t1,$t0; slt $s6,$t0,$t1; nor $s7,$t1,$t0
 	32'h0128c026,32'h0128c822,32'h0109d022,32'h212a0001,
+//xor $t8,$t1,$t0; sub $t9,$t1,$t0; sub $k0,$t0,$t1; addi $t2,$t1,#1
 	32'h312b0001,32'h352c0001,32'h392d0001,32'h292e0004,
+//andi $t3,$t1,#1; ori $t4,$t1,#1; xori $t5,$t1,#1; slti $t6,$t1,#4
 	32'h0,32'h0,32'h0,32'h0,
 	32'h0,32'h0,32'h0,32'h0,
 	32'h0,32'h0,32'h0,32'h0,
@@ -78,12 +87,12 @@ end
 initial
 begin
 	rst_n = 1;
-	#100ns
+	#100
 	rst_n = 0;
-	#100ns
+	#100
 	rst_n = 1;
 
-	#6000ns
+	#6000
 	$stop;
 end
 
