@@ -28,7 +28,7 @@ always_comb
 			
 			12:	o_data_AluRes = ~(i_data_A|i_data_B);	//nor
 			13: o_data_AluRes = i_data_A ^ i_data_B;	//xor
-			//14: 										//jr (architecture modification expected)
+			14: o_data_AluRes = i_data_A;				//jr (architecture modification expected)
 			
 			default: o_data_AluRes = 0;
 		endcase

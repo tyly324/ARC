@@ -28,8 +28,8 @@ assign mem_read = ex_con_mem_memread;
 
 fetch u_fetch(
 	.i_clk(clk),
-	.i_addr_AddRst(ex_data_AddRst),
-	.i_con_PCSrc(mem_control_PCSrc),
+	.i_addr_AddRst(mem_addr_JBpc),  //hy7g14 14 pm 03/03 for jr
+	.i_con_PCSrc(mem_con_PCSrc),	//hy7g14 14 pm 03/03 for jr
 	.i_data_Instr(read_instruction),
 	
 	.o_data_Instr(if_data_Instr),
@@ -87,8 +87,9 @@ execute u_execute(
 	.o_con_wb_memtoreg(ex_con_wb_memtoreg),
 	.o_con_mem_memwrite(ex_con_mem_memwrite),
 	.o_con_wb_regwrite(ex_con_wb_regwrite),
+	.o_con_mem_jumpreg(ex_con_mem_jumpreg),		//hy7g14 14 pm 03/03
 
-	.o_data_AddRst(ex_data_AddRst),
+	.o_addr_AddRst(ex_addr_AddRst), //hy7g14 14 pm 03/03 for jr
 	.o_con_Zero(ex_con_Zero),
 	.o_data_ALU_Rst(ex_data_ALU_Rst),
 	.o_data_rt(ex_data_rt),
@@ -104,14 +105,17 @@ mem u_mem(
 	.i_con_Zero(ex_con_Zero),
 	.i_data_ALU_Rst(ex_data_ALU_Rst),
 	.i_addr_MuxRst(ex_addr_MuxRst),
-	.i_data_Memory(read_data), //input data from data memory
+	.i_data_Memory(read_data), 				//input data from data memory
+	.i_addr_AddRst(ex_addr_AddRst),			//hy7g14 14 pm 03/03 for jr
+	.i_con_JumpReg(ex_con_mem_jumpreg),					//hy7g14 14 pm 03/03 for jr
 
 	.o_con_wb_memtoreg(mem_con_wb_memtoreg),
 	.o_con_wb_regwrite(mem_con_wb_regwrite),
 	.o_con_PCSrc(mem_con_PCSrc),
 	.o_data_Memory(mem_data_Memory),
 	.o_data_ALU_Rst(mem_data_ALU_Rst),
-	.o_addr_MuxRst(mem_addr_MuxRst)
+	.o_addr_MuxRst(mem_addr_MuxRst),	//hy7g14 14 pm 03/03 for jr
+	.o_addr_JBpc(mem_addr_JBpc)			//hy7g14 14 pm 03/03 for jr
 );
 
 write_back u_write_back(

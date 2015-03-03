@@ -20,7 +20,7 @@ module execute(
 	input i_con_ex_alusrc,
 	input i_con_wb_regwrite,
 	input [1:0] i_con_ex_aluop,
-	input [3:0] i_con_ex_other,//added for other control
+	input [3:0] i_con_ex_other,		//added for other control
 	//Next PC
 	input [31:0] i_addr_NextPC,
 	// registers
@@ -38,8 +38,9 @@ module execute(
 	output o_con_wb_memtoreg,
 	output o_con_mem_memwrite,
 	output o_con_wb_regwrite,
+	output o_con_mem_jumpreg,		//hy7g14 14 pm 03/03
 
-	output [31:0] o_data_AddRst,
+	output [31:0] o_addr_AddRst,  	//hy7g14 14 pm 03/03
 	output o_con_Zero,
 	output [31:0] o_data_ALU_Rst,
 	output [31:0] o_data_rt,
@@ -74,6 +75,7 @@ wire [5:0] alucontrol_function;
 wire [1:0] alucontrol_op;
 wire [3:0] alucontrol_out;
 wire [3:0] alucontrol_other;//added for other control
+wire alucontrol_jumpreg;	//hy7g14 14 pm 03/03
 //mux
 wire [4:0] mux_in_0;
 wire [4:0] mux_in_1;
@@ -88,6 +90,7 @@ logic cache_control_mem_memread;
 logic cache_control_wb_memtoreg;
 logic cache_control_mem_memwrite;
 logic cache_control_wb_regwrite;
+logic cache_control_mem_jumpreg;  //hy7g14 14 pm 03/03
 //Add
 logic [31:0] cache_add_result;
 //ALU
@@ -131,8 +134,9 @@ assign o_con_mem_memread = cache_control_mem_memread;
 assign o_con_wb_memtoreg = cache_control_wb_memtoreg;
 assign o_con_mem_memwrite = cache_control_mem_memwrite;
 assign o_con_wb_regwrite = cache_control_wb_regwrite;
+assign o_con_mem_jumpreg = cache_control_mem_jumpreg;  	//hy7g14 14 pm 03/03
 
-assign o_data_AddRst = cache_add_result;
+assign o_addr_AddRst = cache_add_result;	//hy7g14 14 pm 03/03
 assign o_con_Zero = cache_zero;
 assign o_data_ALU_Rst = cache_alu_result;
 assign o_data_rt = cache_rt;
@@ -149,6 +153,7 @@ begin
 	cache_control_wb_memtoreg <= i_con_wb_memtoreg;
 	cache_control_mem_memwrite <= i_con_mem_memwrite;
 	cache_control_wb_regwrite <= i_con_wb_regwrite;
+	cache_control_mem_jumpreg <= alucontrol_jumpreg;		//hy7g14 14 pm 03/03
 	//add 
 	cache_add_result <= add_out;
 	//ALU
@@ -187,6 +192,7 @@ EX_alumux u_ex_alumux(	.i_data_writeE(alumux_in_0),
 );
 
 alu_control u_alu_control(	.o_con_AluCtrl(alucontrol_out), 
+							.o_con_jumpreg(alucontrol_jumpreg), //hy7g14 14 pm 03/03
 							.i_con_AluOp(alucontrol_op), 
 							.i_con_FuncCode(alucontrol_function),
 							.i_con_Other(alucontrol_other))//added for other control

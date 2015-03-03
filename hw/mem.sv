@@ -18,20 +18,27 @@ module mem(
 	input [31:0] i_data_ALU_Rst,
 	input [4:0] i_addr_MuxRst,
 	input [31:0] i_data_Memory, //input data from data memory
+	input [31:0] i_addr_AddRst, //input from expcadd, hy7g14 14 pm 03/03 
+	input i_con_mem_JumpReg, //input from control, hy7g14 14 pm 03/03
 
 	output o_con_wb_memtoreg,
 	output o_con_wb_regwrite,
 	output o_con_PCSrc,
 	output [31:0] o_data_Memory,
 	output [31:0] o_data_ALU_Rst,
-	output [4:0] o_addr_MuxRst
+	output [4:0] o_addr_MuxRst,
+	output [31:0] o_addr_JBpc // jump or branch pc source, hy7g14 14 pm 03/03
 );
 
 
 // ====================
 // wire
 // ====================
-//none
+//jrmux
+wire [31:0] jrmux_in_branch;
+wire [31:0] jrmux_in_rs;
+wire jrmux_in_select;
+wire [31:0] jrmux_out_JBpc;
 
 
 // ====================
@@ -51,15 +58,18 @@ logic [4:0] cache_mux_result;
 // interconnection
 // ====================
 //Input
-
+assign jrmux_in_branch = i_addr_AddRst;
+assign jrmux_in_rs = i_data_ALU_Rst;
+assign jrmux_in_select = i_con_mem_JumpReg;
 
 //Output
 assign o_con_wb_memtoreg = cache_control_wb_memtoreg;
 assign o_con_wb_regwrite = cache_control_wb_regwrite;
-assign o_con_PCSrc = i_con_mem_branch & i_con_Zero;
+assign o_con_PCSrc = (i_con_mem_branch & i_con_Zero)|i_con_JumpReg; //hy7g14 14 pm 03/03
 assign o_data_Memory = cache_data_mem;
 assign o_data_ALU_Rst = cache_alu_result;
 assign o_addr_MuxRst = cache_mux_result;
+assign o_addr_JBpc = jrmux_out_JBpc;
 
 // ====================
 // Store data in cache
@@ -80,7 +90,11 @@ end
 // ====================
 // Hirearchy
 // ====================
-//none
+MEM_jrmux u_mem_jrmux(	.i_addr_branch(jrmux_in_branch),
+						.i_data_rs(jrmux_in_rs),
+						.i_con_jumpr(jrmux_in_select),
+						.o_addr_JBpc(jrmux_out_JBpc)
+	) //jump reg selector, hy7g14 14 pm 03/03
 
 
 endmodule

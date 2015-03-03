@@ -145,6 +145,7 @@ begin
 	cache_control_ex_alusrc <= control_ex_alusrc;
 	cache_control_wb_regwrite <= control_wb_regwrite; 
 	cache_control_ex_aluop <= control_ex_aluop;
+	cache_control_mem_jumpreg <= control_mem_jumpreg;
 	/////////////////////
     cache_control_ex_other <= control_ex_other;  // added to provide 'other' signal to alu //
     /////////////////////
