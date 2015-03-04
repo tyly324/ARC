@@ -22,7 +22,7 @@ always_comb
 			5:	o_data_AluRes = (i_data_A==i_data_B) ? 1:0;//for bne
 			6:	o_data_AluRes = i_data_A - i_data_B;	//sub
 			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;// slt, sltu
-
+			8:	o_data_AluRes = {i_data_B, 16'b0};	//I//lui
 
 
 			
