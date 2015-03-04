@@ -47,6 +47,7 @@ always_comb
                         5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
                         6:  o_con_AluCtrl=7;    // slti
+                        x:  o_con_AluCtrl=8;	//I//lui
                     endcase
 			        end
 			default: begin
