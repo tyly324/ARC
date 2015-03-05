@@ -4,5 +4,5 @@ analyze -format sverilog {./alu.sv ./alu_control.sv ./control.sv ./core.sv ./dec
 
 elaborate core
 
-create_clock clk -name clk -period 2
+create_clock clk -name clk -period 10
 set_max_area 0
