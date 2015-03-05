@@ -30,7 +30,7 @@ int main()
 
   a = t; //16
   t = a/2; //8
-
+  quotient = a / t; //2
   // x = 'H';
   // y = 'i';
   // z[1] = x;
@@ -38,10 +38,14 @@ int main()
 
   while (a > t)
   {
-    quotient = a/t;
-    for (; quotient>0; quotient--)
+    for (; quotient > 0; quotient--)
     {
       a -= t;
     }
   }
+  if (a == 0)
+  {
+    a = -1;
+  }
+  return 0;
 }
