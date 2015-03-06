@@ -8,7 +8,7 @@
 // Comments: 
 //
 ////////////////////////////////////////////////
-module alu_control(output logic [3:0] o_con_AluCtrl, output logic o_con_jumpreg, input logic [1:0] i_con_AluOp, input logic [5:0] i_con_FuncCode, input logic [3:0] i_con_Other);
+module alu_control(output [3:0] o_con_AluCtrl, output o_con_jumpreg, input [1:0] i_con_AluOp, input [5:0] i_con_FuncCode, input [3:0] i_con_Other);
 always_comb
 	begin:COM 
 		o_con_AluCtrl = 15;	//shouldnt happend
