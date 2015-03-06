@@ -8,7 +8,7 @@
 // Comments: 
 //
 ////////////////////////////////////////////////
-module alu(output logic [31:0] o_data_AluRes, output logic o_con_Zero, input logic [31:0]i_data_A, [31:0]i_data_B, input logic [3:0]i_con_AluCtrl, input logic [4:0] i_data_shamt);
+module alu(output [31:0] o_data_AluRes, output o_con_Zero, input [31:0]i_data_A, [31:0]i_data_B, input [3:0]i_con_AluCtrl, input [4:0] i_data_shamt);
 
 always_comb
 	begin: COM 
