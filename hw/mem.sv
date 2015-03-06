@@ -90,11 +90,11 @@ end
 // ====================
 // Hirearchy
 // ====================
-MEM_jrmux u_mem_jrmux(	.i_addr_branch(jrmux_in_branch),
+/*MEM_jrmux u_mem_jrmux(	.i_addr_branch(jrmux_in_branch),
 						.i_data_rs(jrmux_in_rs),
 						.i_con_jumpr(jrmux_in_select),
 						.o_addr_JBpc(jrmux_out_JBpc)
-	) //jump reg selector, hy7g14 14 pm 03/03
+	) *///jump reg selector, hy7g14 14 pm 03/03
 
 
 endmodule

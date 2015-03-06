@@ -13,6 +13,7 @@ module alu(output logic [31:0] o_data_AluRes, output logic o_con_Zero, input log
 always_comb
 	begin: COM 
 		o_con_Zero = (o_data_AluRes==0) ? 1:0;
+		o_data_AluRes = 0;
 		case(i_con_AluCtrl)
 			0:	o_data_AluRes = i_data_A & i_data_B; 	//AND
 			1:	o_data_AluRes = i_data_A | i_data_B;	//OR
@@ -22,7 +23,7 @@ always_comb
 			5:	o_data_AluRes = (i_data_A==i_data_B) ? 1:0;//for bne
 			6:	o_data_AluRes = i_data_A - i_data_B;	//sub
 			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;// slt, sltu
-
+			8:	o_data_AluRes = i_data_A + 4; //jal
 
 
 			
@@ -30,7 +31,6 @@ always_comb
 			13: o_data_AluRes = i_data_A ^ i_data_B;	//xor
 			14: o_data_AluRes = i_data_A;				//jr (architecture modification expected)
 			
-			default: o_data_AluRes = 0;
 		endcase
 	end
 endmodule
