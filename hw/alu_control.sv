@@ -11,7 +11,8 @@
 module alu_control(output logic [3:0] o_con_AluCtrl, output logic o_con_jumpreg, input logic [1:0] i_con_AluOp, input logic [5:0] i_con_FuncCode, input logic [3:0] i_con_Other);
 always_comb
 	begin:COM 
-
+		o_con_AluCtrl = 15;	//shouldnt happend
+		o_con_jumpreg = 0;
 		case(i_con_AluOp)
 			2'b00:	o_con_AluCtrl=2; 	//LW SW / add
 			2'b01:	o_con_AluCtrl=6;	//BEQ /sub
@@ -47,13 +48,10 @@ always_comb
                         5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
                         6:  o_con_AluCtrl=7;    // slti
-                        x:  o_con_AluCtrl=8;	//I//lui
+                        7:  o_con_AluCtrl=8;    //I//lui
+                        8:  o_con_AluCtrl=9;	//J//jal
                     endcase
 			        end
-			default: begin
-						o_con_AluCtrl = 15;	//shouldnt happend
-						o_con_jumpreg = 0;
-					end
 		endcase
 	end
 endmodule
