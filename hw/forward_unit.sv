@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 ////////////////////////////////////////////////
 // Project: ARC MIPS processor 
-// Designer: 
+// Designer: shanyueGG
 // Module: 
 // Description: 
 //
