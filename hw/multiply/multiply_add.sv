@@ -1,6 +1,6 @@
 module multiply_add (output wire [31:0] Hi, output wire [31:0] Lo, input wire [40:0] a, b, c, d);
 
-wire [63:0] D;
+logic [63:0] D;
 
 assign Hi = D[63:32];
 assign Lo = D[31:0];
