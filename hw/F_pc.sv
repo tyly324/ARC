@@ -1,15 +1,5 @@
 `timescale 1ns / 1ps
-////////////////////////////////////////////////
-// Project: ARC MIPS processor 
-// Designer: 
-// Module: 
-// Description: 
-//
-// Vision: Ver 1.0.0 - File Create
-// Comments: 
-//
-////////////////////////////////////////////////
-module pc(
+module F_pc(
 	input i_clk,
 	input i_rst_n,
 	input [31:0] i_addr_next_pc,

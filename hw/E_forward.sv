@@ -1,16 +1,5 @@
 `timescale 1ns / 1ps
-////////////////////////////////////////////////
-// Project: ARC MIPS processor 
-// Designer: shanyueGG
-// Module: 
-// Description: 
-//
-// Vision: Ver 1.0.0 - File Create
-// Comments: 
-//
-////////////////////////////////////////////////
-             
-module forward_unit
+module E_forward
               (input  logic[4:0] i_data_rs, i_data_rt, i_data_rdM, i_data_rdW,
                input  logic i_con_regwriteM, i_con_regwriteW,
                output logic [1:0] o_con_fa, o_con_fb);

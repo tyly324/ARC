@@ -1,14 +1,5 @@
 `timescale 1ns / 1ps
 ////////////////////////////////////////////////
-// Project: ARC MIPS processor 
-// Designer: Zhiyuan Jiang
-// Module: Register bank
-// Description: 
-//
-// Vision: Ver 1.0.3 - Add reset signal
-// Comments: Sythesisable
-//
-////////////////////////////////////////////////
 //Number	Name		Comments
 //	0		$zero		Always zero
 //	1		$at			Reserved for assembler
@@ -24,7 +15,7 @@
 //	31		$ra			Return address
 ////////////////////////////////////////////////
 
-module register_bank(
+module D_register_bank(
 	input i_clk,
 	input i_rst_n,
 

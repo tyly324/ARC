@@ -1,15 +1,5 @@
 `timescale 1ns / 1ps
-////////////////////////////////////////////////
-// Project: ARC MIPS processor 
-// Designer: 
-// Module: 
-// Description: 
-//
-// Vision: Ver 1.0.0 - File Create
-// Comments: 
-//
-////////////////////////////////////////////////
-module control
+module D_control
 (output logic o_con_regdst, o_con_branch, o_con_memread, o_con_memtoreg,  
         o_con_memwrite, o_con_alusrc, o_con_regwrite, 
         logic [1:0] o_con_aluop, 

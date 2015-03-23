@@ -1,14 +1,10 @@
-////////////////////////////////////////////////
-// Project: ARC MIPS processor 
-// Designer: 
-// Module: 
-// Description: 
-//
-// Vision: Ver 1.0.0 - File Create
-// Comments: 
-//
-////////////////////////////////////////////////
-module alu_control(output [3:0] o_con_AluCtrl, output o_con_jumpreg, input [1:0] i_con_AluOp, input [5:0] i_con_FuncCode, input [3:0] i_con_Other);
+`timescale 1ns / 1ps
+module E_alu_control(
+	output [3:0] o_con_AluCtrl, 
+	output o_con_jumpreg, 
+	input [1:0] i_con_AluOp, 
+	input [5:0] i_con_FuncCode, 
+	input [3:0] i_con_Other);
 always_comb
 	begin:COM 
 		o_con_AluCtrl = 15;	//shouldnt happend
