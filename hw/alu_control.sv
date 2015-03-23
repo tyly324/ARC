@@ -9,10 +9,11 @@
 // Comments: 
 //
 ////////////////////////////////////////////////
-module alu_control(output logic [3:0] o_con_AluCtrl, input logic [1:0] i_con_AluOp, input logic [5:0] i_con_FuncCode, input logic [3:0] i_con_Other);
+module alu_control(output [3:0] o_con_AluCtrl, output o_con_jumpreg, input [1:0] i_con_AluOp, input [5:0] i_con_FuncCode, input [3:0] i_con_Other);
 always_comb
 	begin:COM 
 		o_con_AluCtrl = 15;	//shouldnt happend
+		o_con_jumpreg = 0;
 		case(i_con_AluOp)
 			2'b00:	o_con_AluCtrl=2; 	//LW SW / add
 			2'b01:	o_con_AluCtrl=6;	//BEQ /sub
@@ -21,7 +22,10 @@ always_comb
 						0:	o_con_AluCtrl=3; 	//R /sll(shift left logic)
 						2:	o_con_AluCtrl=4; 	//R /srl(shift right logic)
 						///////////////////////////////////////
-						//8:	o_con_AluCtrl=14; 	//R /jr (jump register)
+						8:	begin
+								o_con_AluCtrl=14; 	//R /jr (jump register)
+								o_con_jumpreg=1;
+							end
 						///////////////////////////////////////
 						32,33:	o_con_AluCtrl=2;	//R /add /addu	
 						34,35:	o_con_AluCtrl=6;	//R /sub /subu
@@ -45,6 +49,8 @@ always_comb
                         5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
                         6:  o_con_AluCtrl=7;    // slti
+                        7:  o_con_AluCtrl=8;    //I//lui
+                        8:  o_con_AluCtrl=9;	//J//jal
                     endcase
 			        end
 		endcase
