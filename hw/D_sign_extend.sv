@@ -8,14 +8,14 @@ module D_sign_extend(input [15:0] i_data_immD,
 
   always_ff @(posedge i_clk)
 	begin
-	case(opcode)
-	  6'b001111: o_data_immD <= {{a[15:0], 16'b0};
-          6'b001000: o_data_immD <= {{16{a[15]}}, a[15:0]};
-	  6'b000000: if((funct==6'b100000)||(funct==6'b100010))
-	             o_data_immD <= {{16{a[15]}}, a[15:0]}; 
+	case(i_data_opcode,)
+	  6'b001111: o_data_immD <= {{i_data_immD[15:0], 16'b0};
+      6'b001000: o_data_immD <= {{16{i_data_immD[15]}}, i_data_immD[15:0]};
+	  6'b000000: if((i_data_funct==6'b100000)||(i_data_funct==6'b100010))
+	             o_data_immD <= {{16{i_data_immD[15]}}, i_data_immD[15:0]}; 
 
-	  default: o_data_immD <= {16'b0, a[15:0]};
-
+	  default:   o_data_immD <= {16'b0, i_data_immD[15:0]};
+     endcase
 	end
 
 endmodule
