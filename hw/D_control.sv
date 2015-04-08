@@ -51,17 +51,6 @@ begin
                         o_con_aluop = 2'b10;  
                         o_con_other = 4'b0000; end  // R-type command //
 
-/*    6'b011xxx  :  begin o_con_regdst = 1;
-                        o_con_regwrite = 1;
-                        o_con_alusrc = 0;
-                        o_con_memread = 0;
-                        o_con_memwrite = 0;
-                        o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 3'b111; end  */
-// madd, maddu, mul, msub, msubu, clz, clo, and I don't know if this is right //
-// set o_con_other as 3'b111 //
-
 /////////////////// addition operations and R-type finished ///////////////////////////////////////
 
 
