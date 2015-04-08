@@ -2,8 +2,7 @@
 module D_control
 (output logic o_con_regdst, o_con_memread, o_con_memtoreg,  
         o_con_memwrite, o_con_alusrc, o_con_regwrite, 
-        logic [1:0] o_con_aluop, 
-        logic [3:0] o_con_other,
+        logic [5:0] o_con_aluop, 
  input  [5:0] i_con_instru);
 
 //WB: o_con_memtoreg, o_con_regwrite, 2bits
@@ -18,8 +17,7 @@ begin
   o_con_memread = 0;
   o_con_memwrite = 0;
   o_con_memtoreg = 0;
-  o_con_aluop = 2'b00;  
-  o_con_other = 4'b0000;
+  o_con_aluop = 6'b000000;  
 
   casez (i_con_instru)
 ///////////////////// addition operations and R-type start //////////////////////////////////////////
@@ -30,8 +28,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0000; end  // ADDI //////////
+                        o_con_aluop = 6'b000011;   end  // ADDI //////////
 
     6'b001001  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
@@ -39,8 +36,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0000; end  // ADDIU /////////
+                        o_con_aluop = 6'b000011;  end  // ADDIU /////////
 
     6'b000000  :  begin o_con_regdst = 1;
                         o_con_regwrite = 1;
@@ -48,8 +44,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b10;  
-                        o_con_other = 4'b0000; end  // R-type command //
+                        o_con_aluop = 6'b000010;  end  // R-type command //
 
 /////////////////// addition operations and R-type finished ///////////////////////////////////////
 
@@ -62,8 +57,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0001; end  // ANDI /////////
+                        o_con_aluop = 6'b000111;  end  // ANDI /////////
 
     6'b001101  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
@@ -71,8 +65,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0010; end  // ORI ///////////
+                        o_con_aluop = 6'b001011;   end  // ORI ///////////
 
     6'b001110  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
@@ -80,8 +73,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0011; end  // XORI /////////
+                        o_con_aluop = 6'b001111;   end  // XORI /////////
 // the instructions AND, OR, XOR, NOR, NOT, NOP are included in the R-type instructions //
 // ANDI, ORI, XORI are set with aluop valu '11' //
 // other value: ANDI 001; ORI 010; XORI 011 //
@@ -96,8 +88,7 @@ begin
                         o_con_memread = 1;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 1;
-                        o_con_aluop = 2'b00;  
-                        o_con_other = 4'b0000; end
+                        o_con_aluop = 6'b000000;  end
 ///////////////////// load operations ////////////////////////////////////////////////////////////////////
     6'b101???  :  begin o_con_regdst = 0;
                         o_con_regwrite = 0;
@@ -105,8 +96,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 1;
                         o_con_memtoreg = 1;
-                        o_con_aluop = 2'b00;  
-                        o_con_other = 4'b0000; end
+                        o_con_aluop = 6'b000000;   end
 ///////////////////// store operations ///////////////////////////////////////////////////////////////////
 /*/////////////////// load and store operations finished ///////////////////////////////////////////////*/
 
@@ -118,8 +108,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_aluop = 2'b11;  
-                        o_con_other = 4'b0110; end  // SLTI /////////
+                        o_con_aluop = 6'b011011;  end  // SLTI /////////
   endcase
 end
 
