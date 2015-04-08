@@ -1,4 +1,4 @@
-
+`timescale 1ns / 1ps
 module D_sign_extend(input [15:0] i_data_immD,
                      input [5:0]  i_data_opcode, 
                      input [5:0]  i_data_funct,
