@@ -8,14 +8,15 @@ always_comb
 	begin:COM 
 		o_con_AluCtrl = 15;	//shouldnt happend
 		case(i_con_AluOp[1:0])
-			2'b00:	o_con_AluCtrl=2; 	//LW SW / add
-			2'b01:	o_con_AluCtrl=6;	//BEQ /sub
+			2'b00:	o_con_AluCtrl=2; 	//LW SW lbu lhbu / add
+			//2'b01:	o_con_AluCtrl=6;	//sub
 			2'b10:	begin				//R
 					case(i_con_FuncCode)
 						0:	o_con_AluCtrl=3; 	//R /sll(shift left logic)
 						2:	o_con_AluCtrl=4; 	//R /srl(shift right logic)
+						3:  o_con_AluCtrl=5;	//R /sra
 						///////////////////////////////////////
-						8:	o_con_AluCtrl=14; 	//R /jr (jump register)
+						//8:	o_con_AluCtrl=14; 	//R /jr (jump register)
 						///////////////////////////////////////
 						32,33:	o_con_AluCtrl=2;	//R /add /addu	
 						34,35:	o_con_AluCtrl=6;	//R /sub /subu
@@ -36,9 +37,9 @@ always_comb
                         2:  o_con_AluCtrl=1;    // ori
                         3:  o_con_AluCtrl=13;   // xori
                         ///////////////////////////////////////
-                        5:	o_con_AluCtrl=5; 	// bne
+                        //5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
-                        6:  o_con_AluCtrl=7;    // slti
+                        6:  o_con_AluCtrl=7;    // slti/sltiu
                         7:	o_con_AluCtrl=8;	//I//lui
                         8: 	o_con_AluCtrl=9;	//J//jal
                     endcase
