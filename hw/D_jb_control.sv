@@ -1,4 +1,4 @@
-module ID_branch_jump
+module D_jb_control
 (output logic [1:0] o_con_jump,
         logic [2:0] o_con_bop,
  input  logic [5:0] i_con_instru,        // opcode
