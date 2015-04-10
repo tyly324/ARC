@@ -1,5 +1,4 @@
-`timescale 1ns / 1ps
-module ID_branch_compare
+module D_compare
 (output logic o_con_ifbranch,
  input  logic [31:0] i_data_rs,     // 25:21 
         logic [31:0] i_data_rt,     // 20:16     
