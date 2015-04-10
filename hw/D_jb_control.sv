@@ -1,13 +1,14 @@
 module D_jb_control
 (output logic [1:0] o_con_jump,
         logic [2:0] o_con_bop,
+        logic o_con_aluPC4,//***********
  input  logic [5:0] i_con_instru,        // opcode
         logic [5:0] i_con_func,          // function code
         logic i_con_rt);           // 16th of the instruction
 
 always_comb
 begin
-
+o_con_aluPC4 = 0;
   casez (i_con_instru)
 ///////////////////// branch and jump instructions //////////////////////////////////////////
 
@@ -27,7 +28,8 @@ begin
                          o_con_jump = 2'b01; end  // j //
 
     6'b000011  :  begin o_con_bop = 3'b000;
-                         o_con_jump = 2'b01; end  // jal //
+                         o_con_jump = 2'b01; 
+                         o_con_aluPC4 = 1; end  // jal //
 
     6'b000001  :  begin if (~i_con_rt) begin
                          o_con_bop = 3'b101;
