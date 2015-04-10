@@ -71,28 +71,28 @@ end
 // Hirearchy
 // ====================
 //pcmux
-IF_pcmux (
-[25:0] i_addr_jump,            //  come from the immediate address adder in ID state
-[31:0] i_addr_jumpr,           //  come from rs, register 25:21
-[31:0] i_addr_pc,              //  come from after pc + 4
-[31:0] i_addr_branch           //  come from the branch adder
-[1:0]  i_con_jump,             //  come from branch_jump
-i_con_ifbranch,                //  come from branch_compare
-[31:0] o_addr_nextpc
+F_pcmux u_pcmux(
+.i_addr_jump(pcmux_i_addr_jump),
+.i_addr_jumpr(pcmux_i_addr_jumpr),
+.i_addr_pc(pcmux_i_addr_pc),
+.i_addr_branch(pcmux_i_addr_branch),
+.i_con_jump(pcmux_i_con_jump),
+.i_con_ifbranch(pcmux_i_con_ifbranch),
+.o_addr_nextpc(pcmux_o_addr_nextpc)
 );
 
 //pc
-F_pc(
-i_clk,
-i_rst_n,
-[31:0] i_addr_next_pc,
-[31:0] o_addr_pc
+F_pc u_pc(
+.i_clk(i_clk),
+.i_rst_n(i_nrst),
+.i_addr_next_pc(pc_i_addr_next_pc),
+.o_addr_pc(pc_o_addr_pc)
 );
 
 //add4
-F_add4(
-[31:0]i_addr_pc, 
-[31:0] o_addr_pcadd4
+F_add4 u_add4(
+.i_addr_pc(add4_i_addr_pc), 
+.o_addr_pcadd4(add4_o_addr_pcadd4)
 );
 
 endmodule
