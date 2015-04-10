@@ -43,7 +43,8 @@ begin
                         o_con_aluop = 6'b000011;    //the first 4 digit stand for different operation of ALU, the original 'other'
                                                     //first 4 digits: '0000'---addi, '0001'---andi, '0010'---ori, '0011'---xori
                                                     //'0110'---slti, '0111'---lui, '1000'---jal
-                                                    //the last 2 digit is aluop '10'---R-type; '00'---lw/sw; '10'---other operations      end  // ADDI //////////
+                                                    //the last 2 digit is aluop '10'---R-type; '00'---lw/sw; '10'---other operations     
+                                              end  // ADDI //////////
 
     6'b001001  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
@@ -133,7 +134,7 @@ begin
     6'b001010  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
                         o_con_alusrc = 1;
-                        o_con_branch = 0;
+                     //   o_con_branch = 0;
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
