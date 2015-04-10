@@ -42,7 +42,7 @@ begin
                         o_con_memtoreg = 0;         //0: write to register from result of ALU; 1: write to register from data memory;
                         o_con_ifsign = 1;           //0: no overflow;                          1: overflow
                         o_con_aluop = 6'b000011;    //the first 4 digit stand for different operation of ALU, the original 'other'
-                                                    //first 4 digits: '0000'---addi, '0001'---andi, '0010'---ori, '0011'---xori
+                                                end    //first 4 digits: '0000'---addi, '0001'---andi, '0010'---ori, '0011'---xori
                                                     //'0110'---slti, '0111'---lui, '1000'---jal
                                                     //the last 2 digit is aluop '10'---R-type; '00'---lw/sw; '10'---other operations      end  // ADDI //////////
 
@@ -102,14 +102,14 @@ begin
 
 ///////////////////// load and store operations start//////////////////////////////////////////////////
 
-    6'b100???  :  begin o_con_regdst = 0;
+    /*6'b100???  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
                         o_con_alusrc = 1;
                         o_con_memread = 1;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 1;
                         o_con_ifsign = 0;
-                        o_con_aluop = 6'b000000;  end  // load operations /////////
+                        o_con_aluop = 6'b000000;  end  // load operations /////////*/
 
     6'b100100  :  begin o_con_regdst = 0;
                         o_con_regwrite = 1;
