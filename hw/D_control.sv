@@ -4,6 +4,7 @@ module D_control
         o_con_memwrite, o_con_alusrc, o_con_regwrite, 
         logic o_con_ifsign,
         logic [5:0] o_con_aluop, 
+        logic [1:0] o_con_loadsig,//**********
  input  [5:0] i_con_instru);
 
 //WB: o_con_memtoreg, o_con_regwrite, 2bits
@@ -29,7 +30,7 @@ begin
   o_con_memtoreg = 0;
   o_con_ifsign = 0;
   o_con_aluop = 6'b000000;  
-
+  o_con_loadsig = 2'b00;//****************
   casez (i_con_instru)
 ///////////////////// addition operations and R-type start //////////////////////////////////////////
 
@@ -109,6 +110,41 @@ begin
                         o_con_memtoreg = 1;
                         o_con_ifsign = 0;
                         o_con_aluop = 6'b000000;  end  // load operations /////////
+
+    6'b100100  :  begin o_con_regdst = 0;
+                        o_con_regwrite = 1;
+                        o_con_alusrc = 1;
+                        o_con_memread = 1;
+                        o_con_memwrite = 0;
+                        o_con_memtoreg = 1;
+                        o_con_ifsign = 0;
+                        o_con_loadsig = 2'b10;//************
+                        o_con_aluop = 6'b000000;  end   //load lbu        /////////
+
+    
+
+    6'b100101  :  begin o_con_regdst = 0;
+                        o_con_regwrite = 1;
+                        o_con_alusrc = 1;
+                        o_con_memread = 1;
+                        o_con_memwrite = 0;
+                        o_con_memtoreg = 1;
+                        o_con_ifsign = 0;
+                        o_con_loadsig = 2'b01;//****************
+                        o_con_aluop = 6'b000000;  end   //load lhu          //////////
+
+
+
+
+    6'b100011  :  begin o_con_regdst = 0;
+                        o_con_regwrite = 1;
+                        o_con_alusrc = 1;
+                        o_con_memread = 1;
+                        o_con_memwrite = 0;
+                        o_con_memtoreg = 1;
+                        o_con_ifsign = 0;
+                        o_con_loadsig = 0;//********************
+                        o_con_aluop = 6'b000000;  end   //load lw           //////////
 
     6'b101???  :  begin o_con_regdst = 0;
                         o_con_regwrite = 0;
