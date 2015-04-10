@@ -31,10 +31,10 @@ begin
 
     6'b000001  :  begin if (~i_con_rt) begin
                          o_con_bop = 3'b101;
-                         o_con_ifjump = 2'b00; end  // bltz: branch if <0 //
+                         o_con_jump = 2'b00; end  // bltz: branch if <0 //
                          else begin
                          o_con_bop = 3'b110;
-                         o_con_ifjump = 2'b00; end  // bgez: branch if >=0 //
+                         o_con_jump = 2'b00; end  // bgez: branch if >=0 //
                          end 
 
     6'b000000  :  begin if (i_con_func == 001000)
