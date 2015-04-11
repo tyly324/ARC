@@ -75,7 +75,7 @@ wire [31:0] famux3_o_data_alusra;
 //fbmux3
 wire [31:0] fbmux3_i_data_rt, fbmux3_i_data_alures, fbmux3_i_data_writeres;
 wire [1:0]  fbmux3_i_con_fb;
-wire [31:0] fbmux3_o_data_alusrb);
+wire [31:0] fbmux3_o_data_alusrb;
 //forward
 wire [4:0] for_i_data_rs, for_i_data_rt, for_i_data_rdM, for_i_data_rdW;
 wire for_i_con_regwriteM, for_i_con_regwriteW;
