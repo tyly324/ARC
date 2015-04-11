@@ -36,7 +36,6 @@ module execute(
 
 	output logic [31:0] o_data_alures,
 	output logic [31:0] o_data_rt,
-	output logic [15:0] o_data_imm,
 	output logic [4:0] o_addr_regdst,
 	output logic o_con_Mmemread,
 	output logic o_con_Mmemwrite,
@@ -129,7 +128,6 @@ assign rdmux_i_con_regdst = i_con_Eregdst;
 // ==outputs
 assign o_data_alures = pipe_alures;
 assign o_data_rt = pipe_rt;
-assign o_data_imm = pipe_imm;
 assign o_addr_regdst = pipe_regdst;
 assign o_con_Mmemread = pipe_con_Mmemread;
 assign o_con_Mmemwrite = pipe_con_Mmemwrite;
@@ -144,7 +142,6 @@ assign o_con_Wregwrite = pipe_con_Wregwrite;
 //data & address
 logic [31:0] pipe_alures;
 logic [31:0] pipe_rt;
-logic [15:0] pipe_imm;
 logic [5:0] pipe_regdst;
 //control
 logic pipe_con_Mmemread;
@@ -158,7 +155,6 @@ begin
 	if(~i_nrst) begin
 		pipe_alures <= 0;
 		pipe_rt <= 0;
-		pipe_imm <= 0;
 		pipe_regdst <= 0;
 		pipe_con_Mmemread <= 0;
 		pipe_con_Mmemwrite <= 0;
@@ -169,7 +165,6 @@ begin
 	else begin
 		pipe_alures <= alu_o_data_AluRes;
 		pipe_rt <= fbmux3_o_data_alusrb;
-		pipe_imm <= i_data_immext[15:0];
 		pipe_regdst <= rdmux_o_data_writeE;
 		pipe_con_Mmemread <= i_con_Mmemread;
 		pipe_con_Mmemwrite <= i_con_Mmemwrite;
