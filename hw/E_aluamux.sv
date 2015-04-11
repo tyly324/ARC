@@ -6,6 +6,6 @@ module E_aluamux(
 	input logic [31:0] o_data_alua
 	);
 
-o_data_alua = i_con_alua ? i_data_pc4 : i_data_fa;
+assign o_data_alua = i_con_alua ? i_data_pc4 : i_data_fa;
 
 endmodule
