@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 module E_alu(
-	output [31:0] o_data_AluRes, 
-	input [31:0]i_data_A, 
-	input [31:0]i_data_B, 
-	input [3:0]i_con_AluCtrl, 
-	input [4:0] i_data_shamt);
+	output logic [31:0] o_data_AluRes, 
+	input logic [31:0]i_data_A, 
+	input logic [31:0]i_data_B, 
+	input logic [3:0]i_con_AluCtrl, 
+	input logic [4:0] i_data_shamt);
 
 always_comb
 	begin: COM 

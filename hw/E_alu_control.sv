@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 module E_alu_control(
-	output [3:0] o_con_AluCtrl, 
-	input [5:0] i_con_AluOp, 
-	input [5:0] i_con_FuncCode);
+	output logic [3:0] o_con_AluCtrl, 
+	input logic [5:0] i_con_AluOp, 
+	input logic [5:0] i_con_FuncCode);
 
 always_comb
 	begin:COM 
