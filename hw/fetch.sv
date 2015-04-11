@@ -45,9 +45,9 @@ assign pcmux_i_addr_branch = i_addr_b;
 assign pcmux_i_con_jump = i_con_j;
 assign pcmux_i_con_ifbranch = i_con_b;
 //pc
-assign pc_i_addr_next_pc = o_addr_nextpc;
+assign pc_i_addr_next_pc = pcmux_o_addr_nextpc;
 //add4
-assign add4_i_addr_pc = o_addr_pc;
+assign add4_i_addr_pc = pc_o_addr_pc;
 
 //outputs
 assign o_addr_pc = pipe_pc;
@@ -63,11 +63,11 @@ logic [31:0] pipe_instr;
 always_ff @(posedge i_clk, negedge i_nrst)
 if(~i_nrst) begin
 	pipe_pc <= 0;
-	pipe_pc4 《= 0
+	pipe_pc4 <= 0;
 	pipe_instr <= 0;
 end
 else begin 
-	pipe_pc 《= pc_o_addr_pc;
+	pipe_pc <= pc_o_addr_pc;
 	pipe_pc4 <= add4_o_addr_pcadd4;
 	pipe_instr <= i_data_instr;
 end
@@ -76,7 +76,7 @@ end
 // Hirearchy
 // ====================
 //pcmux
-F_pcmux u_pcmux(
+IF_pcmux u_pcmux(
 .i_addr_jump(pcmux_i_addr_jump),
 .i_addr_jumpr(pcmux_i_addr_jumpr),
 .i_addr_pc(pcmux_i_addr_pc),

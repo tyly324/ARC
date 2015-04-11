@@ -6,7 +6,7 @@ module W_loadmux3
 
   always_comb
   begin
-    o_data_Wdata==0;
+    o_data_Wdata=0;
     case(i_con_loadsig)
       2'b00: o_data_Wdata=i_data_Rdata;
       2'b10: o_data_Wdata={{24{i_data_Rdata[7]}},  i_data_Rdata[7:0]}; //byte

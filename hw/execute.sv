@@ -248,3 +248,4 @@ E_rdmux u_rdmux(
 .o_data_writeE(rdmux_o_data_writeE)
 );
 
+endmodule

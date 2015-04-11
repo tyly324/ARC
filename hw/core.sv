@@ -140,32 +140,34 @@ execute u_execute(
 
 
 mem u_mem(
-	i_clk(clk),
-	i_nrst(rst_n),
-	i_data_alures(mem_data_alures),
-	i_data_memout(mem_data_memout),
-	i_addr_regdst(mem_addr_regdst),
-	i_con_Wloadmux(mem_con_Wloadmux),
-	i_con_Wmemtoreg(mem_con_Wmemtoreg),
-	i_con_Wregwrite(mem_con_Wregwrite),
+	.i_clk(clk),
+	.i_nrst(rst_n),
+	.i_data_alures(mem_data_alures),
+	.i_data_memout(mem_data_memout),
+	.i_addr_regdst(mem_addr_regdst),
+	.i_con_Wloadmux(mem_con_Wloadmux),
+	.i_con_Wmemtoreg(mem_con_Wmemtoreg),
+	.i_con_Wregwrite(mem_con_Wregwrite),
 
-	o_data_alures(ex_data_FMalures),
-	o_data_memout(wb_data_memout),
-	o_addr_regdst(id_addr_Wregwrite),
+	.o_data_alures(ex_data_FMalures),
+	.o_data_memout(wb_data_memout),
+	.o_addr_regdst(id_addr_Wregwrite),
 	//control
-	o_con_Wloadmux(wb_con_Wloadmux),
-	o_con_Wmemtoreg(wb_con_Wmemtoreg),
-	o_con_Wregwrite(id_con_Wregwrite)
+	.o_con_Wloadmux(wb_con_Wloadmux),
+	.o_con_Wmemtoreg(wb_con_Wmemtoreg),
+	.o_con_Wregwrite(id_con_Wregwrite)
 );
 
 
 
 writeback u_writeback(
-	i_data_alures(wb_data_alures),
-	i_data_memout(wb_data_memout),
-	i_con_Wloadmux(wb_con_Wloadmux),
-	i_con_Wmemtoreg(wb_con_Wmemtoreg),
+	.i_data_alures(wb_data_alures),
+	.i_data_memout(wb_data_memout),
+	.i_con_Wloadmux(wb_con_Wloadmux),
+	.i_con_Wmemtoreg(wb_con_Wmemtoreg),
 
-	o_data_regwrite(id_data_Wregwrite)
+	.o_data_regwrite(id_data_Wregwrite)
 
 );
+
+endmodule
