@@ -139,7 +139,7 @@ execute u_execute(
 	);
 
 
-mem(
+mem u_mem(
 	i_clk(clk),
 	i_nrst(rst_n),
 	i_data_alures(mem_data_alures),
@@ -160,7 +160,7 @@ mem(
 
 
 
-write_back(
+writeback u_writeback(
 	i_data_alures(wb_data_alures),
 	i_data_memout(wb_data_memout),
 	i_con_Wloadmux(wb_con_Wloadmux),
