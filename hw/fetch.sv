@@ -12,6 +12,7 @@ module fetch(
 	input logic [31:0]i_data_instr,
 
 	output logic [31:0] o_addr_pc,
+	output logic [31:0] o_addr_pc4,
 	output logic [31:0] o_data_instr
 	);
 
@@ -50,20 +51,24 @@ assign add4_i_addr_pc = o_addr_pc;
 
 //outputs
 assign o_addr_pc = pipe_pc;
+assign o_addr_pc4 = pipe_pc4;
 assign o_data_instr = pipe_instr;
 // ====================
 // Registers
 // ====================
 logic [31:0] pipe_pc;
+logic [31:0] pipe_pc4;
 logic [31:0] pipe_instr;
 
 always_ff @(posedge i_clk, negedge i_nrst)
 if(~i_nrst) begin
 	pipe_pc <= 0;
+	pipe_pc4 《= 0
 	pipe_instr <= 0;
 end
 else begin 
-	pipe_pc <= add4_o_addr_pcadd4;
+	pipe_pc 《= pc_o_addr_pc;
+	pipe_pc4 <= add4_o_addr_pcadd4;
 	pipe_instr <= i_data_instr;
 end
 
