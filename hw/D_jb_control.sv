@@ -9,6 +9,8 @@ module D_jb_control
 always_comb
 begin
 o_con_aluPC4 = 0;
+o_con_bop = 0;
+o_con_jump = 0;
   casez (i_con_instru)
 ///////////////////// branch and jump instructions //////////////////////////////////////////
 
