@@ -16,37 +16,38 @@ wire [31:0]if_addr_b;
 wire [31:0]if_addr_j;
 wire [31:0]if_addr_jr;
 wire [31:0]if_data_instr;
+wire [31:0]if_addr_pc;
 //decode
 wire [31:0]id_addr_pc4;
 wire [31:0]id_data_instr;
 //execute
-wire [31:0] i_data_pc4;
-wire [31:0] i_data_rs;
-wire [31:0] i_data_rt;
-wire [31:0] i_data_immext;
-wire [4:0] i_addr_rs;
-wire [4:0] i_addr_rt;
-wire [4:0] i_addr_rd;
-wire [31:0] i_data_FEalures;
-wire [31:0] i_data_FMalures;
-wire [4:0] i_addr_FMregdst;
-wire [4:0] i_addr_FWregdst;
-wire [5:0] i_con_Ealuop;
-wire [1:0] i_con_Wloadmux;
+wire [31:0] ex_data_pc4;
+wire [31:0] ex_data_rs;
+wire [31:0] ex_data_rt;
+wire [31:0] ex_data_immext;
+wire [4:0] ex_addr_rs;
+wire [4:0] ex_addr_rt;
+wire [4:0] ex_addr_rd;
+wire [31:0] ex_data_FEalures;
+wire [31:0] ex_data_FMalures;
+wire [4:0] ex_addr_FMregdst;
+wire [4:0] ex_addr_FWregdst;
+wire [5:0] ex_con_Ealuop;
+wire [1:0] ex_con_Wloadmux;
 //memory
-wire [31:0] i_data_alures;
-wire [31:0] i_data_memout;
-wire [4:0] i_addr_regdst;
-wire [1:0] i_con_Wloadmux;
+wire [31:0] mem_data_alures;
+wire [31:0] mem_data_memout;
+wire [4:0] mem_addr_regdst;
+wire [1:0] mem_con_Wloadmux;
 //write back
-wire [31:0] i_data_alures;
-wire [31:0] i_data_memout;
-wire [1:0] i_con_Wloadmux;
+wire [31:0] wb_data_alures;
+wire [31:0] wb_data_memout;
+wire [1:0] wb_con_Wloadmux;
 
-
-
-
-
+assign read_data = mem_data_memout;
+assign read_instruction = if_data_instr;
+assign instruction_address = if_addr_pc;
+assign data_address = mem_data_alures;
 
 
 fetch u_fetch(
@@ -59,7 +60,8 @@ fetch u_fetch(
 	.i_con_j(if_con_j),
 	.i_data_instr(if_data_instr),
 
-	.o_addr_pc(instruction_address),
+	.o_addr_pc(if_addr_pc),
+	.o_addr_pc4(id_addr_pc4),
 	.o_data_instr(id_data_instr)
 	);
 
@@ -129,11 +131,11 @@ execute u_execute(
 	.o_data_alures(mem_data_alures),
 	.o_data_rt(write_data),
 	.o_addr_regdst(mem_addr_regdst),
-	.o_con_Mmemread(),
-	.o_con_Mmemwrite(),
-	.o_con_Wloadmux(),
-	.o_con_Wmemtoreg(),
-	.o_con_Wregwrite()
+	.o_con_Mmemread(mem_read),
+	.o_con_Mmemwrite(mem_write),
+	.o_con_Wloadmux(mem_con_Wloadmux),
+	.o_con_Wmemtoreg(mem_con_Wmemtoreg),
+	.o_con_Wregwrite(mem_con_Wregwrite)
 	);
 
 
@@ -147,13 +149,13 @@ mem(
 	i_con_Wmemtoreg(mem_con_Wmemtoreg),
 	i_con_Wregwrite(mem_con_Wregwrite),
 
-	o_data_alures(),
-	o_data_memout(),
-	o_addr_regdst(),
+	o_data_alures(ex_data_FMalures),
+	o_data_memout(wb_data_memout),
+	o_addr_regdst(id_addr_Wregwrite),
 	//control
-	o_con_Wloadmux(),
-	o_con_Wmemtoreg(),
-	o_con_Wregwrite()
+	o_con_Wloadmux(wb_con_Wloadmux),
+	o_con_Wmemtoreg(wb_con_Wmemtoreg),
+	o_con_Wregwrite(id_con_Wregwrite)
 );
 
 
@@ -161,9 +163,9 @@ mem(
 write_back(
 	i_data_alures(wb_data_alures),
 	i_data_memout(wb_data_memout),
-	i_con_Wloadmux(wb_data_Wloadmux),
+	i_con_Wloadmux(wb_con_Wloadmux),
 	i_con_Wmemtoreg(wb_con_Wmemtoreg),
 
-	o_data_regwrite()
+	o_data_regwrite(id_data_Wregwrite)
 
 );
