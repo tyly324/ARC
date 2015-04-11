@@ -5,7 +5,7 @@
 //regbank
 //sl
 //signext
-//unsignext
+//jumpext
 module decode(
 	input logic i_clk,
 	input logic i_nrst,
@@ -31,8 +31,10 @@ module decode(
 	output logic [5:0] o_con_Ealuop,
 	output logic o_con_Ealusrc,
 	output logic o_con_Eregdst,
+	output logic o_con_Ealupc4,
 	output logic o_con_Mmemread,
 	output logic o_con_Mmemwrite,
+	output logic [1:0] o_con_Wloadmux,
 	output logic o_con_Wmemtoreg,
 	output logic o_con_Wregwrite
 	);
@@ -54,12 +56,14 @@ wire control_o_con_memwrite;
 wire control_o_con_alusrc;
 wire control_o_con_regwrite;
 wire control_o_con_ifsign;
+wire [1:0] control_o_con_loadsig;
 wire [5:0] control_o_con_aluop; 
 wire [5:0] control_i_con_instru;
 
 //jbcon
 wire [1:0] jbcon_o_con_jump;
 wire [2:0] jbcon_o_con_bop;
+wire jbcon_o_con_aluPC4;
 wire [5:0] jbcon_i_con_instru;
 wire [5:0] jbcon_i_con_func;
 wire jbcon_i_con_rt;
@@ -87,9 +91,10 @@ wire signext_i_con_signext;
 wire signext_i_clk;
 wire [31:0] signext_o_data_immD;
 
-//unsignext
-wire [25:0] unsignext_i_addr_j;
-wire [31:0] unsignext_o_addr_j;
+//jumpext
+wire [25:0] jumpext_i_addr_j;
+wire [3:0] jumpext_i_PC4_j;
+wire [31:0] jumpext_o_addr_j;
 
 // ====================
 // Interconnection
@@ -118,8 +123,9 @@ assign sl_i_data_immE = i_data_instr[15:0];
 //signext
 assign signext_i_data_immD = i_data_instr[15:0];
 assign signext_i_con_signext = control_o_con_ifsign;
-//unsignext
-assign unsignext_i_addr_j = i_data_instr[25:0];
+//jumpext
+assign jumpext_i_addr_j = i_data_instr[25:0];
+assign jumpext_i_PC4_j = i_addr_pc4[31:28];
 
 //outputs
 //registers
@@ -133,13 +139,15 @@ assign o_con_ifbranch = compare_o_con_ifbranch;
 assign o_con_jump = jbcon_o_con_jump;
 assign o_addr_pc4 = pipe_addr_pc4;
 assign o_addr_pcadd = pcadd_o_addr_pcbranchE;
-assign o_addr_jump = unsignext_o_addr_j;
+assign o_addr_jump = jumpext_o_addr_j;
 //control
 assign o_con_Ealuop = pipe_con_aluop; 
 assign o_con_Ealusrc = pipe_con_alusrc;
 assign o_con_Eregdst = pipe_con_regdst;
+assign o_con_Ealupc4 = jbcon_o_con_aluPC4;
 assign o_con_Mmemread = pipe_con_memread;
 assign o_con_Mmemwrite = pipe_con_memwrite;
+assign o_con_Wloadmux = control_o_con_loadsig;
 assign o_con_Wmemtoreg = pipe_con_memtoreg;
 assign o_con_Wregwrite = pipe_con_regwrite;
 
@@ -214,6 +222,7 @@ D_control u_control(
 .o_con_alusrc(control_o_con_alusrc), 
 .o_con_regwrite(control_o_con_regwrite), 
 .o_con_ifsign(control_o_con_ifsign),
+.o_con_loadsig(control_o_con_loadsig),
 .o_con_aluop(control_o_con_aluop), 
 .i_con_instru(control_i_con_instru)
 );
@@ -222,6 +231,7 @@ D_control u_control(
 D_jb_control u_jb_control(
 .o_con_jump(jbcon_o_con_jump),
 .o_con_bop(jbcon_o_con_bop),
+.o_con_aluPC4(jbcon_o_con_aluPC4),
 .i_con_instru(jbcon_i_con_instru),        // opcode
 .i_con_func(jbcon_i_con_func),          // function code
 .i_con_rt(jbcon_i_con_rt)
@@ -260,10 +270,11 @@ D_sign_extend u_signext(
 .o_data_immD(signext_o_data_immD)
 );
 
-//unsignext
-D_unsign_extend u_unsignext(
-.i_addr_j(unsignext_i_addr_j_),
-.o_addr_j(unsignext_o_addr_j)
+//jumpext
+D_jump_ext u_jump_ext(
+.i_addr_j(jumpext_i_addr_j_),
+.i_PC4_j(jumpext_i_PC4_j),
+.o_addr_j(jumpext_o_addr_j)
 );
 
 endmodule
