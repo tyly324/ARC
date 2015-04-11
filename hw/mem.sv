@@ -8,13 +8,13 @@ module mem(
 	input logic i_con_Wmemtoreg,
 	input logic i_con_Wregwrite,
 
-	output logic [31:0] o_data_alures;
-	output logic [31:0] o_data_memout;
-	output logic [5:0] o_addr_regdst;
+	output logic [31:0] o_data_alures,
+	output logic [31:0] o_data_memout,
+	output logic [5:0] o_addr_regdst,
 	//control
-	output logic [1:0] o_con_Wloadmux;
-	output logic o_con_Wmemtoreg;
-	output logic o_con_Wregwrite;
+	output logic [1:0] o_con_Wloadmux,
+	output logic o_con_Wmemtoreg,
+	output logic o_con_Wregwrite
 	);
 
 // ====================
