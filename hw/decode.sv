@@ -145,11 +145,11 @@ assign o_con_Ealuop = pipe_con_Ealuop;
 assign o_con_Ealusrc = pipe_con_Ealusrc;
 assign o_con_Eregdst = pipe_con_Eregdst;
 assign o_con_Ealupc4 = pipe_con_EaluPC4;
-assign o_con_Mmemread = pipe_con_memread;
-assign o_con_Mmemwrite = pipe_con_memwrite;
-assign o_con_Wloadmux = control_o_con_loadsig;
-assign o_con_Wmemtoreg = pipe_con_memtoreg;
-assign o_con_Wregwrite = pipe_con_regwrite;
+assign o_con_Mmemread = pipe_con_Mmemread;
+assign o_con_Mmemwrite = pipe_con_Mmemwrite;
+assign o_con_Wloadmux = pipe_con_Wloadmux;
+assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
+assign o_con_Wregwrite = pipe_con_Wregwrite;
 
 // ====================
 // Registers
@@ -167,6 +167,7 @@ logic pipe_con_Eregdst;
 logic pipe_con_EaluPC4;
 logic pipe_con_Mmemread;
 logic pipe_con_Mmemwrite;
+logic [1:0] pipe_con_Wloadmux;
 logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
 
@@ -185,6 +186,7 @@ begin
 		pipe_con_EaluPC4 <= 0;
 		pipe_con_Mmemread <= 0;
 		pipe_con_Mmemwrite <= 0;
+		pipe_con_Wloadmux <= 0;
 		pipe_con_Wmemtoreg <= 0;
 		pipe_con_Wregwrite <= 0;
 	end 
@@ -195,14 +197,15 @@ begin
 		pipe_addr_rt <= i_data_instr[20:16];
 		pipe_addr_rs <= i_data_instr[25:21];
 		pipe_addr_pc4 <= i_addr_pc4;
-		pipe_con_Ealuop = control_o_con_aluop; 
-		pipe_con_Ealusrc = control_o_con_alusrc;
-		pipe_con_Eregdst = control_o_con_regdst;
-		pipe_con_EaluPC4 = jbcon_o_con_aluPC4;
-		pipe_con_Mmemread = control_o_con_memread;
-		pipe_con_Mmemwrite = control_o_con_memwrite;
-		pipe_con_Wmemtoreg = control_o_con_memtoreg;
-		pipe_con_Wregwrite = control_o_con_regwrite;
+		pipe_con_Ealuop <= control_o_con_aluop; 
+		pipe_con_Ealusrc <= control_o_con_alusrc;
+		pipe_con_Eregdst <= control_o_con_regdst;
+		pipe_con_EaluPC4 <= jbcon_o_con_aluPC4;
+		pipe_con_Mmemread <= control_o_con_memread;
+		pipe_con_Mmemwrite <= control_o_con_memwrite;
+		pipe_con_Wloadmux <= control_o_con_loadsig;
+		pipe_con_Wmemtoreg <= control_o_con_memtoreg;
+		pipe_con_Wregwrite <= control_o_con_regwrite;
 	end
 end
 // ====================
