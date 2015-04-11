@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module E_fbmux3
+module W_loadmux3
               (input  logic[31:0] i_data_Rdata,
                input  logic[1:0]  i_con_loadsig, 
                output logic[31:0] o_data_Wdata);
