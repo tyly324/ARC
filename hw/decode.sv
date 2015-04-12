@@ -90,7 +90,6 @@ wire [31:0] sl_o_data_immshiftl;
 //signext
 wire [15:0] signext_i_data_immD;
 wire signext_i_con_signext;
-wire signext_i_clk;
 wire [31:0] signext_o_data_immD;
 
 //jumpext
@@ -285,7 +284,7 @@ D_sign_extend u_signext(
 
 //jumpext
 D_jump_ext u_jump_ext(
-.i_addr_j(jumpext_i_addr_j_),
+.i_addr_j(jumpext_i_addr_j),
 .i_PC4_j(jumpext_i_PC4_j),
 .o_addr_j(jumpext_o_addr_j)
 );

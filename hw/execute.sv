@@ -92,6 +92,7 @@ wire [4:0] rdmux_o_data_writeE;
 assign alu_i_data_A = aluamux_o_data_alua;
 assign alu_i_data_B = alubmux_o_data_alub;
 assign alu_i_data_shamt = i_data_immext[10:6];
+assign alu_i_con_AluCtrl = aluc_o_con_AluCtrl;
 //alucontrol
 assign aluc_i_con_AluOp = i_con_Ealuop;
 assign aluc_i_con_FuncCode = i_data_immext[5:0];
@@ -142,7 +143,7 @@ assign o_con_Wregwrite = pipe_con_Wregwrite;
 //data & address
 logic [31:0] pipe_alures;
 logic [31:0] pipe_rt;
-logic [5:0] pipe_regdst;
+logic [4:0] pipe_regdst;
 //control
 logic pipe_con_Mmemread;
 logic pipe_con_Mmemwrite;

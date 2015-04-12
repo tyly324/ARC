@@ -1,5 +1,5 @@
 module IF_pcmux 
-(input  logic [25:0] i_addr_jump,            //  come from the immediate address adder in ID state
+(input  logic [31:0] i_addr_jump,            //  come from the immediate address adder in ID state
         logic [31:0] i_addr_jumpr,           //  come from rs, register 25:21
         logic [31:0] i_addr_pc,              //  come from after pc + 4
         logic [31:0] i_addr_branch,           //  come from the branch adder
@@ -10,7 +10,7 @@ module IF_pcmux
   always_comb 
     begin
     	casez({i_con_jump, i_con_ifbranch})
-    	  3'b010  :  begin o_addr_nextpc = {6'b000000, i_addr_jump}; end    //  j and jal instruction
+    	  3'b010  :  begin o_addr_nextpc = i_addr_jump; end    //  j and jal instruction
 
     	  3'b100  :  begin o_addr_nextpc = i_addr_jumpr; end    //  jr instruction 
 
