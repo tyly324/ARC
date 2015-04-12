@@ -1,4 +1,5 @@
-`timescale 1ns / 1ps
+  
+ `timescale 1ns / 1ps
 module E_fbmux3
               (input  logic[31:0] i_data_rt, i_data_alures, i_data_writeres,
                input  logic[1:0]  i_con_fb, 
