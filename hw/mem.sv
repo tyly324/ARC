@@ -10,7 +10,7 @@ module mem(
 
 	output logic [31:0] o_data_alures,
 	output logic [31:0] o_data_memout,
-	output logic [5:0] o_addr_regdst,
+	output logic [4:0] o_addr_regdst,
 	//control
 	output logic [1:0] o_con_Wloadmux,
 	output logic o_con_Wmemtoreg,
@@ -33,7 +33,7 @@ assign o_con_Wregwrite = pipe_con_Wregwrite;
 //data & address
 logic [31:0] pipe_data_alures;
 logic [31:0] pipe_data_memout;
-logic [5:0] pipe_addr_regdst;
+logic [4:0] pipe_addr_regdst;
 //control
 logic [1:0] pipe_con_Wloadmux;
 logic pipe_con_Wmemtoreg;
