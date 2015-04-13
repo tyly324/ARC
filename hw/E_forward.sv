@@ -13,24 +13,17 @@ begin
 
                       o_con_fa=2'b10;
 
-          if((i_data_rdM!=0)&&(i_data_rdM==i_data_rt)&&(i_con_regwriteM==1))
+          else if((i_data_rdM!=0)&&(i_data_rdM==i_data_rt)&&(i_con_regwriteM==1))
 
                       o_con_fb=2'b10;
 //MEM hazard
-          if((i_data_rdW!=0)&&(i_data_rdW==i_data_rs)&&(i_con_regwriteW==1)&&((i_data_rdM==0)||(i_data_rdM!=i_data_rs)||(i_con_regwriteM==0)))
+          else if((i_data_rdW!=0)&&(i_data_rdW==i_data_rs)&&(i_con_regwriteW==1)&&((i_data_rdM==0)||(i_data_rdM!=i_data_rs)||(i_con_regwriteM==0)))
 
                       o_con_fa=2'b01;
 
-          if((i_data_rdW!=0)&&(i_data_rdW==i_data_rt)&&(i_con_regwriteW==1)&&(!((i_data_rdM!=0)&&(i_data_rdM==i_data_rt)&&(i_con_regwriteM==1))))
+          else if((i_data_rdW!=0)&&(i_data_rdW==i_data_rt)&&(i_con_regwriteW==1)&&((i_data_rdM==0)||(i_data_rdM!=i_data_rt)||(i_con_regwriteM==0)))
 
                       o_con_fb=2'b01;
  //no hazard
-          else
-          begin
-            o_con_fb=0;
-          	o_con_fb=0;
-          end
-
-
 end
 endmodule
