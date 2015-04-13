@@ -108,7 +108,7 @@ execute u_execute(
 	.i_addr_rd(ex_addr_rd),
 	//forward
 	.i_data_FEalures(ex_data_alures),
-	.i_data_FMalures(ex_data_alures),
+	.i_data_FMalures(id_data_Wregwrite),
 	.i_addr_FMregdst(mem_addr_regdst),
 	.i_addr_FWregdst(id_addr_Wregwrite),
 	.i_con_FMregwrite(mem_con_Wregwrite),
