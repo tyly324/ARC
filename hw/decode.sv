@@ -12,8 +12,8 @@ module decode(
 	input logic [31:0] i_addr_pc4,
 	input logic [31:0] i_data_instr,
 	input logic i_con_Wregwrite,
-	input logic i_data_Wregwrite,
-	input logic i_addr_Wregwrite,
+	input logic [31:0]i_data_Wregwrite,
+	input logic [4:0]i_addr_Wregwrite,
 
 	//registers
 	output logic [31:0] o_data_rs,
@@ -36,7 +36,9 @@ module decode(
 	output logic o_con_Mmemwrite,
 	output logic [1:0] o_con_Wloadmux,
 	output logic o_con_Wmemtoreg,
-	output logic o_con_Wregwrite
+	output logic o_con_Wregwrite,
+	//data
+	output logic [31:0] o_data_signext
 	);
 
 // ====================
@@ -88,7 +90,6 @@ wire [31:0] sl_o_data_immshiftl;
 //signext
 wire [15:0] signext_i_data_immD;
 wire signext_i_con_signext;
-wire signext_i_clk;
 wire [31:0] signext_o_data_immD;
 
 //jumpext
@@ -150,6 +151,8 @@ assign o_con_Mmemwrite = pipe_con_Mmemwrite;
 assign o_con_Wloadmux = pipe_con_Wloadmux;
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
+//data
+assign o_data_signext = pipe_signext_o_data_immD;
 
 // ====================
 // Registers
@@ -170,6 +173,7 @@ logic pipe_con_Mmemwrite;
 logic [1:0] pipe_con_Wloadmux;
 logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
+logic [31:0]pipe_signext_o_data_immD;
 
 always_ff @(posedge i_clk, negedge i_nrst)
 begin
@@ -189,6 +193,7 @@ begin
 		pipe_con_Wloadmux <= 0;
 		pipe_con_Wmemtoreg <= 0;
 		pipe_con_Wregwrite <= 0;
+		pipe_signext_o_data_immD <= 0;
 	end 
 	else begin
 		pipe_data_rs <= regbank_o_data_Rs;
@@ -206,6 +211,7 @@ begin
 		pipe_con_Wloadmux <= control_o_con_loadsig;
 		pipe_con_Wmemtoreg <= control_o_con_memtoreg;
 		pipe_con_Wregwrite <= control_o_con_regwrite;
+		pipe_signext_o_data_immD <= signext_o_data_immD;
 	end
 end
 // ====================
@@ -278,7 +284,7 @@ D_sign_extend u_signext(
 
 //jumpext
 D_jump_ext u_jump_ext(
-.i_addr_j(jumpext_i_addr_j_),
+.i_addr_j(jumpext_i_addr_j),
 .i_PC4_j(jumpext_i_PC4_j),
 .o_addr_j(jumpext_o_addr_j)
 );

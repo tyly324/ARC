@@ -20,7 +20,7 @@ module fetch(
 // I/O
 // ====================
 //pcmux
-wire [25:0] pcmux_i_addr_jump;
+wire [31:0] pcmux_i_addr_jump;
 wire [31:0] pcmux_i_addr_jumpr;
 wire [31:0] pcmux_i_addr_pc;
 wire [31:0] pcmux_i_addr_branch;
