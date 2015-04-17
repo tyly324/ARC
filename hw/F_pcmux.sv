@@ -1,4 +1,4 @@
-module IF_pcmux 
+module F_pcmux 
 (input  logic [31:0] i_addr_jump,            //  come from the immediate address adder in ID state
         logic [31:0] i_addr_jumpr,           //  come from rs, register 25:21
         logic [31:0] i_addr_pc,              //  come from after pc + 4

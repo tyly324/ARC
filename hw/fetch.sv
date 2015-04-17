@@ -78,7 +78,7 @@ assign o_data_instr = pipe_instr;
 // Hirearchy
 // ====================
 //pcmux
-IF_pcmux u_pcmux(
+F_pcmux u_pcmux(
 .i_addr_jump(pcmux_i_addr_jump),
 .i_addr_jumpr(pcmux_i_addr_jumpr),
 .i_addr_pc(pcmux_i_addr_pc),
