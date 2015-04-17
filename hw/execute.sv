@@ -164,6 +164,7 @@ assign for_i_con_regwriteW = i_con_FWregwrite;
 assign rdmux_i_data_rdE = i_addr_rd;
 assign rdmux_i_data_rtE = i_addr_rt;
 assign rdmux_i_con_regdst = i_con_Eregdst;
+assign rdmux_i_con_jal = i_con_Ealupc4;//********
 
 // ==outputs
 assign o_data_alures = pipe_alures;
@@ -248,6 +249,7 @@ E_rdmux u_rdmux(
 .i_data_rtE(rdmux_i_data_rtE),
 .i_data_rdE(rdmux_i_data_rdE), 
 .i_con_regdst(rdmux_i_con_regdst), 
+.i_con_aluPC4(rdmux_i_con_jal),//******
 .o_data_writeE(rdmux_o_data_writeE)
 );
 
