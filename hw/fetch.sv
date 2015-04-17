@@ -8,7 +8,7 @@ module fetch(
 	input logic [31:0]i_addr_j,
 	input logic [31:0]i_addr_jr,
 	input logic i_con_b,
-	input logic i_con_j,
+	input logic [1:0] i_con_j,  //////////
 	input logic [31:0]i_data_instr,
 
 	output logic [31:0] o_addr_pc,
