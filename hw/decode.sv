@@ -23,7 +23,7 @@ module decode(
 	output logic [4:0] o_addr_rs,
 	//pc
 	output logic o_con_ifbranch,
-	output logic o_con_jump,
+	output logic [1:0] o_con_jump,     //////////////////
 	output logic [31:0] o_addr_pc4,
 	output logic [31:0] o_addr_pcadd,
 	output logic [31:0] o_addr_jump,
