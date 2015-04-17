@@ -84,6 +84,45 @@ wire [4:0] rdmux_i_data_rtE, rdmux_i_data_rdE;
 wire rdmux_i_con_regdst;
 wire [4:0] rdmux_o_data_writeE;
 
+
+// ====================
+// Registers
+// ====================
+
+//data & address
+logic [31:0] pipe_alures;
+logic [31:0] pipe_rt;
+logic [4:0] pipe_regdst;
+//control
+logic pipe_con_Mmemread;
+logic pipe_con_Mmemwrite;
+logic [1:0] pipe_con_Wloadmux;
+logic pipe_con_Wmemtoreg;
+logic pipe_con_Wregwrite;
+
+always_ff @(posedge i_clk, negedge i_nrst)
+begin
+	if(~i_nrst) begin
+		pipe_alures <= 0;
+		pipe_rt <= 0;
+		pipe_regdst <= 0;
+		pipe_con_Mmemread <= 0;
+		pipe_con_Mmemwrite <= 0;
+		pipe_con_Wloadmux <= 0;
+		pipe_con_Wmemtoreg <= 0;
+		pipe_con_Wregwrite <= 0;
+	end
+	else begin
+		pipe_alures <= alu_o_data_AluRes;
+		pipe_rt <= fbmux3_o_data_alusrb;
+		pipe_regdst <= rdmux_o_data_writeE;
+		pipe_con_Mmemread <= i_con_Mmemread;
+		pipe_con_Mmemwrite <= i_con_Mmemwrite;
+		pipe_con_Wloadmux <= i_con_Wloadmux;
+		pipe_con_Wmemtoreg <= i_con_Wmemtoreg;
+		pipe_con_Wregwrite <= i_con_Wregwrite;
+	end
+end
 // ====================
 // Interconnection
 // ====================
@@ -136,44 +175,7 @@ assign o_con_Wloadmux = pipe_con_Wloadmux;
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
 
-// ====================
-// Registers
-// ====================
 
-//data & address
-logic [31:0] pipe_alures;
-logic [31:0] pipe_rt;
-logic [4:0] pipe_regdst;
-//control
-logic pipe_con_Mmemread;
-logic pipe_con_Mmemwrite;
-logic [1:0] pipe_con_Wloadmux;
-logic pipe_con_Wmemtoreg;
-logic pipe_con_Wregwrite;
-
-always_ff @(posedge i_clk, negedge i_nrst)
-begin
-	if(~i_nrst) begin
-		pipe_alures <= 0;
-		pipe_rt <= 0;
-		pipe_regdst <= 0;
-		pipe_con_Mmemread <= 0;
-		pipe_con_Mmemwrite <= 0;
-		pipe_con_Wloadmux <= 0;
-		pipe_con_Wmemtoreg <= 0;
-		pipe_con_Wregwrite <= 0;
-	end
-	else begin
-		pipe_alures <= alu_o_data_AluRes;
-		pipe_rt <= fbmux3_o_data_alusrb;
-		pipe_regdst <= rdmux_o_data_writeE;
-		pipe_con_Mmemread <= i_con_Mmemread;
-		pipe_con_Mmemwrite <= i_con_Mmemwrite;
-		pipe_con_Wloadmux <= i_con_Wloadmux;
-		pipe_con_Wmemtoreg <= i_con_Wmemtoreg;
-		pipe_con_Wregwrite <= i_con_Wregwrite;
-	end
-end
 // ====================
 // Hirearchy
 // ====================

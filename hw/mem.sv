@@ -16,17 +16,6 @@ module mem(
 	output logic o_con_Wmemtoreg,
 	output logic o_con_Wregwrite
 	);
-
-// ====================
-// Interconnection
-// ====================
-assign o_data_alures = pipe_data_alures;
-assign o_data_memout = pipe_data_memout;
-assign o_addr_regdst = pipe_addr_regdst;
-assign o_con_Wloadmux = pipe_con_Wloadmux;
-assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
-assign o_con_Wregwrite = pipe_con_Wregwrite;
-
 // ====================
 // Registers
 // ====================
@@ -58,5 +47,16 @@ begin
 		pipe_con_Wregwrite <= i_con_Wregwrite;
 	end
 end
+
+// ====================
+// Interconnection
+// ====================
+assign o_data_alures = pipe_data_alures;
+assign o_data_memout = pipe_data_memout;
+assign o_addr_regdst = pipe_addr_regdst;
+assign o_con_Wloadmux = pipe_con_Wloadmux;
+assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
+assign o_con_Wregwrite = pipe_con_Wregwrite;
+
 
 endmodule

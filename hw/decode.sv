@@ -98,63 +98,6 @@ wire [3:0] jumpext_i_PC4_j;
 wire [31:0] jumpext_o_addr_j;
 
 // ====================
-// Interconnection
-// ====================
-//compare
-assign compare_i_data_rs = regbank_o_data_Rs;
-assign compare_i_data_rt = regbank_o_data_Rt;   
-assign compare_i_con_bop = jbcon_o_con_bop;
-//control
-assign control_i_con_instru = i_data_instr[31:26];
-//jbcon
-assign jbcon_i_con_instru = i_data_instr[31:26];
-assign jbcon_i_con_func = i_data_instr[5:0];
-assign jbcon_i_con_rt = i_data_instr[16];
-//pcadd
-assign pcadd_i_addr_pcadd4E = i_addr_pc4;
-assign pcadd_i_data_immshiftl = sl_o_data_immshiftl;
-//regbank
-assign regbank_i_addr_Rs = i_data_instr[25:21];
-assign regbank_i_addr_Rt = i_data_instr[20:16];
-assign regbank_i_con_RegWr = i_con_Wregwrite;
-assign regbank_i_addr_Rd = i_addr_Wregwrite;
-assign regbank_i_data_Rd = i_data_Wregwrite;
-//sl
-assign sl_i_data_immE = i_data_instr[15:0];
-//signext
-assign signext_i_data_immD = i_data_instr[15:0];
-assign signext_i_con_signext = control_o_con_ifsign;
-//jumpext
-assign jumpext_i_addr_j = i_data_instr[25:0];
-assign jumpext_i_PC4_j = i_addr_pc4[31:28];
-
-//outputs
-//registers
-assign o_data_rs = pipe_data_rs;
-assign o_data_rt = pipe_data_rt;
-assign o_addr_rd = pipe_addr_rd;
-assign o_addr_rt = pipe_addr_rt;
-assign o_addr_rs = pipe_addr_rs;
-//pc
-assign o_con_ifbranch = compare_o_con_ifbranch;
-assign o_con_jump = jbcon_o_con_jump;
-assign o_addr_pc4 = pipe_addr_pc4;
-assign o_addr_pcadd = pcadd_o_addr_pcbranchE;
-assign o_addr_jump = jumpext_o_addr_j;
-//control
-assign o_con_Ealuop = pipe_con_Ealuop; 
-assign o_con_Ealusrc = pipe_con_Ealusrc;
-assign o_con_Eregdst = pipe_con_Eregdst;
-assign o_con_Ealupc4 = pipe_con_EaluPC4;
-assign o_con_Mmemread = pipe_con_Mmemread;
-assign o_con_Mmemwrite = pipe_con_Mmemwrite;
-assign o_con_Wloadmux = pipe_con_Wloadmux;
-assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
-assign o_con_Wregwrite = pipe_con_Wregwrite;
-//data
-assign o_data_signext = pipe_signext_o_data_immD;
-
-// ====================
 // Registers
 // ====================
 	//registers
@@ -214,6 +157,65 @@ begin
 		pipe_signext_o_data_immD <= signext_o_data_immD;
 	end
 end
+
+// ====================
+// Interconnection
+// ====================
+//compare
+assign compare_i_data_rs = regbank_o_data_Rs;
+assign compare_i_data_rt = regbank_o_data_Rt;   
+assign compare_i_con_bop = jbcon_o_con_bop;
+//control
+assign control_i_con_instru = i_data_instr[31:26];
+//jbcon
+assign jbcon_i_con_instru = i_data_instr[31:26];
+assign jbcon_i_con_func = i_data_instr[5:0];
+assign jbcon_i_con_rt = i_data_instr[16];
+//pcadd
+assign pcadd_i_addr_pcadd4E = i_addr_pc4;
+assign pcadd_i_data_immshiftl = sl_o_data_immshiftl;
+//regbank
+assign regbank_i_addr_Rs = i_data_instr[25:21];
+assign regbank_i_addr_Rt = i_data_instr[20:16];
+assign regbank_i_con_RegWr = i_con_Wregwrite;
+assign regbank_i_addr_Rd = i_addr_Wregwrite;
+assign regbank_i_data_Rd = i_data_Wregwrite;
+//sl
+assign sl_i_data_immE = i_data_instr[15:0];
+//signext
+assign signext_i_data_immD = i_data_instr[15:0];
+assign signext_i_con_signext = control_o_con_ifsign;
+//jumpext
+assign jumpext_i_addr_j = i_data_instr[25:0];
+assign jumpext_i_PC4_j = i_addr_pc4[31:28];
+
+//outputs
+//registers
+assign o_data_rs = pipe_data_rs;
+assign o_data_rt = pipe_data_rt;
+assign o_addr_rd = pipe_addr_rd;
+assign o_addr_rt = pipe_addr_rt;
+assign o_addr_rs = pipe_addr_rs;
+//pc
+assign o_con_ifbranch = compare_o_con_ifbranch;
+assign o_con_jump = jbcon_o_con_jump;
+assign o_addr_pc4 = pipe_addr_pc4;
+assign o_addr_pcadd = pcadd_o_addr_pcbranchE;
+assign o_addr_jump = jumpext_o_addr_j;
+//control
+assign o_con_Ealuop = pipe_con_Ealuop; 
+assign o_con_Ealusrc = pipe_con_Ealusrc;
+assign o_con_Eregdst = pipe_con_Eregdst;
+assign o_con_Ealupc4 = pipe_con_EaluPC4;
+assign o_con_Mmemread = pipe_con_Mmemread;
+assign o_con_Mmemwrite = pipe_con_Mmemwrite;
+assign o_con_Wloadmux = pipe_con_Wloadmux;
+assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
+assign o_con_Wregwrite = pipe_con_Wregwrite;
+//data
+assign o_data_signext = pipe_signext_o_data_immD;
+
+
 // ====================
 // Hirearchy
 // ====================
