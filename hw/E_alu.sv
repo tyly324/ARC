@@ -6,13 +6,28 @@ module E_alu(
 	input logic [3:0]i_con_AluCtrl, 
 	input logic [4:0] i_data_shamt);
 
+logic [16:0] half_sum;
+logic [15:0] pre_suma;
+logic [15:0] pre_sumb; 
+
+
+assign half_sum = i_data_A[15:0] + i_data_B[15:0];
+assign pre_suma = i_data_A[31:16]+ i_data_B[31:16];
+assign pre_sumb = i_data_A[31:16]+ i_data_B[31:16]+ 1'b1;
+
 always_comb
 	begin: COM 
 		o_data_AluRes = 0;
+		
+
 		case(i_con_AluCtrl)
 			0:	o_data_AluRes = i_data_A & i_data_B; 	//AND
 			1:	o_data_AluRes = i_data_A | i_data_B;	//OR
-			2:	o_data_AluRes = i_data_A + i_data_B;	//add,addu
+
+			2:	begin					
+					o_data_AluRes [31:16]= half_sum[16] ? pre_sumb : pre_suma;//add,addu
+					o_data_AluRes [15:0] = half_sum[15:0];
+				end
 			3:	o_data_AluRes = i_data_B <<i_data_shamt;//sll
 			4:	o_data_AluRes = i_data_B >>>i_data_shamt;//srl
 			5:	o_data_AluRes = i_data_B >>i_data_shamt;//sra
