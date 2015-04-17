@@ -15,6 +15,7 @@ module core(
 wire [31:0]if_addr_b;
 wire [31:0]if_addr_j;
 wire [31:0]if_addr_pc;
+wire [1:0] if_con_j;  ////////////
 //decode
 wire [31:0]id_addr_pc4;
 wire [31:0]id_data_instr;
