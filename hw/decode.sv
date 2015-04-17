@@ -31,10 +31,10 @@ module decode(
 	output logic [5:0] o_con_Ealuop,
 	output logic o_con_Ealusrc,
 	output logic o_con_Eregdst,
-	output logic o_con_Ealupc4,
 	output logic o_con_Mmemread,
 	output logic o_con_Mmemwrite,
 	output logic [1:0] o_con_Wloadmux,
+	output logic o_con_Walupc8,///////////
 	output logic o_con_Wmemtoreg,
 	output logic o_con_Wregwrite,
 	//data
@@ -206,7 +206,7 @@ assign o_addr_jump = jumpext_o_addr_j;
 assign o_con_Ealuop = pipe_con_Ealuop; 
 assign o_con_Ealusrc = pipe_con_Ealusrc;
 assign o_con_Eregdst = pipe_con_Eregdst;
-assign o_con_Ealupc4 = pipe_con_EaluPC4;
+assign o_con_Walupc8 = pipe_con_EaluPC4;
 assign o_con_Mmemread = pipe_con_Mmemread;
 assign o_con_Mmemwrite = pipe_con_Mmemwrite;
 assign o_con_Wloadmux = pipe_con_Wloadmux;
