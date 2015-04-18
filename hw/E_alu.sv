@@ -44,10 +44,10 @@ always_comb
 				end
 			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;// sltu
 			8:	o_data_AluRes = {i_data_B, 16'b0}; 		//I//lui;
-			9: 	o_data_AluRes = i_data_A + 4;			//J//jal;			
+			9: o_data_AluRes = (((i_data_A[31]^i_data_B[31])&&i_data_A[31])||(~(i_data_A[31]^i_data_B[31])&&(i_data_A<i_data_B)));//slt
+			//9: 	o_data_AluRes = i_data_A + 4;			//J//jal;			
 			12:	o_data_AluRes = ~(i_data_A|i_data_B);	//nor
 			13: o_data_AluRes = i_data_A ^ i_data_B;	//xor
-			14: o_data_AluRes = (((i_data_A[31]^i_data_B[31])&&i_data_A[31])||(~(i_data_A[31]^i_data_B[31])&&(i_data_A<i_data_B)));//slt
 						
 		endcase  
 	end
