@@ -44,6 +44,9 @@ o_con_jump = 0;
     6'b000000  :  begin if (i_con_func == 6'b001000) begin
                         o_con_bop = 3'b000;
                         o_con_jump = 2'b10;  end  // jr  //
+                        else begin 
+                        o_con_bop = 3'b000;
+                        o_con_jump = 2'b11; end
                         end
 
   endcase
