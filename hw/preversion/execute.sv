@@ -13,15 +13,19 @@ module execute(
 	input logic [31:0] i_data_rs,
 	input logic [31:0] i_data_rt,
 	input logic [31:0] i_data_immext,
-	//input logic [4:0] i_addr_rs,/////////////////
+	input logic [4:0] i_addr_rs,
 	input logic [4:0] i_addr_rt,
 	input logic [4:0] i_addr_rd,
 	//forward
 	input logic [31:0] i_data_FEalures,
 	input logic [31:0] i_data_FMalures,
+	input logic [4:0] i_addr_FMregdst,
+	input logic [4:0] i_addr_FWregdst,
+	input logic i_con_FMregwrite,
+	input logic i_con_FWregwrite,
 	//control
 	input logic [5:0] i_con_Ealuop,
-	//input logic i_con_Ealusrc,///////////////////
+	input logic i_con_Ealusrc,
 	input logic i_con_Eregdst,
 	input logic i_con_Mmemread,
 	input logic i_con_Mmemwrite,
@@ -29,9 +33,6 @@ module execute(
 	input logic i_con_Walupc8,///////////
 	input logic i_con_Wmemtoreg,
 	input logic i_con_Wregwrite,
-	//forward unit///////////////////
-	input logic [1:0] i_con_Efamux,
-	input logic [1:0] i_con_Efbmux,
 
 	output logic [31:0] o_data_pc4,///////////
 	output logic [31:0] o_data_alures,
@@ -42,9 +43,7 @@ module execute(
 	output logic [1:0] o_con_Wloadmux,
 	output logic o_con_Walupc8,///////////
 	output logic o_con_Wmemtoreg,
-	output logic o_con_Wregwrite,
-	//forward feedback//////////////////////
-	output logic [4:0] o_addr_Erd
+	output logic o_con_Wregwrite
 	);
 
 // ====================
@@ -71,12 +70,15 @@ wire [31:0] fbmux4_i_data_writeres;
 wire [31:0] fbmux4_i_data_imm;
 wire [1:0]  fbmux4_i_con_fb;
 wire [31:0] fbmux4_o_data_alusrb;
-
+//forward
+wire [4:0] for_i_data_rs, for_i_data_rt, for_i_data_rdM, for_i_data_rdW;
+wire for_i_con_regwriteM, for_i_con_regwriteW;
+wire for_i_con_alures;
+wire [1:0] for_o_con_fa, for_o_con_fb;
 //rdmux
 wire [4:0] rdmux_i_data_rtE, rdmux_i_data_rdE;
 wire rdmux_i_con_regdst;
 wire [4:0] rdmux_o_data_writeE;
-wire rdmux_i_con_jal;
 
 
 // ====================
@@ -139,14 +141,21 @@ assign aluc_i_con_FuncCode = i_data_immext[5:0];
 assign famux3_i_data_rs = i_data_rs;
 assign famux3_i_data_alures = i_data_FEalures;
 assign famux3_i_data_writeres = i_data_FMalures;
-assign famux3_i_con_fa = i_con_Efamux;
+assign famux3_i_con_fa = for_o_con_fa;
 //fbmux4
 assign fbmux4_i_data_rt = i_data_rt;
 assign fbmux4_i_data_alures = i_data_FEalures;
 assign fbmux4_i_data_writeres = i_data_FMalures;
 assign fbmux4_i_data_imm = i_data_immext;
-assign fbmux4_i_con_fb = i_con_Efbmux;
-
+assign fbmux4_i_con_fb = for_o_con_fb;
+//forward
+assign for_i_data_rs = i_addr_rs;
+assign for_i_data_rt = i_addr_rt;
+assign for_i_data_rdM = i_addr_FMregdst;
+assign for_i_data_rdW = i_addr_FWregdst;
+assign for_i_con_regwriteM = i_con_FMregwrite;
+assign for_i_con_regwriteW = i_con_FWregwrite;
+assign for_i_con_alures = i_con_Ealusrc;
 //rdmux
 assign rdmux_i_data_rdE = i_addr_rd;
 assign rdmux_i_data_rtE = i_addr_rt;
@@ -164,8 +173,6 @@ assign o_con_Wloadmux = pipe_con_Wloadmux;
 assign o_con_Walupc8 = pipe_con_Walupc8;
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
-//forward feedback////////////////////////////
-assign o_addr_Erd = rdmux_o_data_writeE;
 
 
 // ====================
@@ -207,7 +214,18 @@ E_fbmux4 u_fbmux(
 .o_data_alusrb(fbmux4_o_data_alusrb)
 );
 
-
+//forward
+E_forward u_forward(
+.i_data_rs(for_i_data_rs), 
+.i_data_rt(for_i_data_rt), 
+.i_data_rdM(for_i_data_rdM), 
+.i_data_rdW(for_i_data_rdW), 
+.i_con_regwriteM(for_i_con_regwriteM), 
+.i_con_regwriteW(for_i_con_regwriteW), 
+.i_con_alures(for_i_con_alures),
+.o_con_fa(for_o_con_fa), 
+.o_con_fb(for_o_con_fb)
+);
 
 //rdmux
 E_rdmux u_rdmux(

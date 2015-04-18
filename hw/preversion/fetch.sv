@@ -19,17 +19,14 @@ module fetch(
 // ====================
 // I/O
 // ====================
-//jumpmux
-wire [31:0] jmux_i_addr_j;
-wire [31:0] jmux_i_addr_jr;
-wire [31:0] jmux_i_addr_pc4;
-wire [1:0] jmux_i_con_jump;
-wire [31:0] jmux_o_addr_jumpmux;
-//branchmux
-wire [31:0] bmux_i_addr_jumpmux;
-wire [31:0] bmux_i_addr_b;
-wire bmux_i_con_ifbranch;
-wire [31:0] bmux_o_addr_nextpc;
+//pcmux
+wire [31:0] pcmux_i_addr_jump;
+wire [31:0] pcmux_i_addr_jumpr;
+wire [31:0] pcmux_i_addr_pc;
+wire [31:0] pcmux_i_addr_branch;
+wire [1:0]  pcmux_i_con_jump;
+wire pcmux_i_con_ifbranch;
+wire [31:0] pcmux_o_addr_nextpc;
 //pc
 wire [31:0] pc_i_addr_next_pc;
 wire [31:0] pc_o_addr_pc;
@@ -40,18 +37,15 @@ wire [31:0] add4_o_addr_pcadd4;
 // ====================
 // Registers
 // ====================
-logic [31:0] pipe_pc;
 logic [31:0] pipe_pc4;
 logic [31:0] pipe_instr;
 
 always_ff @(posedge i_clk, negedge i_nrst)
 if(~i_nrst) begin
-	pipe_pc <= 0;
 	pipe_pc4 <= 0;
 	pipe_instr <= 0;
 end
 else begin 
-	pipe_pc <= pc_o_addr_pc;
 	pipe_pc4 <= add4_o_addr_pcadd4;
 	pipe_instr <= i_data_instr;
 end
@@ -59,22 +53,20 @@ end
 // ====================
 // Interconnection
 // ====================
-//jumpmux
-assign jmux_i_addr_j = i_addr_j;
-assign jmux_i_addr_jr = i_addr_jr;
-assign jmux_i_addr_pc4 = add4_o_addr_pcadd4;
-assign jmux_i_con_jump = i_con_j;
-//branchmux
-assign bmux_i_addr_jumpmux = jmux_o_addr_jumpmux;
-assign bmux_i_addr_b = i_addr_b;
-assign bmux_i_con_ifbranch = i_con_b;
+//pcmux
+assign pcmux_i_addr_jump = i_addr_j;
+assign pcmux_i_addr_jumpr = i_addr_jr;
+assign pcmux_i_addr_pc = add4_o_addr_pcadd4;
+assign pcmux_i_addr_branch = i_addr_b;
+assign pcmux_i_con_jump = i_con_j;
+assign pcmux_i_con_ifbranch = i_con_b;
 //pc
-assign pc_i_addr_next_pc = bmux_o_addr_nextpc;
+assign pc_i_addr_next_pc = pcmux_o_addr_nextpc;
 //add4
 assign add4_i_addr_pc = pc_o_addr_pc;
 
 //outputs
-assign o_addr_pc = pipe_pc;
+assign o_addr_pc = pc_o_addr_pc;
 assign o_addr_pc4 = pipe_pc4;
 assign o_data_instr = pipe_instr;
 
@@ -82,23 +74,16 @@ assign o_data_instr = pipe_instr;
 // ====================
 // Hirearchy
 // ====================
-//jumpmux
-F_jumpmux u_jumpmux(
-.i_addr_j(jmux_i_addr_j),
-.i_addr_jr(jmux_i_addr_jr),
-.i_addr_pc4(jmux_i_addr_pc4),
-.i_con_jump(jmux_i_con_jump),
-.o_addr_jumpmux(jmux_o_addr_jumpmux)
+//pcmux
+F_pcmux u_pcmux(
+.i_addr_jump(pcmux_i_addr_jump),
+.i_addr_jumpr(pcmux_i_addr_jumpr),
+.i_addr_pc(pcmux_i_addr_pc),
+.i_addr_branch(pcmux_i_addr_branch),
+.i_con_jump(pcmux_i_con_jump),
+.i_con_ifbranch(pcmux_i_con_ifbranch),
+.o_addr_nextpc(pcmux_o_addr_nextpc)
 );
-
-//branchmux
-F_branchmux u_branchmux(
-.i_addr_jumpmux(bmux_i_addr_jumpmux),
-.i_addr_b(bmux_i_addr_b),
-.i_con_ifbranch(bmux_i_con_ifbranch),
-.o_addr_nextpc(bmux_o_addr_nextpc)
-);
-
 
 //pc
 F_pc u_pc(

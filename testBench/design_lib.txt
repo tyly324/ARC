@@ -1,0 +1,895 @@
+
+****************************************
+Report : hdl libraries
+Version: C-2009.06-SP4
+Date   : Fri Mar 13 01:35:57 2015
+****************************************
+Contents of current design libraries
+   CCSC (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/ccsc/lib)
+      This library does not contain any valid design units.
+   CD (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/CD/lib)
+Error: The library 'CD' is mapped to the directory '/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/CD/lib', which is not readable. (LBR-2)
+   COMDISCO_MVL9 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/comdisco/lib)
+Error: The library 'COMDISCO_MVL9' is mapped to the directory '/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/comdisco/lib', which is not readable. (LBR-2)
+   DEFAULT (/home/zj2g14/design/S2/synthesis)
+   WORK (/home/zj2g14/design/S2/synthesis)
+      architecture	:  m     EX_alumux(verilog)
+      architecture	:  m     EX_pcadd(verilog)
+      architecture	:  m     EX_writemux(verilog)
+      architecture	:  m     IF_pcadd(verilog)
+      architecture	:  m     IF_pcmux(verilog)
+      architecture	:  m     WB_resmux(verilog)
+      architecture	:  m     alu(verilog)
+      architecture	:  m     alu_control(verilog)
+      architecture	:  m     control(verilog)
+      architecture	:  m     core(verilog)
+      architecture	:  m     decode(verilog)
+      architecture	:  m     div(verilog)
+      architecture	:  m     execute(verilog)
+      architecture	:  m     fetch(verilog)
+      architecture	:  m     mem(verilog)
+      architecture	:  m     pc(verilog)
+      architecture	:  m     register_bank(verilog)
+      architecture	:  m     shiftleft2(verilog)
+      architecture	:  m     sign_extend(verilog)
+      architecture	:  m     write_back(verilog)
+   DW01 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw01/lib)
+      entity		: p n    DW01_ABSVAL
+      architecture	:   n d  DW01_ABSVAL(CLA)
+      architecture	:   n d  DW01_ABSVAL(CLF)
+      architecture	:  mn d  DW01_ABSVAL(RPL)
+      architecture	:   n    DW01_ABSVAL(VERIF)
+      entity		: p n    DW01_ADD
+      architecture	:   n d  DW01_ADD(CLA)
+      architecture	:  mn d  DW01_ADD(RPL)
+      architecture	:   n    DW01_ADD(VERIF)
+      entity		: p n    DW01_ADDSUB
+      architecture	:   n d  DW01_ADDSUB(CLA)
+      architecture	:  mn d  DW01_ADDSUB(RPL)
+      architecture	:   n    DW01_ADDSUB(VERIF)
+      entity		:   n    DW01_ADD_AB
+      architecture	:  mn d  DW01_ADD_AB(STR)
+      entity		:   n    DW01_ADD_AB1
+      architecture	:  mn    DW01_ADD_AB1(STR)
+      entity		:   n    DW01_ADD_ABC
+      architecture	:  mn d  DW01_ADD_ABC(STR)
+      entity		:   n    DW01_AND2
+      architecture	:  mn    DW01_AND2(STR)
+      entity		:   n    DW01_AND_NOT
+      architecture	:  mn    DW01_AND_NOT(STR)
+      entity		:   n    DW01_AO21
+      architecture	:  mn    DW01_AO21(STR)
+      entity		: p n    DW01_ASH
+      architecture	:  mn d  DW01_ASH(MX2)
+      architecture	:   n    DW01_ASH(VERIF)
+      entity		: p n    DW01_BINENC
+      architecture	:   n    DW01_BINENC(AOT)
+      architecture	:   n    DW01_BINENC(CLA)
+      architecture	:  mn    DW01_BINENC(STR)
+      entity		: p n    DW01_BSH
+      architecture	:  mn    DW01_BSH(VERIF)
+      entity		:   n    DW01_CL_DEC
+      architecture	:  mn    DW01_CL_DEC(STR)
+      entity		: p n    DW01_CMP2
+      architecture	:  mn d  DW01_CMP2(RPL)
+      architecture	:   n    DW01_CMP2(VERIF)
+      entity		: p n    DW01_CMP6
+      architecture	:  mn d  DW01_CMP6(RPL)
+      architecture	:   n    DW01_CMP6(VERIF)
+      package		:   n    DW01_COMPONENTS
+      entity		: p n    DW01_CSA
+      architecture	:  mn d  DW01_CSA(STR)
+      entity		: p n    DW01_DEC
+      architecture	:   n d  DW01_DEC(CLA)
+      architecture	:  mn d  DW01_DEC(RPL)
+      architecture	:   n    DW01_DEC(VERIF)
+      entity		: p n    DW01_DECODE
+      architecture	:  mn d  DW01_DECODE(STR)
+      architecture	:   n    DW01_DECODE(VERIF)
+      entity		: p n    DW01_DECODE_DG
+      entity		:   n    DW01_GP_DEC
+      architecture	:  mn    DW01_GP_DEC(STR)
+      entity		:   n    DW01_GP_NODE
+      architecture	:  mn d  DW01_GP_NODE(STR)
+      entity		:   n    DW01_GP_SUM
+      architecture	:  mn    DW01_GP_SUM(STR)
+      entity		: p n    DW01_INC
+      architecture	:   n d  DW01_INC(CLA)
+      architecture	:  mn d  DW01_INC(RPL)
+      architecture	:   n    DW01_INC(VERIF)
+      entity		: p n    DW01_INCDEC
+      architecture	:   n d  DW01_INCDEC(CLA)
+      architecture	:  mn d  DW01_INCDEC(RPL)
+      architecture	:   n    DW01_INCDEC(VERIF)
+      entity		: p n    DW01_LE_REG
+      architecture	:  mn d  DW01_LE_REG(STR)
+      entity		: p n    DW01_MMUX
+      architecture	:  mn    DW01_MMUX(STR)
+      entity		:   n    DW01_MUX
+      architecture	:  mn    DW01_MUX(STR)
+      entity		: p n    DW01_MUX_ANY
+      architecture	:  mn d  DW01_MUX_ANY(FMX)
+      architecture	:   n d  DW01_MUX_ANY(STR)
+      entity		:   n    DW01_NAND2
+      architecture	:  mn    DW01_NAND2(STR)
+      entity		:   n    DW01_NOT
+      architecture	:  mn    DW01_NOT(STR)
+      entity		:   n    DW01_OR2
+      architecture	:  mn    DW01_OR2(STR)
+      entity		:   n    DW01_OR_NOT
+      architecture	:  mn    DW01_OR_NOT(STR)
+      entity		: p n    DW01_PRIENC
+      architecture	:   n    DW01_PRIENC(AOT)
+      architecture	:   n    DW01_PRIENC(CLA)
+      architecture	:  mn    DW01_PRIENC(STR)
+      entity		: p n    DW01_SATRND
+      architecture	:  mn d  DW01_SATRND(STR)
+      entity		: p n    DW01_SUB
+      architecture	:   n d  DW01_SUB(CLA)
+      architecture	:  mn d  DW01_SUB(RPL)
+      architecture	:   n    DW01_SUB(VERIF)
+      entity		:   n    DW01_SUB_ABC
+      architecture	:  mn    DW01_SUB_ABC(STR)
+      entity		:   n    DW01_XOR2
+      architecture	:  mn    DW01_XOR2(STR)
+      architecture	:  mn    DW01_decode_DG(str)
+      entity		: p n    DWSC_OPISO_VE
+      entity		: p n    DWSC_OPISO_VH
+      architecture	:   n    DWSC_OPISO_VH(ANDGATE)
+      architecture	:   n    DWSC_OPISO_VH(NOOP)
+      architecture	:  mn    DWSC_OPISO_VH(ORGATE)
+      entity		: p n    DW_ADDSUB_DX
+      architecture	:   n d  DW_ADDSUB_DX(CSM)
+      architecture	:   n d  DW_ADDSUB_DX(RPCS)
+      architecture	:  mn d  DW_ADDSUB_DX(RPL)
+      entity		: p n    DW_AND_TREE
+      architecture	:  mn d  DW_AND_TREE(STR)
+      entity		: p n    DW_BIN2GRAY
+      architecture	:  mn d  DW_BIN2GRAY(STR)
+      entity		: p n    DW_BIT_ORDER
+      architecture	:  mn d  DW_BIT_ORDER(STR)
+      entity		: p n    DW_CMP_DX
+      architecture	:   n d  DW_CMP_DX(BK)
+      architecture	:  mn d  DW_CMP_DX(RPL)
+      entity		: p n    DW_DEC
+      architecture	:  mn d  DW_DEC(VERIF)
+      entity		: p n    DW_DECODE_EN
+      architecture	:  mn d  DW_DECODE_EN(VERIF)
+      entity		: p n    DW_EQ
+      architecture	:  mn d  DW_EQ(STR)
+      entity		: p n    DW_GRAY2BIN
+      architecture	:   n d  DW_GRAY2BIN(CLA)
+      architecture	:  mn d  DW_GRAY2BIN(RPL)
+      entity		: p n    DW_INC
+      architecture	:  mn d  DW_INC(VERIF)
+      entity		: p n    DW_INCDEC
+      architecture	:  mn d  DW_INCDEC(VERIF)
+      entity		: p n    DW_INC_GRAY
+      architecture	:   n d  DW_INC_GRAY(CLA)
+      architecture	:  mn d  DW_INC_GRAY(RPL)
+      entity		: p n    DW_LBSH
+      architecture	:  mn d  DW_LBSH(MX2)
+      architecture	:   n    DW_LBSH(VERIF)
+      entity		: p n    DW_LOD
+      architecture	:   n d  DW_LOD(CLA)
+      architecture	:  mn    DW_LOD(RTL)
+      entity		: p n    DW_LSD
+      architecture	:  mn    DW_LSD(STR)
+      entity		: p n    DW_LZA
+      entity		: p n    DW_LZD
+      architecture	:   n d  DW_LZD(CLA)
+      architecture	:  mn    DW_LZD(RTL)
+      entity		: p n d  DW_LZOD
+      architecture	:   n d  DW_LZOD(CLA)
+      architecture	:  mn d  DW_LZOD(RTL)
+      entity		: p n    DW_MINMAX
+      architecture	:   n d  DW_MINMAX(CLA)
+      architecture	:  mn d  DW_MINMAX(CLAS)
+      entity		: p n    DW_MINMAX2
+      architecture	:  mn d  DW_MINMAX2(CLA)
+      entity		: p n    DW_MINMAX4
+      architecture	:  mn d  DW_MINMAX4(CLAS)
+      entity		: p n    DW_NE
+      architecture	:  mn d  DW_NE(STR)
+      entity		: p n    DW_NORM
+      architecture	:   n    DW_NORM(RTL)
+      architecture	:  mn d  DW_NORM(STR)
+      entity		: p n    DW_NORM_RND
+      architecture	:   n    DW_NORM_RND(RTL)
+      architecture	:  mn d  DW_NORM_RND(STR)
+      entity		: p n    DW_OR_TREE
+      architecture	:  mn d  DW_OR_TREE(STR)
+      entity		: p n    DW_PREFIX_AND
+      architecture	:   n d  DW_PREFIX_AND(RTL)
+      architecture	:  mn d  DW_PREFIX_AND(SK)
+      entity		: p n    DW_PREFIX_ANDOR
+      architecture	:  mn d  DW_PREFIX_ANDOR(SK)
+      entity		: p n    DW_PREFIX_OR
+      architecture	:  mn d  DW_PREFIX_OR(SK)
+      entity		: p n    DW_PREFIX_XOR
+      architecture	:  mn d  DW_PREFIX_XOR(SK)
+      entity		: p n    DW_PRICOD
+      architecture	:   n    DW_PRICOD(CLA)
+      architecture	:  mn    DW_PRICOD(RTL)
+      entity		: p n    DW_PRIORITY_CODER
+      architecture	:   n d  DW_PRIORITY_CODER(CLA)
+      architecture	:  mn    DW_PRIORITY_CODER(RTL)
+      entity		: p n    DW_RASH
+      architecture	:  mn d  DW_RASH(MX2)
+      architecture	:   n    DW_RASH(VERIF)
+      entity		: p n    DW_RBSH
+      architecture	:  mn d  DW_RBSH(MX2)
+      architecture	:   n    DW_RBSH(VERIF)
+      entity		: p n    DW_SHIFTER
+      architecture	:   n d  DW_SHIFTER(MX2)
+      architecture	:   n d  DW_SHIFTER(MX2I)
+      architecture	:   n d  DW_SHIFTER(MX4)
+      architecture	:  mn d  DW_SHIFTER(MX8)
+      entity		: p n    DW_SLA
+      architecture	:  mn d  DW_SLA(MX2)
+      entity		: p n    DW_SRA
+      architecture	:  mn d  DW_SRA(MX2)
+      entity		: p n    DW_THERMDEC
+      architecture	:  mn    DW_THERMDEC(VERIF)
+      architecture	:  mn    DW_lza(rtl)
+      configuration	:   n d  DW_norm(DW_NORM_CFG_STR)
+      architecture	:   n    DWsc_opiso_ve(and)
+      architecture	:   n    DWsc_opiso_ve(noop)
+      architecture	:  mn    DWsc_opiso_ve(or)
+   DW02 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw02/lib)
+      entity		: p n    DW02_BOOTH
+      architecture	:  mn d  DW02_BOOTH(STR)
+      package		:   n    DW02_COMPONENTS
+      entity		: p n    DW02_COS
+      architecture	:  mn d  DW02_COS(STR)
+      entity		: p n    DW02_MAC
+      architecture	:  mn    DW02_MAC(VERIF)
+      entity		: p n    DW02_MULT
+      architecture	:  mn d  DW02_MULT(CSA)
+      architecture	:   n    DW02_MULT(VERIF)
+      entity		: p n    DW02_MULTP
+      architecture	:   n d  DW02_MULTP(NBW)
+      architecture	:  mn d  DW02_MULTP(WALL)
+      entity		: p n    DW02_MULT_2_STAGE
+      architecture	:  mn d  DW02_MULT_2_STAGE(STR)
+      entity		: p n    DW02_MULT_3_STAGE
+      architecture	:  mn d  DW02_MULT_3_STAGE(STR)
+      entity		: p n    DW02_MULT_4_STAGE
+      architecture	:  mn d  DW02_MULT_4_STAGE(STR)
+      entity		: p n    DW02_MULT_5_STAGE
+      architecture	:  mn d  DW02_MULT_5_STAGE(STR)
+      entity		: p n    DW02_MULT_6_STAGE
+      architecture	:  mn d  DW02_MULT_6_STAGE(STR)
+      entity		: p n    DW02_MULT_DG
+      architecture	:  mn    DW02_MULT_DG(VERIF)
+      entity		: p n    DW02_PROD_SUM
+      architecture	:  mn    DW02_PROD_SUM(VERIF)
+      entity		: p n    DW02_PROD_SUM1
+      architecture	:  mn    DW02_PROD_SUM1(VERIF)
+      entity		: p n    DW02_SIN
+      architecture	:  mn d  DW02_SIN(STR)
+      entity		: p n    DW02_SINCOS
+      architecture	:  mn d  DW02_SINCOS(STR)
+      entity		: p n    DW02_SUM
+      architecture	:   n d  DW02_SUM(CSA)
+      architecture	:   n d  DW02_SUM(RPL)
+      architecture	:   n    DW02_SUM(VERIF)
+      architecture	:  mn    DW02_SUM(WALLACE)
+      entity		: p n    DW02_TREE
+      architecture	:  mn d  DW02_TREE(WALLACE)
+      entity		:   n    DW_BTHENC
+      architecture	:  mn d  DW_BTHENC(STR)
+      entity		: p n    DW_DIV
+      architecture	:   n d  DW_DIV(CLA)
+      architecture	:   n d  DW_DIV(CLA2)
+      architecture	:  mn d  DW_DIV(RPL)
+      entity		: p n    DW_DIV_PIPE
+      architecture	:  mn    DW_DIV_PIPE(LPWR)
+      architecture	:   n    DW_DIV_PIPE(STR)
+      entity		: p n    DW_DIV_TC
+      architecture	:   n    DW_DIV_TC(CLA)
+      architecture	:  mn    DW_DIV_TC(CLA2)
+      architecture	:   n    DW_DIV_TC(RPL)
+      entity		: p n    DW_DIV_UNS
+      architecture	:   n    DW_DIV_UNS(CLA)
+      architecture	:  mn    DW_DIV_UNS(CLA2)
+      architecture	:   n    DW_DIV_UNS(RPL)
+      entity		: p n    DW_EXP2
+      entity		: p n    DW_FP_ADD
+      entity		: p n    DW_FP_ADDSUB
+      entity		: p n    DW_FP_ALIGN
+      architecture	:   n    DW_FP_ALIGN(VERIF)
+      architecture	:   n    DW_FP_ALIGN(rtl)
+      architecture	:  mn    DW_FP_ALIGN(rtl1)
+      entity		: p n    DW_FP_CMP
+      entity		: p n    DW_FP_DIV
+      entity		: p n    DW_FP_DIV_SEQ
+      entity		: p n    DW_FP_DP2
+      entity		: p n    DW_FP_DP3
+      entity		: p n    DW_FP_DP4
+      entity		: p n    DW_FP_EXP
+      entity		: p n    DW_FP_EXP2
+      entity		: p n    DW_FP_FLT2I
+      entity		: p n    DW_FP_I2FLT
+      entity		: p n    DW_FP_IFP_CONV
+      entity		: p n    DW_FP_INVSQRT
+      entity		: p n    DW_FP_LN
+      entity		: p n    DW_FP_LOG2
+      entity		: p n    DW_FP_MAC
+      entity		: p n    DW_FP_MAC_DG
+      entity		: p n    DW_FP_MULT
+      entity		: p n    DW_FP_RECIP
+      entity		: p n    DW_FP_SINCOS
+      entity		: p n    DW_FP_SQRT
+      entity		: p n    DW_FP_SQUARE
+      entity		: p n    DW_FP_SUB
+      entity		: p n    DW_FP_SUM3
+      entity		: p n    DW_FP_SUM4
+      entity		: p n    DW_IFP_ADDSUB
+      entity		: p n    DW_IFP_FP_CONV
+      entity		: p n    DW_IFP_MULT
+      entity		: p n    DW_INV_SQRT
+      architecture	:  mn    DW_INV_SQRT(RTL)
+      entity		: p n    DW_LN
+      entity		: p n    DW_LOG2
+      entity		: p n    DW_LP_FP_MULTIFUNC
+      entity		: p n    DW_LP_FP_MULTIFUNC_DG
+      entity		: p n    DW_LP_MULTIFUNC
+      entity		: p n    DW_LP_MULTIFUNC_DG
+      entity		: p n    DW_MOD_TC
+      architecture	:   n    DW_MOD_TC(CLA)
+      architecture	:  mn    DW_MOD_TC(CLA2)
+      architecture	:   n    DW_MOD_TC(RPL)
+      entity		: p n    DW_MOD_UNS
+      architecture	:   n    DW_MOD_UNS(CLA)
+      architecture	:  mn    DW_MOD_UNS(CLA2)
+      architecture	:   n    DW_MOD_UNS(RPL)
+      entity		: p n    DW_MTREE
+      architecture	:  mn d  DW_MTREE(WALL)
+      entity		: p n    DW_MULTP_SC
+      architecture	:   n d  DW_MULTP_SC(NBW)
+      architecture	:  mn d  DW_MULTP_SC(WALL)
+      entity		: p n    DW_MULT_DX
+      architecture	:  mn d  DW_MULT_DX(WALL)
+      entity		: p n    DW_MULT_PIPE
+      architecture	:  mn    DW_MULT_PIPE(LPWR)
+      architecture	:   n    DW_MULT_PIPE(STR)
+      entity		: p n    DW_PROD_SUM_PIPE
+      architecture	:  mn    DW_PROD_SUM_PIPE(LPWR)
+      architecture	:   n    DW_PROD_SUM_PIPE(STR)
+      entity		: p n    DW_SINCOS
+      entity		: p n    DW_SQRT
+      architecture	:   n d  DW_SQRT(CLA)
+      architecture	:  mn d  DW_SQRT(RPL)
+      entity		: p n    DW_SQRT_PIPE
+      architecture	:  mn    DW_SQRT_PIPE(LPWR)
+      architecture	:   n    DW_SQRT_PIPE(STR)
+      entity		: p n    DW_SQRT_REM
+      architecture	:  mn d  DW_SQRT_REM(CLA)
+      entity		: p n    DW_SQRT_TC
+      architecture	:  mn    DW_SQRT_TC(CLA)
+      architecture	:   n    DW_SQRT_TC(RPL)
+      entity		: p n    DW_SQRT_UNS
+      architecture	:  mn    DW_SQRT_UNS(CLA)
+      architecture	:   n    DW_SQRT_UNS(RPL)
+      entity		: p n    DW_SQUARE
+      architecture	:  mn d  DW_SQUARE(WALL)
+      entity		: p n    DW_SQUAREP
+      architecture	:  mn d  DW_SQUAREP(WALL)
+      architecture	:   n    DW_exp2(rtl)
+      architecture	:  mn    DW_exp2(str)
+      architecture	:  mn    DW_fp_add(rtl)
+      architecture	:   n    DW_fp_addsub(rtl)
+      architecture	:  mn    DW_fp_addsub(str)
+      architecture	:  mn    DW_fp_cmp(rtl)
+      architecture	:   n    DW_fp_div(rtl)
+      architecture	:  mn    DW_fp_div(str)
+      architecture	:  mn    DW_fp_div_seq(rtl)
+      architecture	:  mn    DW_fp_dp2(rtl)
+      architecture	:  mn    DW_fp_dp3(rtl)
+      architecture	:  mn    DW_fp_dp4(rtl)
+      architecture	:  mn    DW_fp_exp(rtl)
+      architecture	:  mn    DW_fp_exp2(rtl)
+      architecture	:  mn    DW_fp_flt2i(rtl)
+      architecture	:   n    DW_fp_i2flt(rtl)
+      architecture	:  mn    DW_fp_i2flt(str)
+      architecture	:  mn    DW_fp_ifp_conv(rtl)
+      architecture	:  mn    DW_fp_invsqrt(rtl)
+      architecture	:  mn    DW_fp_ln(rtl)
+      architecture	:  mn    DW_fp_log2(rtl)
+      architecture	:   n    DW_fp_mac(rtl)
+      architecture	:  mn    DW_fp_mac(str)
+      architecture	:   n    DW_fp_mac_DG(str)
+      architecture	:  mn    DW_fp_mac_DG(str2)
+      architecture	:   n    DW_fp_mult(rtl)
+      architecture	:  mn    DW_fp_mult(str)
+      architecture	:  mn    DW_fp_recip(rtl)
+      architecture	:  mn    DW_fp_sincos(rtl)
+      architecture	:  mn    DW_fp_sqrt(rtl)
+      architecture	:  mn    DW_fp_square(rtl)
+      architecture	:  mn    DW_fp_sub(rtl)
+      architecture	:  mn    DW_fp_sum3(rtl)
+      architecture	:  mn    DW_fp_sum4(rtl)
+      architecture	:  mn    DW_ifp_addsub(rtl)
+      architecture	:  mn    DW_ifp_fp_conv(rtl)
+      architecture	:  mn    DW_ifp_mult(rtl)
+      architecture	:  mn    DW_ln(rtl)
+      architecture	:  mn    DW_log2(rtl)
+      architecture	:  mn    DW_lp_fp_multifunc(rtl)
+      architecture	:  mn    DW_lp_fp_multifunc_DG(rtl)
+      architecture	:  mn    DW_lp_multifunc(rtl)
+      architecture	:   n    DW_lp_multifunc_DG(rtl)
+      architecture	:  mn    DW_lp_multifunc_DG(rtl2)
+      architecture	:  mn    DW_sincos(rtl)
+   DW03 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw03/lib)
+      entity		: p n    DW03_BICTR_DCNTO
+      architecture	:   n d  DW03_BICTR_DCNTO(STR)
+      entity		: p n    DW03_BICTR_DECODE
+      architecture	:  mn d  DW03_BICTR_DECODE(STR)
+      entity		: p n    DW03_BICTR_SCNTO
+      architecture	:   n d  DW03_BICTR_SCNTO(STR)
+      package		:   n    DW03_COMPONENTS
+      entity		: p n    DW03_LFSR_DCNTO
+      architecture	:  mn d  DW03_LFSR_DCNTO(STR)
+      entity		: p n    DW03_LFSR_LOAD
+      architecture	:  mn d  DW03_LFSR_LOAD(STR)
+      entity		: p n    DW03_LFSR_SCNTO
+      architecture	:  mn d  DW03_LFSR_SCNTO(STR)
+      entity		: p n    DW03_LFSR_UPDN
+      architecture	:  mn d  DW03_LFSR_UPDN(STR)
+      entity		: p n    DW03_PIPE_REG
+      architecture	:  mn d  DW03_PIPE_REG(STR)
+      entity		: p n    DW03_REG_S_PL
+      architecture	:   n d  DW03_REG_S_PL(MBSTR)
+      architecture	:  mn d  DW03_REG_S_PL(STR)
+      entity		: p n    DW03_SHFTREG
+      architecture	:  mn d  DW03_SHFTREG(STR)
+      entity		: p n    DW03_UPDN_CTR
+      architecture	:   n d  DW03_UPDN_CTR(CLA)
+      architecture	:   n d  DW03_UPDN_CTR(CLF)
+      architecture	:  mn d  DW03_UPDN_CTR(RPL)
+      architecture	:  mn    DW03_bictr_dcnto(lpwr)
+      architecture	:  mn    DW03_bictr_scnto(lpwr)
+      entity		: p n    DW_ASYMDATA_INBUF
+      entity		: p n    DW_ASYMDATA_OUTBUF
+      entity		: p n    DW_ASYMFIFOCTL_2C_DF
+      entity		: p n    DW_ASYMFIFOCTL_IN_WRAPPER
+      architecture	:  mn d  DW_ASYMFIFOCTL_IN_WRAPPER(STR)
+      entity		: p n    DW_ASYMFIFOCTL_OUT_WRAPPER
+      architecture	:  mn d  DW_ASYMFIFOCTL_OUT_WRAPPER(STR)
+      entity		: p n    DW_ASYMFIFOCTL_S1_DF
+      architecture	:  mn    DW_ASYMFIFOCTL_S1_DF(STR)
+      entity		: p n    DW_ASYMFIFOCTL_S1_SF
+      architecture	:  mn    DW_ASYMFIFOCTL_S1_SF(STR)
+      entity		: p n    DW_ASYMFIFOCTL_S2SF_INWRP
+      architecture	:  mn    DW_ASYMFIFOCTL_S2SF_INWRP(STR)
+      entity		: p n    DW_ASYMFIFOCTL_S2SF_OUTWRP
+      architecture	:  mn    DW_ASYMFIFOCTL_S2SF_OUTWRP(STR)
+      entity		: p n    DW_ASYMFIFOCTL_S2_SF
+      architecture	:  mn d  DW_ASYMFIFOCTL_S2_SF(STR)
+      entity		: p n    DW_CNTR_DCNTO
+      architecture	:   n d  DW_CNTR_DCNTO(STR)
+      entity		: p n    DW_CNTR_GRAY
+      architecture	:   n    DW_CNTR_GRAY(LPWR)
+      architecture	:  mn    DW_CNTR_GRAY(STR)
+      entity		: p n    DW_CNTR_SCNTO
+      architecture	:   n d  DW_CNTR_SCNTO(STR)
+      entity		: p n    DW_CNTR_SMOD
+      architecture	:   n d  DW_CNTR_SMOD(STR)
+      entity		: p n    DW_DATA_QSYNC_HL
+      entity		: p n    DW_DATA_QSYNC_LH
+      entity		: p n    DW_DATA_SYNC
+      entity		: p n    DW_DATA_SYNC_1C
+      entity		: p n    DW_DATA_SYNC_NA
+      entity		: p n    DW_DCT_2D
+      entity		: p n    DW_DIV_SEQ
+      architecture	:   n d  DW_DIV_SEQ(CPA)
+      architecture	:  mn d  DW_DIV_SEQ(CPA2)
+      entity		: p n    DW_DPLL_SD
+      architecture	:  mn d  DW_DPLL_SD(STR)
+      entity		: p n    DW_FIFOCTL_2C_DF
+      entity		: p n    DW_FIFOCTL_IF
+      architecture	:  mn d  DW_FIFOCTL_IF(STR)
+      entity		: p n    DW_FIFOCTL_S1R
+      architecture	:  mn d  DW_FIFOCTL_S1R(CLA)
+      architecture	:   n d  DW_FIFOCTL_S1R(RPL)
+      entity		: p n    DW_FIFOCTL_S1_DF
+      entity		: p n    DW_FIFOCTL_S1_SF
+      entity		: p n    DW_FIFOCTL_S2DR_SF
+      architecture	:  mn d  DW_FIFOCTL_S2DR_SF(CL2)
+      architecture	:   n d  DW_FIFOCTL_S2DR_SF(RPL)
+      entity		: p n    DW_FIFOCTL_S2_SF
+      architecture	:  mn d  DW_FIFOCTL_S2_SF(STR)
+      entity		: p n    DW_FIR
+      architecture	:  mn d  DW_FIR(STR)
+      entity		: p n    DW_FIR_SEQ
+      architecture	:  mn    DW_FIR_SEQ(STR)
+      entity		: p n    DW_FIR_SEQ_AU
+      architecture	:  mn d  DW_FIR_SEQ_AU(STR)
+      entity		: p n    DW_FIR_SEQ_CSR
+      architecture	:  mn d  DW_FIR_SEQ_CSR(STR)
+      entity		: p n    DW_FIR_SEQ_CTL
+      architecture	:  mn d  DW_FIR_SEQ_CTL(RTL)
+      entity		: p n    DW_FIR_SEQ_DSR
+      architecture	:  mn d  DW_FIR_SEQ_DSR(STR)
+      entity		: p n    DW_GRAY_SYNC
+      entity		: p n    DW_IIR_DC
+      architecture	:  mn d  DW_IIR_DC(MULT)
+      entity		: p n    DW_IIR_SC
+      architecture	:   n    DW_IIR_SC(MULT)
+      architecture	:  mn    DW_IIR_SC(VSUM)
+      entity		: p n    DW_LP_CNTR_UPDN_DF
+      entity		: p n    DW_LP_CNTR_UP_DF
+      entity		: p n    DW_LP_FIFOCTL_1C_DF
+      entity		: p n    DW_LP_PIPED_DIV
+      entity		: p n    DW_LP_PIPED_FP_ADD
+      entity		: p n    DW_LP_PIPED_FP_DIV
+      entity		: p n    DW_LP_PIPED_FP_MULT
+      entity		: p n    DW_LP_PIPED_FP_RECIP
+      entity		: p n    DW_LP_PIPED_FP_SUM3
+      entity		: p n    DW_LP_PIPED_MULT
+      entity		: p n    DW_LP_PIPED_PROD_SUM
+      entity		: p n    DW_LP_PIPED_SQRT
+      entity		: p n    DW_LP_PIPE_MGR
+      entity		: p n    DW_MULT_SEQ
+      architecture	:  mn d  DW_MULT_SEQ(CPA)
+      entity		: p n    DW_PIPED_MAC
+      entity		: p n    DW_PIPE_REG
+      architecture	:  mn d  DW_PIPE_REG(STR)
+      entity		: p n    DW_PL_REG
+      entity		: p n    DW_PULSEACK_SYNC
+      entity		: p n    DW_PULSE_SYNC
+      entity		: p n    DW_RESET_SYNC
+      entity		: p n    DW_SQRT_SEQ
+      architecture	:  mn d  DW_SQRT_SEQ(CPA)
+      entity		: p n    DW_STACKCTL
+      architecture	:  mn d  DW_STACKCTL(STR)
+      entity		: p n    DW_STREAM_SYNC
+      entity		: p n    DW_SYNC
+      architecture	:  mn    DW_asymdata_inbuf(rtl)
+      architecture	:  mn    DW_asymdata_outbuf(rtl)
+      architecture	:   n    DW_asymfifoctl_2c_df(lpwr)
+      architecture	:  mn    DW_asymfifoctl_2c_df(rtl)
+      architecture	:  mn    DW_cntr_dcnto(lpwr)
+      architecture	:  mn    DW_cntr_scnto(lpwr)
+      architecture	:  mn    DW_cntr_smod(lpwr)
+      architecture	:  mn    DW_data_qsync_hl(rtl)
+      architecture	:  mn    DW_data_qsync_lh(rtl)
+      architecture	:  mn    DW_data_sync(rtl)
+      architecture	:  mn    DW_data_sync_1c(rtl)
+      architecture	:  mn    DW_data_sync_na(rtl)
+      architecture	:  mn    DW_dct_2d(rtl)
+      architecture	:   n    DW_fifoctl_2c_df(lpwr)
+      architecture	:  mn    DW_fifoctl_2c_df(rtl)
+      architecture	:   n    DW_fifoctl_s1_df(lpwr)
+      architecture	:  mn    DW_fifoctl_s1_df(rtl)
+      architecture	:   n    DW_fifoctl_s1_sf(lpwr)
+      architecture	:  mn    DW_fifoctl_s1_sf(rtl)
+      architecture	:  mn    DW_gray_sync(rtl)
+      architecture	:  mn    DW_lp_cntr_up_df(rtl)
+      architecture	:  mn    DW_lp_cntr_updn_df(rtl)
+      architecture	:  mn    DW_lp_fifoctl_1c_df(rtl)
+      architecture	:  mn    DW_lp_pipe_mgr(rtl)
+      architecture	:  mn    DW_lp_piped_div(rtl)
+      architecture	:  mn    DW_lp_piped_fp_add(ig)
+      architecture	:   n    DW_lp_piped_fp_add(rtl)
+      architecture	:  mn    DW_lp_piped_fp_div(rtl)
+      architecture	:  mn    DW_lp_piped_fp_mult(rtl)
+      architecture	:  mn    DW_lp_piped_fp_recip(rtl)
+      architecture	:  mn    DW_lp_piped_fp_sum3(rtl)
+      architecture	:  mn    DW_lp_piped_mult(rtl)
+      architecture	:  mn    DW_lp_piped_prod_sum(rtl)
+      architecture	:  mn    DW_lp_piped_sqrt(rtl)
+      architecture	:  mn    DW_piped_mac(lpwr)
+      architecture	:   n    DW_piped_mac(rtl)
+      architecture	:  mn    DW_pl_reg(rtl)
+      architecture	:  mn    DW_pulse_sync(rtl)
+      architecture	:  mn    DW_pulseack_sync(rtl)
+      architecture	:  mn    DW_reset_sync(rtl)
+      architecture	:  mn    DW_stream_sync(rtl)
+      architecture	:  mn    DW_sync(rtl)
+      architecture	:   n    DWsc_fifoctl_dif(lpwr)
+      architecture	:  mn    DWsc_fifoctl_dif(rtl)
+      architecture	:  mn    DWsc_fifoctl_s1_df(lpwr)
+      architecture	:   n    DWsc_fifoctl_s1_df(rtl)
+      architecture	:  mn    DWsc_fifoctl_sif(rtl)
+   DW04 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw04/lib)
+      entity		:   n    DFT_AC_1
+      architecture	:  mn    DFT_AC_1(STR)
+      entity		:   n    DFT_AC_10
+      architecture	:  mn    DFT_AC_10(STR)
+      entity		:   n    DFT_AC_2
+      architecture	:  mn    DFT_AC_2(STR)
+      entity		:   n    DFT_AC_7
+      architecture	:  mn    DFT_AC_7(STR)
+      entity		:   n    DFT_AC_8
+      architecture	:  mn    DFT_AC_8(STR)
+      entity		:   n    DFT_AC_9
+      architecture	:  mn    DFT_AC_9(STR)
+      entity		:   n    DFT_AC_SELU
+      architecture	:  mn    DFT_AC_SELU(STR)
+      entity		:   n    DFT_AC_SELX
+      architecture	:  mn    DFT_AC_SELX(STR)
+      entity		:   n    DFT_BC_1
+      architecture	:  mn    DFT_BC_1(STR)
+      entity		:   n    DFT_BC_10
+      architecture	:  mn    DFT_BC_10(STR)
+      entity		:   n    DFT_BC_2
+      architecture	:  mn    DFT_BC_2(STR)
+      entity		:   n    DFT_BC_3
+      architecture	:  mn    DFT_BC_3(STR)
+      entity		:   n    DFT_BC_4
+      architecture	:  mn    DFT_BC_4(STR)
+      entity		:   n    DFT_BC_5
+      architecture	:  mn    DFT_BC_5(STR)
+      entity		:   n    DFT_BC_7
+      architecture	:  mn    DFT_BC_7(STR)
+      entity		:   n    DFT_BC_8
+      architecture	:  mn    DFT_BC_8(STR)
+      entity		:   n    DFT_BC_9
+      architecture	:  mn    DFT_BC_9(STR)
+      entity		: p n    DFT_BISTC
+      architecture	:  mn d  DFT_BISTC(RTL)
+      entity		:   n    DFT_BYPASS
+      architecture	:  mn    DFT_BYPASS(STR)
+      entity		: p n    DFT_CODEC
+      architecture	:  mn d  DFT_CODEC(RTL)
+      entity		: p n    DFT_IDREG
+      architecture	:  mn    DFT_IDREG(STR)
+      entity		: p n    DFT_IDREGUC
+      architecture	:  mn    DFT_IDREGUC(STR)
+      entity		: p n    DFT_INSTRREG
+      architecture	:  mn    DFT_INSTRREG(STR)
+      entity		: p n    DFT_INSTRREGID
+      architecture	:  mn    DFT_INSTRREGID(STR)
+      entity		: p n    DFT_SHADOW
+      architecture	:  mn d  DFT_SHADOW(RTL)
+      entity		: p n    DFT_SIGN
+      architecture	:  mn d  DFT_SIGN(RTL)
+      entity		: p n    DFT_TAP
+      architecture	:  mn    DFT_TAP(STR)
+      entity		: p n    DFT_TAPFSM
+      architecture	:  mn    DFT_TAPFSM(STR)
+      entity		: p n    DFT_XBISTC
+      architecture	:  mn d  DFT_XBISTC(RTL)
+      entity		: p n    DFT_XCODEC
+      architecture	:  mn d  DFT_XCODEC(RTL)
+      architecture	:  mn    DFT_compact(rtl)
+      architecture	:  mn    DFT_ctr(rtl)
+      architecture	:  mn    DFT_diag(rtl)
+      architecture	:  mn    DFT_lfsr(257)
+      architecture	:   n    DFT_lfsr(rtl)
+      architecture	:  mn    DFT_misr(rtl)
+      architecture	:   n    DFT_mux16to1(rtl)
+      architecture	:  mn    DFT_mux16to1(tri)
+      architecture	:   n    DFT_mux4to1(rtl)
+      architecture	:  mn    DFT_mux4to1(str)
+      architecture	:  mn    DFT_mux8to1(rtl)
+      architecture	:  mn    DFT_outcompact(rtl)
+      architecture	:  mn    DFT_prpg(rtl)
+      architecture	:  mn    DFT_sel48to16(rtl)
+      architecture	:  mn    DFT_sel512to64(rtl)
+      architecture	:  mn    DFT_sel64to16(rtl)
+      architecture	:  mn    DFT_selcontrol(rtl)
+      architecture	:  mn    DFT_selshadow(rtl)
+      architecture	:  mn    DFT_selshifter(rtl)
+      architecture	:  mn    DFT_selshifters(rtl)
+      architecture	:  mn    DFT_selxbist(rtl)
+      architecture	:  mn    DFT_selxbists(rtl)
+      architecture	:  mn    DFT_shifter(257to2048)
+      architecture	:   n    DFT_shifter(257to512)
+      architecture	:   n    DFT_shifter(rtl)
+      package		:   n    DW04_COMPONENTS
+      entity		: p n    DW04_PAR_GEN
+      architecture	:  mn d  DW04_PAR_GEN(STR)
+      entity		: p n    DW04_SHAD_REG
+      architecture	:  mn d  DW04_SHAD_REG(STR)
+      entity		: p n    DW_8B10B_DEC
+      entity		: p n    DW_8B10B_ENC
+      entity		: p n    DW_8B10B_UNBAL
+      architecture	:  mn    DW_8b10b_dec(lpwr)
+      architecture	:   n    DW_8b10b_dec(rtl)
+      architecture	:  mn    DW_8b10b_enc(lpwr)
+      architecture	:   n    DW_8b10b_enc(rtl)
+      architecture	:  mn    DW_8b10b_unbal(rtl)
+      entity		:   n    DW_BC_1
+      architecture	:  mn d  DW_BC_1(STR)
+      entity		:   n    DW_BC_10
+      architecture	:  mn d  DW_BC_10(STR)
+      entity		:   n    DW_BC_2
+      architecture	:  mn d  DW_BC_2(STR)
+      entity		:   n    DW_BC_3
+      architecture	:  mn d  DW_BC_3(STR)
+      entity		:   n    DW_BC_4
+      architecture	:  mn    DW_BC_4(STR)
+      entity		:   n    DW_BC_5
+      architecture	:  mn d  DW_BC_5(STR)
+      entity		:   n    DW_BC_7
+      architecture	:  mn d  DW_BC_7(STR)
+      entity		:   n    DW_BC_8
+      architecture	:  mn d  DW_BC_8(STR)
+      entity		:   n    DW_BC_9
+      architecture	:  mn d  DW_BC_9(STR)
+      entity		:   n d  DW_BYPASS
+      architecture	:  mn d  DW_BYPASS(STR)
+      entity		:   n d  DW_CAPTURE
+      architecture	:  mn d  DW_CAPTURE(STR)
+      entity		:   n d  DW_CAPUP
+      architecture	:  mn d  DW_CAPUP(STR)
+      entity		:   n    DW_CONTROL_FORCE
+      architecture	:  mn d  DW_CONTROL_FORCE(STR)
+      entity		: p n    DW_CRC_P
+      architecture	:  mn d  DW_CRC_P(STR)
+      entity		: p n    DW_CRC_S
+      architecture	:  mn d  DW_CRC_S(STR)
+      entity		: p n    DW_CRC_SPM
+      architecture	:  mn    DW_CRC_SPM(STR)
+      entity		: p n    DW_ECC
+      entity		: p n d  DW_IDREG
+      architecture	:  mn d  DW_IDREG(STR)
+      entity		: p n    DW_IDREGUC
+      architecture	:  mn    DW_IDREGUC(STR)
+      entity		: p n d  DW_INSTRREG
+      architecture	:  mn d  DW_INSTRREG(STR)
+      entity		: p n    DW_INSTRREGID
+      architecture	:  mn d  DW_INSTRREGID(STR)
+      entity		: p n    DW_LP_PIPED_ECC
+      entity		: p n    DW_MBIST_APG
+      architecture	:  mn d  DW_MBIST_APG(RTL)
+      entity		: p n    DW_MBIST_CTRL
+      architecture	:  mn d  DW_MBIST_CTRL(RTL)
+      entity		: p n    DW_MBIST_MEMORY
+      architecture	:  mn d  DW_MBIST_MEMORY(RTL)
+      entity		: p n    DW_MBIST_MUX
+      architecture	:  mn    DW_MBIST_MUX(RTL)
+      entity		: p n    DW_MBIST_WRAPPER
+      architecture	:  mn d  DW_MBIST_WRAPPER(RTL)
+      entity		:   n    DW_OBSERV_DGEN
+      architecture	:  mn d  DW_OBSERV_DGEN(STR)
+      entity		: p n    DW_TAP
+      architecture	:  mn d  DW_TAP(STR)
+      entity		: p n d  DW_TAPFSM
+      architecture	:  mn d  DW_TAPFSM(STR)
+      entity		: p n    DW_TAP_UC
+      architecture	:  mn d  DW_TAP_UC(STR)
+      entity		: p n    DW_TAP_UC2
+      architecture	:  mn d  DW_TAP_UC2(STR)
+      entity		: p n    DW_WC_D1_S
+      architecture	:  mn d  DW_WC_D1_S(STR)
+      entity		: p n    DW_WC_S1_S
+      architecture	:  mn d  DW_WC_S1_S(STR)
+      entity		:   n    DW_Z_CONTROL_FORCE
+      architecture	:  mn d  DW_Z_CONTROL_FORCE(STR)
+      architecture	:  mn    DW_ecc(rtl)
+      architecture	:  mn    DW_lp_piped_ecc(rtl)
+      architecture	:  mn    DW_mbist_apg_acnt(rtl)
+      architecture	:  mn    DW_mbist_apg_agen(rtl)
+      architecture	:  mn    DW_mbist_apg_cfsr(rtl)
+      architecture	:  mn    DW_mbist_apg_dgen(rtl)
+      architecture	:  mn    DW_mbist_apg_lcnt(rtl)
+      architecture	:  mn    DW_mbist_apg_muxif(rtl)
+      architecture	:  mn    DW_mbist_apg_rwt(rtl)
+      architecture	:  mn    DW_mbist_ctrl_alg(rtl)
+      architecture	:  mn    DW_mbist_ctrl_memsel(rtl)
+      architecture	:  mn    DW_mbist_ctrl_modereg(rtl)
+      architecture	:  mn    DW_mbist_ctrl_pgen(rtl)
+      architecture	:  mn    DW_mbist_ctrl_topfsm(rtl)
+      architecture	:  mn    DW_mbist_muxport(rtl)
+   DW05 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw05/lib)
+      package		:   n    DW05_COMPONENTS
+      entity		: p n    DW_ARB_2T
+      entity		: p n    DW_ARB_DP
+      entity		: p n    DW_ARB_FCFS
+      entity		: p n    DW_ARB_RR
+      entity		: p n    DW_ARB_SP
+      architecture	:  mn    DW_arb_2t(rtl)
+      architecture	:  mn    DW_arb_dp(lpwr)
+      architecture	:   n    DW_arb_dp(rtl)
+      architecture	:  mn    DW_arb_fcfs(rtl)
+      architecture	:  mn    DW_arb_rr(rtl)
+      architecture	:   n    DW_arb_sp(lpwr)
+      architecture	:  mn    DW_arb_sp(rtl)
+   DW06 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw06/lib)
+      package		:   n    DW06_COMPONENTS
+      entity		: p n    DW_ASYMFIFO_S1_DF
+      architecture	:  mn    DW_ASYMFIFO_S1_DF(STR)
+      entity		: p n    DW_ASYMFIFO_S1_SF
+      architecture	:  mn    DW_ASYMFIFO_S1_SF(STR)
+      entity		: p n    DW_ASYMFIFO_S2_SF
+      architecture	:  mn    DW_ASYMFIFO_S2_SF(STR)
+      entity		: p n    DW_FIFO_2C_DF
+      entity		: p n    DW_FIFO_S1_DF
+      architecture	:  mn    DW_FIFO_S1_DF(RTL)
+      entity		: p n    DW_FIFO_S1_SF
+      architecture	:  mn    DW_FIFO_S1_SF(RTL)
+      entity		: p n    DW_FIFO_S2_SF
+      architecture	:  mn    DW_FIFO_S2_SF(STR)
+      entity		: p n    DW_LP_FIFO_1C_DF
+      entity		: p n    DW_MEM_2R_W_A_DFF
+      architecture	:  mn d  DW_MEM_2R_W_A_DFF(STR)
+      entity		: p n    DW_MEM_2R_W_A_LAT
+      architecture	:  mn d  DW_MEM_2R_W_A_LAT(STR)
+      entity		: p n    DW_MEM_2R_W_S_DFF
+      architecture	:  mn d  DW_MEM_2R_W_S_DFF(STR)
+      entity		: p n    DW_MEM_2R_W_S_LAT
+      architecture	:  mn d  DW_MEM_2R_W_S_LAT(STR)
+      entity		: p n    DW_MEM_RW_A_DFF
+      architecture	:  mn d  DW_MEM_RW_A_DFF(STR)
+      entity		: p n    DW_MEM_RW_A_LAT
+      architecture	:  mn d  DW_MEM_RW_A_LAT(STR)
+      entity		: p n    DW_MEM_RW_S_DFF
+      architecture	:  mn d  DW_MEM_RW_S_DFF(STR)
+      entity		: p n    DW_MEM_RW_S_LAT
+      architecture	:  mn d  DW_MEM_RW_S_LAT(STR)
+      entity		: p n    DW_MEM_R_W_A_DFF
+      architecture	:  mn d  DW_MEM_R_W_A_DFF(STR)
+      entity		: p n    DW_MEM_R_W_A_LAT
+      architecture	:  mn d  DW_MEM_R_W_A_LAT(STR)
+      entity		: p n    DW_MEM_R_W_S_DFF
+      architecture	:  mn d  DW_MEM_R_W_S_DFF(STR)
+      entity		: p n    DW_MEM_R_W_S_LAT
+      architecture	:  mn d  DW_MEM_R_W_S_LAT(STR)
+      entity		: p n    DW_RAM_2R_W_A_DFF
+      architecture	:  mn d  DW_RAM_2R_W_A_DFF(STR)
+      entity		: p n    DW_RAM_2R_W_A_LAT
+      architecture	:  mn d  DW_RAM_2R_W_A_LAT(STR)
+      entity		: p n    DW_RAM_2R_W_S_DFF
+      architecture	:  mn d  DW_RAM_2R_W_S_DFF(STR)
+      entity		: p n    DW_RAM_2R_W_S_LAT
+      architecture	:  mn d  DW_RAM_2R_W_S_LAT(STR)
+      entity		: p n    DW_RAM_RW_A_DFF
+      architecture	:  mn d  DW_RAM_RW_A_DFF(STR)
+      entity		: p n    DW_RAM_RW_A_LAT
+      architecture	:  mn d  DW_RAM_RW_A_LAT(STR)
+      entity		: p n    DW_RAM_RW_S_DFF
+      architecture	:  mn d  DW_RAM_RW_S_DFF(STR)
+      entity		: p n    DW_RAM_RW_S_LAT
+      architecture	:  mn d  DW_RAM_RW_S_LAT(STR)
+      entity		: p n    DW_RAM_R_W_2C_DFF
+      entity		: p n    DW_RAM_R_W_A_DFF
+      architecture	:  mn d  DW_RAM_R_W_A_DFF(STR)
+      entity		: p n    DW_RAM_R_W_A_LAT
+      architecture	:  mn d  DW_RAM_R_W_A_LAT(STR)
+      entity		: p n    DW_RAM_R_W_S_DFF
+      architecture	:  mn d  DW_RAM_R_W_S_DFF(STR)
+      entity		: p n    DW_RAM_R_W_S_LAT
+      architecture	:  mn d  DW_RAM_R_W_S_LAT(STR)
+      entity		: p n    DW_STACK
+      architecture	:  mn    DW_STACK(STR)
+      architecture	:  mn    DW_fifo_2c_df(lpwr)
+      architecture	:   n    DW_fifo_2c_df(rtl)
+      architecture	:  mn    DW_lp_fifo_1c_df(rtl)
+      architecture	:  mn    DW_ram_r_w_2c_dff(rtl)
+   DW07 (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw07/lib)
+Error: The library 'DW07' is mapped to the directory '/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/dw/dw07/lib/dw07', which is not readable. (LBR-2)
+   DWARE (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/dware/lib)
+      This library does not contain any valid design units.
+   GSCOMP (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/gscomp/lib)
+      This library does not contain any valid design units.
+   GTECH (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/gtech/lib)
+      This library does not contain any valid design units.
+   IEEE (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/IEEE/lib)
+      This library does not contain any valid design units.
+   IEEE_ASIC (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/IEEE_asic/lib)
+      This library does not contain any valid design units.
+   SMARTMODEL (/synopsys/smartmodel)
+Error: The library 'SMARTMODEL' is mapped to the directory '/synopsys/smartmodel', which is not readable. (LBR-2)
+   SNPS_EXT (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/snps_ext/lib)
+      This library does not contain any valid design units.
+   STD (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/STD/lib)
+      This library does not contain any valid design units.
+   SYNOPSYS (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/synopsys/lib)
+      This library does not contain any valid design units.
+   UI (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/UI/lib)
+Error: The library 'UI' is mapped to the directory '/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/UI/lib', which is not readable. (LBR-2)
+   VHDLGEN (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/VHDLGEN/lib)
+Error: The library 'VHDLGEN' is mapped to the directory '/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/VHDLGEN/lib', which is not readable. (LBR-2)
+   VITAL (/opt/esdcad/software/synopsys/linux/galaxy_C-2009.06-SP4/packages/VITAL/lib)
+      This library does not contain any valid design units.
+
+p --- This design has parameters.
+m --- This architecture is the most recently analyzed.
+n --- Can't find the source for this file.
+d --- This file depends on design units that have been analyzed more recently.
+
+1

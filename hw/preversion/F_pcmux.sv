@@ -10,13 +10,13 @@ module F_pcmux
   always_comb 
     begin
     	casez({i_con_jump, i_con_ifbranch})
-    	  3'b011  :  begin o_addr_nextpc = i_addr_jump; end    //  j and jal instruction
+    	  3'b010  :  begin o_addr_nextpc = i_addr_jump; end    //  j and jal instruction
 
-    	  3'b101  :  begin o_addr_nextpc = i_addr_jumpr; end    //  jr instruction 
+    	  3'b100  :  begin o_addr_nextpc = i_addr_jumpr; end    //  jr instruction 
 
-    	  //3'b001  :  begin o_addr_nextpc = i_addr_pc; end     //  no jump 
+    	  3'b000  :  begin o_addr_nextpc = i_addr_pc; end     //  no jump 
 
-          3'b??0  :  begin o_addr_nextpc = i_addr_branch; end    //  branch
+          3'b??1  :  begin o_addr_nextpc = i_addr_branch; end    //  branch
 
     	  default : begin o_addr_nextpc = i_addr_pc; end
     	endcase
