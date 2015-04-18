@@ -26,7 +26,8 @@ always_comb
 						38:	o_con_AluCtrl=13;	//R /xor
 						39:	o_con_AluCtrl=12;	//R /nor
 						///////////////////////////////////////
-						42,43:	o_con_AluCtrl=7;	//R /slt(set on less than) /sltu 
+						42: o_con_AluCtrl=14;	//R  /slt 
+						43:	o_con_AluCtrl=7;	//R  /sltu 
 					endcase
 					end
 			2'b11:  begin
@@ -39,9 +40,10 @@ always_comb
                         ///////////////////////////////////////
                         //5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
-                        6:  o_con_AluCtrl=7;    // slti/sltiu
+                        6:  o_con_AluCtrl=14;    // slti
                         7:	o_con_AluCtrl=8;	//I//lui
                         8: 	o_con_AluCtrl=9;	//J//jal
+                        9:	o_con_AluCtrl=7;	//sltiu
                     endcase
 			        end
 		endcase

@@ -2,7 +2,7 @@
 module E_alu(
 	output logic [31:0] o_data_AluRes, 
 	input logic [31:0]i_data_A, 
-	input logic [31:0]i_data_B, 
+	input logic [31:0]i_data_B,
 	input logic [3:0]i_con_AluCtrl, 
 	input logic [4:0] i_data_shamt);
 
@@ -42,13 +42,13 @@ always_comb
 					o_data_AluRes [31:16]= half_sub[16] ? pre_subb : pre_suba;//sub, subu
 					o_data_AluRes [15:0] = half_sub[15:0];
 				end
-			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;// slt, sltu
+			7:	o_data_AluRes = (i_data_A < i_data_B) ? 1:0;// sltu
 			8:	o_data_AluRes = {i_data_B, 16'b0}; 		//I//lui;
 			9: 	o_data_AluRes = i_data_A + 4;			//J//jal;			
 			12:	o_data_AluRes = ~(i_data_A|i_data_B);	//nor
 			13: o_data_AluRes = i_data_A ^ i_data_B;	//xor
-			//14: o_data_AluRes = i_data_A;				//jr (architecture modification expected)
-			
-		endcase
+			14: o_data_AluRes = (((i_data_A[31]^i_data_B[31])&&i_data_A[31])||(~(i_data_A[31]^i_data_B[31])&&(i_data_A<i_data_B)));//slt
+						
+		endcase  
 	end
 endmodule
