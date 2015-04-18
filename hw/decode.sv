@@ -48,7 +48,7 @@ module decode(
 wire compare_o_con_ifbranch;
 wire [31:0] compare_i_data_rs;
 wire [31:0] compare_i_data_rt;   
-wire [2:0] compare_i_con_bop;
+wire compare_i_con_bop; /////////
  
 //control
 wire control_o_con_regdst;
@@ -164,7 +164,7 @@ end
 //compare
 assign compare_i_data_rs = regbank_o_data_Rs;
 assign compare_i_data_rt = regbank_o_data_Rt;   
-assign compare_i_con_bop = jbcon_o_con_bop;
+assign compare_i_con_bop = jbcon_o_con_bop[0];
 //control
 assign control_i_con_instru = i_data_instr[31:26];
 //jbcon
