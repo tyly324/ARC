@@ -19,6 +19,11 @@ module decode(
 	input logic [4:0] i_addr_Mrd,
 	input logic i_con_Eregwrite,
 	input logic i_con_Mregwrite,
+	input logic [4:0] i_addr_rtM,/////////////
+	input logic [4:0] i_addr_rtW,///////////
+	input logic i_con_memreadM,///////////
+	input logic i_con_memreadW,/////////
+	input logic [31:0] i_data_aluresE,
 
 	//register bank
 	output logic [31:0] o_data_rs,
@@ -34,7 +39,7 @@ module decode(
 	output logic [31:0] o_addr_jump,
 	//control signals
 	output logic [5:0] o_con_Ealuop,
-	//output logic o_con_Ealusrc,////////////////
+	output logic o_con_Ealusrc,
 	output logic o_con_Eregdst,
 	output logic o_con_Mmemread,
 	output logic o_con_Mmemwrite,
@@ -45,8 +50,9 @@ module decode(
 	//data
 	output logic [31:0] o_data_signext,
 	//forward unit/////////////////
-	output logic [1:0] o_con_Efamux,
-	output logic [1:0] o_con_Efbmux
+	output logic [2:0] o_con_Efamux,
+	output logic [2:0] o_con_Efbmux,
+	output logic [31:0] o_data_Fmemout
 	);
 
 // ====================
@@ -56,7 +62,7 @@ module decode(
 wire compare_o_con_ifbranch;
 wire [31:0] compare_i_data_rs;
 wire [31:0] compare_i_data_rt;   
-wire compare_i_con_bop; /////////
+wire [1:0] compare_i_con_bop; /////////
  
 //control
 wire control_o_con_regdst;
@@ -72,7 +78,7 @@ wire [5:0] control_i_con_instru;
 
 //jbcon
 wire [1:0] jbcon_o_con_jump;
-wire jbcon_o_con_bop;
+wire [1:0] jbcon_o_con_bop;
 wire jbcon_o_con_aluPC4;
 wire [5:0] jbcon_i_con_instru;
 wire [5:0] jbcon_i_con_func;
@@ -106,10 +112,24 @@ wire [3:0] jumpext_i_PC4_j;
 wire [31:0] jumpext_o_addr_j;
 
 //forward////////////////////////////////
-wire [4:0] for_i_data_rs, for_i_data_rt, for_i_data_rdM, for_i_data_rdW;
-wire for_i_con_regwriteM, for_i_con_regwriteW;
-wire for_i_con_alures;
-wire [1:0] for_o_con_fa, for_o_con_fb;
+wire [4:0] for_i_addr_rs; 
+wire [4:0] for_i_addr_rt;
+wire [4:0] for_i_addr_rdM;
+wire [4:0] for_i_addr_rdW;
+wire for_i_con_regwriteM;
+wire for_i_con_regwriteW;
+wire [2:0] for_o_con_fa;
+wire [2:0] for_o_con_fb;
+wire [4:0] for_i_addr_rtM;////////////
+wire [4:0] for_i_addr_rtW;//////////
+wire for_i_con_memreadM;///////////
+wire for_i_con_memreadW;/////////
+wire for_o_con_cmpalu;//////////////
+//cmpmux//////////////////////////
+wire [31:0] cmpmux_i_data_rs;
+wire [31:0] cmpmux_i_data_aluresE;
+wire cmpmux_i_con_cmpalu;
+wire [31:0] cmpmux_o_data_cmprs;
 
 // ====================
 // Registers
@@ -122,7 +142,7 @@ logic [4:0] pipe_addr_rt;
 //logic [4:0] pipe_addr_rs;//////////////
 logic [31:0] pipe_addr_pc4;
 logic [5:0] pipe_con_Ealuop;
-//logic pipe_con_Ealusrc;/////////////////
+logic pipe_con_Ealusrc;
 logic pipe_con_Eregdst;
 logic pipe_con_EaluPC4;
 logic pipe_con_Mmemread;
@@ -132,8 +152,9 @@ logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
 logic [31:0]pipe_signext_o_data_immD;
 //forward//////////////////////
-logic [1:0] pipe_con_Efamux;
-logic [1:0] pipe_con_Efbmux;
+logic [2:0] pipe_con_Efamux;
+logic [2:0] pipe_con_Efbmux;
+logic [31:0] pipe_memout;
 
 always_ff @(posedge i_clk, negedge i_nrst)
 begin
@@ -145,7 +166,7 @@ begin
 		//pipe_addr_rs <= 0;///////////////
 		pipe_addr_pc4 <= 0;
 		pipe_con_Ealuop <= 0;
-		//pipe_con_Ealusrc <= 0;////////////////
+		pipe_con_Ealusrc <= 0;
 		pipe_con_Eregdst <= 0;
 		pipe_con_EaluPC4 <= 0;
 		pipe_con_Mmemread <= 0;
@@ -157,6 +178,7 @@ begin
 		//forward///////////////////
 		pipe_con_Efamux <= 0;
 		pipe_con_Efbmux <= 0;
+		pipe_memout <= 0;
 	end 
 	else begin
 		pipe_data_rs <= regbank_o_data_Rs;
@@ -166,7 +188,7 @@ begin
 		//pipe_addr_rs <= i_data_instr[25:21];/////////////////
 		pipe_addr_pc4 <= i_addr_pc4;
 		pipe_con_Ealuop <= control_o_con_aluop; 
-		//pipe_con_Ealusrc <= control_o_con_alusrc;////////////////
+		pipe_con_Ealusrc <= control_o_con_alusrc;
 		pipe_con_Eregdst <= control_o_con_regdst;
 		pipe_con_EaluPC4 <= jbcon_o_con_aluPC4;
 		pipe_con_Mmemread <= control_o_con_memread;
@@ -178,6 +200,7 @@ begin
 		//forward/////////////////////
 		pipe_con_Efamux <= for_o_con_fa;
 		pipe_con_Efbmux <= for_o_con_fb;
+		pipe_memout <= i_data_Wregwrite;
 	end
 end
 
@@ -185,7 +208,7 @@ end
 // Interconnection
 // ====================
 //compare
-assign compare_i_data_rs = regbank_o_data_Rs;
+assign compare_i_data_rs = cmpmux_o_data_cmprs;
 assign compare_i_data_rt = regbank_o_data_Rt;   
 assign compare_i_con_bop = jbcon_o_con_bop;
 //control
@@ -213,13 +236,20 @@ assign jumpext_i_addr_j = i_data_instr[25:0];
 assign jumpext_i_PC4_j = i_addr_pc4[31:28];
 
 //forward/////////////////////////////////////////
-assign for_i_data_rs = i_data_instr[25:21];
-assign for_i_data_rt = i_data_instr[20:16];
-assign for_i_data_rdM = i_addr_Erd;
-assign for_i_data_rdW = i_addr_Mrd;
+assign for_i_addr_rs = i_data_instr[25:21];
+assign for_i_addr_rt = i_data_instr[20:16];
+assign for_i_addr_rdM = i_addr_Erd;
+assign for_i_addr_rdW = i_addr_Mrd;
 assign for_i_con_regwriteM = i_con_Eregwrite;
 assign for_i_con_regwriteW = i_con_Mregwrite;
-assign for_i_con_alures = control_o_con_alusrc;
+assign for_i_addr_rtM = i_addr_rtM;/////////////
+assign for_i_addr_rtW = i_addr_rtW;///////////
+assign for_i_con_memreadM = i_con_memreadM;///////////
+assign for_i_con_memreadW = i_con_memreadW;/////////
+//cmpmux/////////////////////
+assign cmpmux_i_data_rs = regbank_o_data_Rs;
+assign cmpmux_i_data_aluresE = i_data_aluresE;
+assign cmpmux_i_con_cmpalu = for_o_con_cmpalu;
 
 //outputs
 //register bank
@@ -236,7 +266,7 @@ assign o_addr_pcadd = pcadd_o_addr_pcbranchE;
 assign o_addr_jump = jumpext_o_addr_j;
 //control signals
 assign o_con_Ealuop = pipe_con_Ealuop; 
-//assign o_con_Ealusrc = pipe_con_Ealusrc;////////////////
+assign o_con_Ealusrc = pipe_con_Ealusrc;
 assign o_con_Eregdst = pipe_con_Eregdst;
 assign o_con_Walupc8 = pipe_con_EaluPC4;
 assign o_con_Mmemread = pipe_con_Mmemread;
@@ -249,6 +279,8 @@ assign o_data_signext = pipe_signext_o_data_immD;
 //forward unit///////////////////////////////
 assign o_con_Efamux = pipe_con_Efamux;
 assign o_con_Efbmux = pipe_con_Efbmux;
+assign o_data_Fmemout = pipe_memout;
+
 
 
 // ====================
@@ -328,15 +360,27 @@ D_jump_ext u_jump_ext(
 
 //forward///////////////////////////////
 E_forward u_forward(
-.i_data_rs(for_i_data_rs), 
-.i_data_rt(for_i_data_rt), 
-.i_data_rdM(for_i_data_rdM), 
-.i_data_rdW(for_i_data_rdW), 
+.i_addr_rs(for_i_addr_rs), 
+.i_addr_rt(for_i_addr_rt), 
+.i_addr_rdM(for_i_addr_rdM), 
+.i_addr_rdW(for_i_addr_rdW), 
+.i_addr_rtM(for_i_addr_rtM),
+.i_addr_rtW(for_i_addr_rtW),
 .i_con_regwriteM(for_i_con_regwriteM), 
-.i_con_regwriteW(for_i_con_regwriteW), 
-.i_con_alures(for_i_con_alures),
+.i_con_regwriteW(for_i_con_regwriteW),
+.i_con_memreadM(for_i_con_memreadM),
+.i_con_memreadW(for_i_con_memreadW),
 .o_con_fa(for_o_con_fa), 
-.o_con_fb(for_o_con_fb)
+.o_con_fb(for_o_con_fb),
+.o_con_cmpalu(for_o_con_cmpalu)
 );
+
+//cmpmux////////////////////
+D_cmpmux u_cmpmux(
+.i_data_rs(cmpmux_i_data_rs),
+.i_data_aluresE(cmpmux_i_data_aluresE),
+.i_con_cmpalu(cmpmux_i_con_cmpalu),
+.o_data_cmprs(cmpmux_o_data_cmprs)
+	);
 
 endmodule

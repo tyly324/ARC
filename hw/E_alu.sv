@@ -51,6 +51,7 @@ always_comb
 
 					o_data_AluRes [31:24]=carry3 ? pre_sum_4b : pre_sum_4a;					
 				end
+				//o_data_AluRes = i_data_A + i_data_B;
 			3:	o_data_AluRes = i_data_B <<i_data_shamt;//sll
 			4:	o_data_AluRes = i_data_B >>>i_data_shamt;//srl
 			5:	o_data_AluRes = i_data_B >>i_data_shamt;//sra

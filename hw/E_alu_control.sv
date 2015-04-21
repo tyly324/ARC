@@ -8,7 +8,7 @@ always_comb
 	begin:COM 
 		o_con_AluCtrl = 15;	//shouldnt happend
 		case(i_con_AluOp[1:0])
-			2'b00:	o_con_AluCtrl=2; 	//LW SW lbu lhbu / add
+			2'b00:	o_con_AluCtrl=2; 	//LW SW lbu lhbu / add / nop
 			//2'b01:	o_con_AluCtrl=6;	//sub
 			2'b10:	begin				//R
 					case(i_con_FuncCode)
@@ -26,7 +26,8 @@ always_comb
 						38:	o_con_AluCtrl=13;	//R /xor
 						39:	o_con_AluCtrl=12;	//R /nor
 						///////////////////////////////////////
-						42,43:	o_con_AluCtrl=7;	//R /slt(set on less than) /sltu 
+						42: o_con_AluCtrl=9;	//R /slt(set on less than)
+						43:	o_con_AluCtrl=7;	//R /sltu 
 					endcase
 					end
 			2'b11:  begin

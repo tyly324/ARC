@@ -9,6 +9,9 @@ module mem(
 	input logic i_con_Walupc8,/////////
 	input logic i_con_Wmemtoreg,
 	input logic i_con_Wregwrite,
+	//forward ////////////
+	input logic i_con_FWmemread,
+	input logic [4:0] i_addr_Mrt,
 
 	output logic [31:0] o_data_pc8,///////////
 	output logic [31:0] o_data_alures,
@@ -18,7 +21,10 @@ module mem(
 	output logic [1:0] o_con_Wloadmux,
 	output logic o_con_Walupc8,////////////////
 	output logic o_con_Wmemtoreg,
-	output logic o_con_Wregwrite
+	output logic o_con_Wregwrite,
+	//forward
+	output logic o_con_FWmemread,/////////////
+	output logic [4:0] o_addr_Wrt//////////////
 	);
 
 logic [31:0] pc8;/////////
@@ -36,6 +42,9 @@ logic [1:0] pipe_con_Wloadmux;
 logic pipe_con_Walupc8;/////////////
 logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
+//forward
+logic pipe_con_FWmemread;//////////
+logic [4:0] pipe_rt;////////////
 
 always_ff @(posedge i_clk, negedge i_nrst)
 begin
@@ -48,6 +57,8 @@ begin
 		pipe_con_Walupc8 <= 0;////////////
 		pipe_con_Wmemtoreg <= 0;
 		pipe_con_Wregwrite <= 0;
+		pipe_con_FWmemread <= 0;//////////////
+		pipe_rt <= 0;///////////////
 	end
 	else begin
 		pipe_data_pc8 <= pc8;/////////
@@ -58,6 +69,8 @@ begin
 		pipe_con_Walupc8 <= i_con_Walupc8;//////////////
 		pipe_con_Wmemtoreg <= i_con_Wmemtoreg;
 		pipe_con_Wregwrite <= i_con_Wregwrite;
+		pipe_con_FWmemread <= i_con_FWmemread;///////////
+		pipe_rt <= i_addr_Mrt;/////////////
 	end
 end
 
@@ -72,6 +85,8 @@ assign o_con_Wloadmux = pipe_con_Wloadmux;
 assign o_con_Walupc8 = pipe_con_Walupc8;////////////
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
+assign o_con_FWmemread = pipe_con_FWmemread;/////////////
+assign o_addr_Wrt = pipe_rt;//////////////
 
 
 endmodule
