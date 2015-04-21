@@ -54,7 +54,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_ifsign = 0;
+                        o_con_ifsign = 1;
                         o_con_aluop = 6'b000011;  end  // ADDIU /////////
 
     6'b000000  :  begin o_con_regdst = 1;
@@ -76,7 +76,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_ifsign = 1;
+                        o_con_ifsign = 0;
                         o_con_aluop = 6'b000111;  end  // ANDI /////////
 
     6'b001101  :  begin o_con_regdst = 0;
@@ -85,7 +85,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_ifsign = 1;
+                        o_con_ifsign = 0;
                         o_con_aluop = 6'b001011;   end  // ORI ///////////
 
     6'b001110  :  begin o_con_regdst = 0;
@@ -94,7 +94,7 @@ begin
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_ifsign = 1;
+                        o_con_ifsign = 0;
                         o_con_aluop = 6'b001111;   end  // XORI /////////
 
 // the instructions AND, OR, XOR, NOR, NOT, NOP are included in the R-type instructions //
@@ -128,7 +128,7 @@ begin
                         o_con_memread = 1;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 1;
-                        o_con_ifsign = 0;
+                        o_con_ifsign = 1;
                         o_con_aluop = 6'b000000;
                         o_con_loadsig = 2'b10;  end  // lbu /////////**************  
 
@@ -138,7 +138,7 @@ begin
                         o_con_memread = 1;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 1;
-                        o_con_ifsign = 0;
+                        o_con_ifsign = 1;
                         o_con_aluop = 6'b000000;
                         o_con_loadsig = 2'b01;  end  // lhu /////////**************                      
 
@@ -181,14 +181,13 @@ begin
                         o_con_aluop = 6'b100111;  end  // SLTIU /////////
 
 
-    /*6'b000011   : begin o_con_regdst = 0;
+    6'b000011   : begin o_con_regdst = 0;
                         o_con_regwrite = 1;
                         o_con_alusrc = 0;
                         o_con_memread = 0;
                         o_con_memwrite = 0;
                         o_con_memtoreg = 0;
-                        o_con_ifsign = 0;
-                        o_con_aluop = 6'b100011;   end  // jal ///////*/
+                        o_con_ifsign = 0;   end  // jal ////////
   endcase
 end
 endmodule

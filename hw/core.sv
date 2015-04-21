@@ -16,6 +16,7 @@ wire [31:0]if_addr_b;
 wire [31:0]if_addr_j;
 wire [31:0]if_addr_pc;
 wire [1:0] if_con_j;  ////////////
+wire [31:0]id_data_jr;
 //decode
 wire [31:0]id_addr_pc4;
 wire [31:0]id_data_instr;
@@ -67,7 +68,7 @@ fetch u_fetch(
 	.i_nrst(rst_n),
 	.i_addr_b(if_addr_b),
 	.i_addr_j(if_addr_j),
-	.i_addr_jr(id_data_rs),
+	.i_addr_jr(id_data_jr),
 	.i_con_b(if_con_b),
 	.i_con_j(if_con_j),
 	.i_data_instr(read_instruction),
@@ -103,6 +104,8 @@ decode u_decode(
 	.o_data_rt(ex_data_rt),
 	.o_addr_rd(ex_addr_rd),
 	.o_addr_rt(ex_addr_rt),
+
+	.o_data_jr(id_data_jr), //***********
 	//.o_addr_rs(ex_addr_rs),/////////////////
 	//pc
 	.o_con_ifbranch(if_con_b),

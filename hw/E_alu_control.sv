@@ -42,7 +42,7 @@ always_comb
                         ///////////////////////////////////////
                         6:  o_con_AluCtrl=7;    // slti/sltiu
                         7:	o_con_AluCtrl=8;	//I//lui
-                        8: 	o_con_AluCtrl=9;	//J//jal
+                        //8: 	o_con_AluCtrl=9;	//J//jal
                     endcase
 			        end
 		endcase

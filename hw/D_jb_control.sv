@@ -21,6 +21,12 @@ o_con_jump = 0;
     6'b000101  :  begin o_con_bop = 2'b10;
                         o_con_jump = 2'b00; end  // bne //
 
+//    6'b000110  :  begin o_con_bop = 3'b011;
+//                         o_con_jump = 2'b00; end  // blez: branch if <=0 //
+
+//    6'b000111  :  begin o_con_bop = 3'b100;
+//                         o_con_jump = 2'b00; end  // bgtz: branch if >0 //
+
 
     6'b000010  :  begin o_con_bop = 2'b00;
                         o_con_jump = 2'b01; end  // j //
@@ -28,6 +34,14 @@ o_con_jump = 0;
     6'b000011  :  begin o_con_bop = 2'b00;
                         o_con_jump = 2'b01; 
                         o_con_aluPC4 = 1; end  // jal //
+
+                        /*    6'b000001  :  begin if (~i_con_rt) begin
+                         o_con_bop = 3'b101;
+                         o_con_jump = 2'b00; end  // bltz: branch if <0 //
+                         else begin
+                         o_con_bop = 3'b110;
+                         o_con_jump = 2'b00; end  // bgez: branch if >=0 //
+                         end */
 
     6'b000000  :  begin if (i_con_func == 6'b001000) begin
                         o_con_bop = 2'b00;

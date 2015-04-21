@@ -31,6 +31,7 @@ module decode(
 	output logic [31:0] o_data_rt,
 	output logic [4:0] o_addr_rd,
 	output logic [4:0] o_addr_rt,
+	output logic [31:0] o_data_jr, //***********
 	//output logic [4:0] o_addr_rs,////////////////
 	//pc feedback
 	output logic o_con_ifbranch,
@@ -258,7 +259,7 @@ assign cmpmux_i_data_rs = regbank_o_data_Rs;
 assign cmpmux_i_data_aluresE = i_data_aluresE;
 assign cmpmux_i_con_cmpalu = for_o_con_cmpalu;
 //cmpmux2/////////////////
-assign cmpmux2_i_data_rs = for_o_con_cmpalu;
+assign cmpmux2_i_data_rs = cmpmux_o_data_cmprs;
 assign cmpmux2_i_data_memout = i_data_memoutM;
 assign cmpmux2_i_con_cmpmem = for_o_con_cmpmem;
 
@@ -269,6 +270,7 @@ assign o_data_rs = pipe_data_rs;
 assign o_data_rt = pipe_data_rt;
 assign o_addr_rd = pipe_addr_rd;
 assign o_addr_rt = pipe_addr_rt;
+assign o_data_jr = regbank_o_data_Rs;
 //assign o_addr_rs = pipe_addr_rs;/////////////////
 //pc feedback
 assign o_con_ifbranch = compare_o_con_ifbranch;
