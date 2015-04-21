@@ -95,7 +95,8 @@ decode u_decode(
 	.i_addr_rtW(for_addr_rtW),///////////
 	.i_con_memreadM(mem_read),///////////
 	.i_con_memreadW(for_FWmemread),/////////
-	.i_data_aluresE(for_aluresE),
+	.i_data_aluresE(for_aluresE),//////////
+	.i_data_memoutM(read_data),
 
 	//registers
 	.o_data_rs(id_data_rs),

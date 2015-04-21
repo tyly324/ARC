@@ -23,7 +23,8 @@ module decode(
 	input logic [4:0] i_addr_rtW,///////////
 	input logic i_con_memreadM,///////////
 	input logic i_con_memreadW,/////////
-	input logic [31:0] i_data_aluresE,
+	input logic [31:0] i_data_aluresE,/////////
+	input logic [31:0] i_data_memoutM,/////////
 
 	//register bank
 	output logic [31:0] o_data_rs,
@@ -125,11 +126,17 @@ wire [4:0] for_i_addr_rtW;//////////
 wire for_i_con_memreadM;///////////
 wire for_i_con_memreadW;/////////
 wire for_o_con_cmpalu;//////////////
+wire for_o_con_cmpmem;/////////////
 //cmpmux//////////////////////////
 wire [31:0] cmpmux_i_data_rs;
 wire [31:0] cmpmux_i_data_aluresE;
 wire cmpmux_i_con_cmpalu;
 wire [31:0] cmpmux_o_data_cmprs;
+//cmpmux2/////////////////
+wire [31:0] cmpmux2_i_data_rs;
+wire [31:0] cmpmux2_i_data_memout;
+wire cmpmux2_i_con_cmpmem;
+wire [31:0] cmpmux2_o_data_cmprs;
 
 // ====================
 // Registers
@@ -208,7 +215,7 @@ end
 // Interconnection
 // ====================
 //compare
-assign compare_i_data_rs = cmpmux_o_data_cmprs;
+assign compare_i_data_rs = cmpmux2_o_data_cmprs;
 assign compare_i_data_rt = regbank_o_data_Rt;   
 assign compare_i_con_bop = jbcon_o_con_bop;
 //control
@@ -250,6 +257,11 @@ assign for_i_con_memreadW = i_con_memreadW;/////////
 assign cmpmux_i_data_rs = regbank_o_data_Rs;
 assign cmpmux_i_data_aluresE = i_data_aluresE;
 assign cmpmux_i_con_cmpalu = for_o_con_cmpalu;
+//cmpmux2/////////////////
+assign cmpmux2_i_data_rs = for_o_con_cmpalu;
+assign cmpmux2_i_data_memout = i_data_memoutM;
+assign cmpmux2_i_con_cmpmem = for_o_con_cmpmem;
+
 
 //outputs
 //register bank
@@ -372,7 +384,8 @@ E_forward u_forward(
 .i_con_memreadW(for_i_con_memreadW),
 .o_con_fa(for_o_con_fa), 
 .o_con_fb(for_o_con_fb),
-.o_con_cmpalu(for_o_con_cmpalu)
+.o_con_cmpalu(for_o_con_cmpalu),
+.o_con_cmpmem(for_o_con_cmpmem)
 );
 
 //cmpmux////////////////////
@@ -381,6 +394,13 @@ D_cmpmux u_cmpmux(
 .i_data_aluresE(cmpmux_i_data_aluresE),
 .i_con_cmpalu(cmpmux_i_con_cmpalu),
 .o_data_cmprs(cmpmux_o_data_cmprs)
-	);
+);
+//cmpmux2/////////////////
+D_cmpmux2 u_cmpmux2(
+.i_data_rs(cmpmux2_i_data_rs),
+.i_data_memout(cmpmux2_i_data_memout),
+.i_con_cmpmem(cmpmux2_i_con_cmpmem),
+.o_data_cmprs(cmpmux2_o_data_cmprs)
+);
 
 endmodule
