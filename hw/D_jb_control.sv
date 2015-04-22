@@ -11,22 +11,22 @@ module D_jb_control
 always_comb
 begin
 o_con_aluPC4 = 0;
-o_con_ifstall = 0;
+o_con_ifstall = 1;
 o_con_bop = 0;
 o_con_jump = 0;
   casez (i_con_instru)
 ///////////////////// branch and jump instructions //////////////////////////////////////////
 
-    6'b000100  :  begin o_con_bop = 3'b001; o_con_ifstall = 1'b1;
+    6'b000100  :  begin o_con_bop = 3'b001; o_con_ifstall = 1'b0;
                         o_con_jump = 2'b00; end  // beq //
 
-    6'b000101  :  begin o_con_bop = 3'b010; o_con_ifstall = 1'b1;
+    6'b000101  :  begin o_con_bop = 3'b010; o_con_ifstall = 1'b0;
                         o_con_jump = 2'b00; end  // bne //
 
-    6'b000110  :  begin o_con_bop = 3'b011; o_con_ifstall = 1'b1;
+    6'b000110  :  begin o_con_bop = 3'b011; o_con_ifstall = 1'b0;
                          o_con_jump = 2'b00; end  // blez: branch if <=0 //
 
-    6'b000111  :  begin o_con_bop = 3'b100; o_con_ifstall = 1'b1;
+    6'b000111  :  begin o_con_bop = 3'b100; o_con_ifstall = 1'b0;
                          o_con_jump = 2'b00; end  // bgtz: branch if >0 //
 
 
@@ -38,10 +38,10 @@ o_con_jump = 0;
                         o_con_aluPC4 = 1; end  // jal //
 
     6'b000001  :  begin if (~i_con_rt) begin
-                         o_con_bop = 3'b101; o_con_ifstall = 1'b1;
+                         o_con_bop = 3'b101; o_con_ifstall = 1'b0;
                          o_con_jump = 2'b00; end  // bltz: branch if <0 //
                          else begin
-                         o_con_bop = 3'b110; o_con_ifstall = 1'b1;
+                         o_con_bop = 3'b110; o_con_ifstall = 1'b0;
                          o_con_jump = 2'b00; end  // bgez: branch if >=0 //
                          end 
 
@@ -52,10 +52,8 @@ o_con_jump = 0;
 
     default : begin o_con_bop = 3'b0;
         o_con_jump = 2'b11;
-        o_con_ifstall = 1'b0;
+        o_con_ifstall = 1'b1;
     end
-
   endcase
-  
 end
 endmodule
