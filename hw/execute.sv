@@ -34,6 +34,8 @@ module execute(
 	//forward unit///////////////////
 	input logic [2:0] i_con_Efamux,
 	input logic [2:0] i_con_Efbmux,
+	//branch
+	input logic [2:0] i_con_bop,
 
 	output logic [31:0] o_data_pc4,///////////
 	output logic [31:0] o_data_alures,
@@ -48,12 +50,19 @@ module execute(
 	//forward feedback//////////////////////
 	output logic [4:0] o_addr_Erd,
 	output logic [4:0] o_addr_Mrt,
-	output logic [31:0] o_FaluresE
+	output logic [31:0] o_FaluresE,
+	//branch
+	output logic o_con_ifbranch
 	);
 
 // ====================
 // I/O
 // ====================
+//compare
+wire compare_o_con_ifbranch;
+wire [31:0] compare_i_data_rs;
+wire [31:0] compare_i_data_rt;   
+wire [2:0] compare_i_con_bop; /////////
 //alu
 wire [31:0] alu_o_data_AluRes; 
 wire [31:0] alu_i_data_A;
@@ -145,6 +154,10 @@ end
 // Interconnection
 // ====================
 // ===inputs
+//compare
+assign compare_i_data_rs = famux5_o_data_alusra;
+assign compare_i_data_rt = fbmux5_o_data_alusrb;   
+assign compare_i_con_bop = i_con_bop;
 //alu
 assign alu_i_data_A = famux5_o_data_alusra;
 assign alu_i_data_B = alubmux_o_data_alub;
@@ -192,6 +205,8 @@ assign o_con_Wregwrite = pipe_con_Wregwrite;
 assign o_addr_Erd = rdmux_o_data_writeE;
 assign o_addr_Mrt = pipe_addr_rt;
 assign o_FaluresE = alu_o_data_AluRes;
+//branch///////////////
+assign o_con_ifbranch = compare_o_con_ifbranch;
 
 
 // ====================
@@ -253,4 +268,10 @@ E_rdmux u_rdmux(
 .o_data_writeE(rdmux_o_data_writeE)
 );
 
+D_compare u_compare(
+.o_con_ifbranch(compare_o_con_ifbranch),
+.i_data_rs(compare_i_data_rs),     // 25:21 
+.i_data_rt(compare_i_data_rt),     // 20:16     
+.i_con_bop(compare_i_con_bop)     // come from branch_jump 
+);
 endmodule

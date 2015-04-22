@@ -30,6 +30,7 @@ wire [4:0] for_addr_rtW;
 wire [31:0] for_memout;
 wire [31:0] for_aluresE;
 //execute
+wire [2:0] ex_con_bop;////////////
 wire [31:0] ex_data_pc4;
 wire [31:0] id_data_rs;
 wire [31:0] ex_data_rt;
@@ -108,10 +109,9 @@ decode u_decode(
 	.o_data_jr(id_data_jr), //***********
 	//.o_addr_rs(ex_addr_rs),/////////////////
 	//pc
-	.o_con_ifbranch(if_con_b),
 	.o_con_jump(if_con_j),////////////////
 	.o_addr_pc4(ex_data_pc4),
-	.o_addr_pcadd(if_addr_b),
+	.o_addr_branch(if_addr_b),
 	.o_addr_jump(if_addr_j),
 	//control
 	.o_con_Ealuop(ex_con_Ealuop),
@@ -123,6 +123,9 @@ decode u_decode(
 	.o_con_Walupc8(ex_con_Walupc8),/////////
 	.o_con_Wmemtoreg(ex_con_Wmemtoreg),
 	.o_con_Wregwrite(ex_con_Wregwrite),
+	//branch////////////
+	.o_con_ifstall(if_con_ifstall),
+	.o_con_Ebop(ex_con_bop),
 	//data
 	.o_data_signext(ex_data_immext),
 	//forward unit/////////////////
@@ -160,6 +163,8 @@ execute u_execute(
 	//forward unit///////////////////
 	.i_con_Efamux(for_o_con_Efamux),
 	.i_con_Efbmux(for_o_con_Efbmux),
+	//branch///////////////
+	.i_con_bop(ex_con_bop),
 
 	.o_data_pc4(mem_data_pc4),//////////
 	.o_data_alures(ex_data_alures),
@@ -174,7 +179,9 @@ execute u_execute(
 	//forward feedback//////////////////////
 	.o_addr_Erd(for_o_addr_Erd),
 	.o_addr_Mrt(for_addr_rtM),
-	.o_FaluresE(for_aluresE)
+	.o_FaluresE(for_aluresE),
+	//branch////////////
+	.o_con_ifbranch(if_con_b),
 	);
 
 

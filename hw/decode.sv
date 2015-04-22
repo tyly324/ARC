@@ -34,10 +34,10 @@ module decode(
 	output logic [31:0] o_data_jr, //***********
 	//output logic [4:0] o_addr_rs,////////////////
 	//pc feedback
-	output logic o_con_ifbranch,
+	//output logic o_con_ifbranch,
 	output logic [1:0] o_con_jump,     //////////////////
 	output logic [31:0] o_addr_pc4,
-	output logic [31:0] o_addr_pcadd,
+	output logic [31:0] o_addr_branch,///////////
 	output logic [31:0] o_addr_jump,
 	//control signals
 	output logic [5:0] o_con_Ealuop,
@@ -49,6 +49,9 @@ module decode(
 	output logic o_con_Walupc8,///////////
 	output logic o_con_Wmemtoreg,
 	output logic o_con_Wregwrite,
+	//branch////////////
+	output logic o_con_ifstall,
+	output logic [2:0] o_con_Ebop,///////////
 	//data
 	output logic [31:0] o_data_signext,
 	//forward unit/////////////////
@@ -60,11 +63,11 @@ module decode(
 // ====================
 // I/O
 // ====================
-//compare
-wire compare_o_con_ifbranch;
-wire [31:0] compare_i_data_rs;
-wire [31:0] compare_i_data_rt;   
-wire [1:0] compare_i_con_bop; /////////
+// //compare
+// wire compare_o_con_ifbranch;
+// wire [31:0] compare_i_data_rs;
+// wire [31:0] compare_i_data_rt;   
+// wire [1:0] compare_i_con_bop; /////////
  
 //control
 wire control_o_con_regdst;
@@ -80,10 +83,11 @@ wire [5:0] control_i_con_instru;
 
 //jbcon
 wire [1:0] jbcon_o_con_jump;
-wire [1:0] jbcon_o_con_bop;
+wire [2:0] jbcon_o_con_bop;
 wire jbcon_o_con_aluPC4;
 wire [5:0] jbcon_i_con_instru;
 wire [5:0] jbcon_i_con_func;
+wire jbcon_o_con_ifstall;
 //wire jbcon_i_con_rt;////////////////
 
 //pcadd
@@ -163,6 +167,9 @@ logic [31:0]pipe_signext_o_data_immD;
 logic [2:0] pipe_con_Efamux;
 logic [2:0] pipe_con_Efbmux;
 logic [31:0] pipe_memout;
+//branch
+logic [31:0] pipe_addr_branch;
+logic [2:0] pipe_bop;
 
 always_ff @(posedge i_clk, negedge i_nrst)
 begin
@@ -187,6 +194,9 @@ begin
 		pipe_con_Efamux <= 0;
 		pipe_con_Efbmux <= 0;
 		pipe_memout <= 0;
+		//branch
+		pipe_addr_branch <= 0;
+		pipe_bop <= 0;
 	end 
 	else begin
 		pipe_data_rs <= regbank_o_data_Rs;
@@ -209,16 +219,19 @@ begin
 		pipe_con_Efamux <= for_o_con_fa;
 		pipe_con_Efbmux <= for_o_con_fb;
 		pipe_memout <= i_data_Wregwrite;
+		//branch
+		pipe_addr_branch <= pcadd_o_addr_pcbranchE;
+		pipe_bop <= jbcon_o_con_bop;
 	end
 end
 
 // ====================
 // Interconnection
 // ====================
-//compare
-assign compare_i_data_rs = cmpmux2_o_data_cmprs;
-assign compare_i_data_rt = regbank_o_data_Rt;   
-assign compare_i_con_bop = jbcon_o_con_bop;
+// //compare
+// assign compare_i_data_rs = cmpmux2_o_data_cmprs;
+// assign compare_i_data_rt = regbank_o_data_Rt;   
+// assign compare_i_con_bop = jbcon_o_con_bop;
 //control
 assign control_i_con_instru = i_data_instr[31:26];
 //jbcon
@@ -254,14 +267,14 @@ assign for_i_addr_rtM = i_addr_rtM;/////////////
 assign for_i_addr_rtW = i_addr_rtW;///////////
 assign for_i_con_memreadM = i_con_memreadM;///////////
 assign for_i_con_memreadW = i_con_memreadW;/////////
-//cmpmux/////////////////////
-assign cmpmux_i_data_rs = regbank_o_data_Rs;
-assign cmpmux_i_data_aluresE = i_data_aluresE;
-assign cmpmux_i_con_cmpalu = for_o_con_cmpalu;
-//cmpmux2/////////////////
-assign cmpmux2_i_data_rs = cmpmux_o_data_cmprs;
-assign cmpmux2_i_data_memout = i_data_memoutM;
-assign cmpmux2_i_con_cmpmem = for_o_con_cmpmem;
+// //cmpmux/////////////////////
+// assign cmpmux_i_data_rs = regbank_o_data_Rs;
+// assign cmpmux_i_data_aluresE = i_data_aluresE;
+// assign cmpmux_i_con_cmpalu = for_o_con_cmpalu;
+// //cmpmux2/////////////////
+// assign cmpmux2_i_data_rs = cmpmux_o_data_cmprs;
+// assign cmpmux2_i_data_memout = i_data_memoutM;
+// assign cmpmux2_i_con_cmpmem = for_o_con_cmpmem;
 
 
 //outputs
@@ -273,10 +286,10 @@ assign o_addr_rt = pipe_addr_rt;
 assign o_data_jr = regbank_o_data_Rs;
 //assign o_addr_rs = pipe_addr_rs;/////////////////
 //pc feedback
-assign o_con_ifbranch = compare_o_con_ifbranch;
+//assign o_con_ifbranch = compare_o_con_ifbranch;
 assign o_con_jump = jbcon_o_con_jump;
 assign o_addr_pc4 = pipe_addr_pc4;
-assign o_addr_pcadd = pcadd_o_addr_pcbranchE;
+assign o_addr_branch = pipe_addr_branch;/////////
 assign o_addr_jump = jumpext_o_addr_j;
 //control signals
 assign o_con_Ealuop = pipe_con_Ealuop; 
@@ -288,6 +301,9 @@ assign o_con_Mmemwrite = pipe_con_Mmemwrite;
 assign o_con_Wloadmux = pipe_con_Wloadmux;
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
+//branch////////////
+assign o_con_ifstall = jbcon_o_con_ifstall;
+assign o_con_Ebop = pipe_bop;///////////
 //data
 assign o_data_signext = pipe_signext_o_data_immD;
 //forward unit///////////////////////////////
@@ -301,12 +317,12 @@ assign o_data_Fmemout = pipe_memout;
 // Hirearchy
 // ====================
 //compare
-D_compare u_compare(
-.o_con_ifbranch(compare_o_con_ifbranch),
-.i_data_rs(compare_i_data_rs),     // 25:21 
-.i_data_rt(compare_i_data_rt),     // 20:16     
-.i_con_bop(compare_i_con_bop)     // come from branch_jump 
-);
+// D_compare u_compare(
+// .o_con_ifbranch(compare_o_con_ifbranch),
+// .i_data_rs(compare_i_data_rs),     // 25:21 
+// .i_data_rt(compare_i_data_rt),     // 20:16     
+// .i_con_bop(compare_i_con_bop)     // come from branch_jump 
+// );
 
 //control
 D_control u_control(
@@ -324,6 +340,7 @@ D_control u_control(
 
 //jbcon
 D_jb_control u_jb_control(
+.o_con_ifstall(jbcon_o_con_ifstall),
 .o_con_jump(jbcon_o_con_jump),
 .o_con_bop(jbcon_o_con_bop),
 .o_con_aluPC4(jbcon_o_con_aluPC4),
@@ -386,23 +403,23 @@ E_forward u_forward(
 .i_con_memreadW(for_i_con_memreadW),
 .o_con_fa(for_o_con_fa), 
 .o_con_fb(for_o_con_fb),
-.o_con_cmpalu(for_o_con_cmpalu),
-.o_con_cmpmem(for_o_con_cmpmem)
+//.o_con_cmpalu(for_o_con_cmpalu),
+//.o_con_cmpmem(for_o_con_cmpmem)
 );
 
-//cmpmux////////////////////
-D_cmpmux u_cmpmux(
-.i_data_rs(cmpmux_i_data_rs),
-.i_data_aluresE(cmpmux_i_data_aluresE),
-.i_con_cmpalu(cmpmux_i_con_cmpalu),
-.o_data_cmprs(cmpmux_o_data_cmprs)
-);
-//cmpmux2/////////////////
-D_cmpmux2 u_cmpmux2(
-.i_data_rs(cmpmux2_i_data_rs),
-.i_data_memout(cmpmux2_i_data_memout),
-.i_con_cmpmem(cmpmux2_i_con_cmpmem),
-.o_data_cmprs(cmpmux2_o_data_cmprs)
-);
+// //cmpmux////////////////////
+// D_cmpmux u_cmpmux(
+// .i_data_rs(cmpmux_i_data_rs),
+// .i_data_aluresE(cmpmux_i_data_aluresE),
+// .i_con_cmpalu(cmpmux_i_con_cmpalu),
+// .o_data_cmprs(cmpmux_o_data_cmprs)
+// );
+// //cmpmux2/////////////////
+// D_cmpmux2 u_cmpmux2(
+// .i_data_rs(cmpmux2_i_data_rs),
+// .i_data_memout(cmpmux2_i_data_memout),
+// .i_con_cmpmem(cmpmux2_i_con_cmpmem),
+// .o_data_cmprs(cmpmux2_o_data_cmprs)
+// );
 
 endmodule

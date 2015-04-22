@@ -10,6 +10,8 @@ module fetch(
 	input logic i_con_b,
 	input logic [1:0] i_con_j,  //////////
 	input logic [31:0]i_data_instr,
+	//branch/////////////
+	input logic i_con_ifstall,
 
 	output logic [31:0] o_addr_pc,
 	output logic [31:0] o_addr_pc4,
@@ -31,6 +33,7 @@ wire [31:0] bmux_i_addr_b;
 wire bmux_i_con_ifbranch;
 wire [31:0] bmux_o_addr_nextpc;
 //pc
+wire pc_i_con_stall;
 wire [31:0] pc_i_addr_next_pc;
 wire [31:0] pc_o_addr_pc;
 //add4
@@ -66,6 +69,7 @@ assign bmux_i_addr_jumpmux = jmux_o_addr_jumpmux;
 assign bmux_i_addr_b = i_addr_b;
 assign bmux_i_con_ifbranch = i_con_b;
 //pc
+assign pc_i_con_stall = i_con_ifstall;
 assign pc_i_addr_next_pc = bmux_o_addr_nextpc;
 //add4
 assign add4_i_addr_pc = pc_o_addr_pc;
@@ -101,6 +105,7 @@ F_branchmux u_branchmux(
 F_pc u_pc(
 .i_clk(i_clk),
 .i_rst_n(i_nrst),
+.i_con_stall(pc_i_con_stall),
 .i_addr_next_pc(pc_i_addr_next_pc),
 .o_addr_pc(pc_o_addr_pc)
 );
