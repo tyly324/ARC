@@ -7,6 +7,6 @@ module F_branchmux(
 	);
 
 //0-branch, 1-not branch!!!!!!!!!!!!
-assign o_addr_nextpc = i_con_ifbranch ? i_addr_jumpmux : i_addr_b;
+assign o_addr_nextpc = i_con_ifbranch ? i_addr_b : i_addr_jumpmux;
 
 endmodule

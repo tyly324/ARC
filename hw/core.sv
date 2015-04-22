@@ -74,7 +74,7 @@ fetch u_fetch(
 	.i_con_j(if_con_j),
 	.i_data_instr(read_instruction),
 	//branch/////////////
-	.i_con_ifstall(if_con_b),
+	.i_con_ifstall(if_con_ifstall),
 
 	.o_addr_pc(if_addr_pc),
 	.o_addr_pc4(id_addr_pc4),
