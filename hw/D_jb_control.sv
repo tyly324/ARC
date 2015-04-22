@@ -4,7 +4,7 @@ module D_jb_control
         logic o_con_aluPC4,//***********
         logic o_con_ifstall,////////////
  input  logic [5:0] i_con_instru,        // opcode
-        logic [5:0] i_con_func          // function code
+        logic [5:0] i_con_func,          // function code
         logic i_con_rt
         );           // 16th of the instruction
 

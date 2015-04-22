@@ -9,10 +9,10 @@ begin
 
 casez(i_con_bop)
 
-3'b001 : begin if (i_data_rs == i_data_rt) o_con_branch = 1;
+3'b001 : begin if (i_data_rs == i_data_rt) o_con_ifbranch = 1;
                else o_con_ifbranch = 0; end  // beq;
                
-3'b010 : begin if (i_data_rs != i_data_rt) o_con_branch = 1;
+3'b010 : begin if (i_data_rs != i_data_rt) o_con_ifbranch = 1;
                else o_con_ifbranch = 0; end  // bne
 
 3'b011  :  begin if ((i_data_rs == 0)||(i_data_rs[31])) o_con_ifbranch = 1; 
@@ -27,7 +27,7 @@ casez(i_con_bop)
 		  3'b110  :  begin if (~i_data_rs[31]) o_con_ifbranch = 1; 
 		                   else o_con_ifbranch = 0; end  // bgez: branch if >=0 //
 		               
-default : begin o_con_ifbranch = 0;
+default :  o_con_ifbranch = 0;
 		  endcase
 end 
 endmodule

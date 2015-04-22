@@ -402,7 +402,7 @@ E_forward u_forward(
 .i_con_memreadM(for_i_con_memreadM),
 .i_con_memreadW(for_i_con_memreadW),
 .o_con_fa(for_o_con_fa), 
-.o_con_fb(for_o_con_fb),
+.o_con_fb(for_o_con_fb)
 //.o_con_cmpalu(for_o_con_cmpalu),
 //.o_con_cmpmem(for_o_con_cmpmem)
 );
