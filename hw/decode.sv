@@ -23,8 +23,8 @@ module decode(
 	input logic [4:0] i_addr_rtW,///////////
 	input logic i_con_memreadM,///////////
 	input logic i_con_memreadW,/////////
-	input logic [31:0] i_data_aluresE,/////////
-	input logic [31:0] i_data_memoutM,/////////
+	//input logic [31:0] i_data_aluresE,/////////
+	//input logic [31:0] i_data_memoutM,/////////
 
 	//register bank
 	output logic [31:0] o_data_rs,

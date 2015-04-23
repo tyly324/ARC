@@ -56,7 +56,8 @@ wire if_con_b, id_con_Wregwrite, ex_con_Ealusrc,
 ex_con_Eregdst, ex_con_Mmemread, ex_con_Mmemwrite, 
 ex_con_Wmemtoreg, ex_con_Walupc8, ex_con_Wregwrite, 
 mem_con_Walupc8, mem_con_Wregwrite, mem_con_Wmemtoreg, 
-wb_con_Walupc8, wb_con_Wmemtoreg;
+wb_con_Walupc8, wb_con_Wmemtoreg, 
+if_con_ifstall, for_FWmemread;
 
 
 
@@ -99,8 +100,8 @@ decode u_decode(
 	.i_addr_rtW(for_addr_rtW),///////////
 	.i_con_memreadM(mem_read),///////////
 	.i_con_memreadW(for_FWmemread),/////////
-	.i_data_aluresE(for_aluresE),//////////
-	.i_data_memoutM(read_data),
+	//.i_data_aluresE(for_aluresE),//////////
+	//.i_data_memoutM(read_data),
 
 	//registers
 	.o_data_rs(id_data_rs),
