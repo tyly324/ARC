@@ -38,7 +38,7 @@ wire [31:0] ex_data_immext;
 wire [4:0] ex_addr_rt;
 wire [4:0] ex_addr_rd;
 wire [5:0] ex_con_Ealuop;
-wire [1:0] ex_con_Wloadmux;
+//wire [1:0] ex_con_Wloadmux;
 wire [31:0] ex_data_alures;
 ///////////////forward in execute/////////////////////
 wire [4:0] for_o_addr_Erd;
@@ -46,11 +46,11 @@ wire [4:0] for_o_addr_Erd;
 wire [31:0] mem_data_pc4;
 wire [31:0] mem_data_alures;
 wire [4:0] mem_addr_regdst;
-wire [1:0] mem_con_Wloadmux;
+//wire [1:0] mem_con_Wloadmux;
 //write back
 wire [31:0] wb_data_pc8;
 wire [31:0] wb_data_memout;
-wire [1:0] wb_con_Wloadmux;
+//wire [1:0] wb_con_Wloadmux;
 
 wire if_con_b, id_con_Wregwrite, ex_con_Ealusrc,
 ex_con_Eregdst, ex_con_Mmemread, ex_con_Mmemwrite, 
@@ -122,7 +122,7 @@ decode u_decode(
 	.o_con_Eregdst(ex_con_Eregdst),
 	.o_con_Mmemread(ex_con_Mmemread),
 	.o_con_Mmemwrite(ex_con_Mmemwrite),
-	.o_con_Wloadmux(ex_con_Wloadmux),
+	//.o_con_Wloadmux(ex_con_Wloadmux),
 	.o_con_Walupc8(ex_con_Walupc8),/////////
 	.o_con_Wmemtoreg(ex_con_Wmemtoreg),
 	.o_con_Wregwrite(ex_con_Wregwrite),
@@ -159,7 +159,7 @@ execute u_execute(
 	.i_con_Eregdst(ex_con_Eregdst),
 	.i_con_Mmemread(ex_con_Mmemread),
 	.i_con_Mmemwrite(ex_con_Mmemwrite),
-	.i_con_Wloadmux(ex_con_Wloadmux),
+	///.i_con_Wloadmux(ex_con_Wloadmux),
 	.i_con_Walupc8(ex_con_Walupc8),///////////
 	.i_con_Wmemtoreg(ex_con_Wmemtoreg),
 	.i_con_Wregwrite(ex_con_Wregwrite),
@@ -175,7 +175,7 @@ execute u_execute(
 	.o_addr_regdst(mem_addr_regdst),
 	.o_con_Mmemread(mem_read),
 	.o_con_Mmemwrite(mem_write),
-	.o_con_Wloadmux(mem_con_Wloadmux),
+	//.o_con_Wloadmux(mem_con_Wloadmux),
 	.o_con_Walupc8(mem_con_Walupc8),//////////////
 	.o_con_Wmemtoreg(mem_con_Wmemtoreg),
 	.o_con_Wregwrite(mem_con_Wregwrite),
@@ -195,7 +195,7 @@ mem u_mem(
 	.i_data_alures(ex_data_alures),
 	.i_data_memout(read_data),
 	.i_addr_regdst(mem_addr_regdst),
-	.i_con_Wloadmux(mem_con_Wloadmux),
+	//.i_con_Wloadmux(mem_con_Wloadmux),
 	.i_con_Walupc8(mem_con_Walupc8),/////////////
 	.i_con_Wmemtoreg(mem_con_Wmemtoreg),
 	.i_con_Wregwrite(mem_con_Wregwrite),
@@ -207,7 +207,7 @@ mem u_mem(
 	.o_data_memout(wb_data_memout),
 	.o_addr_regdst(id_addr_Wregwrite),
 	//control
-	.o_con_Wloadmux(wb_con_Wloadmux),
+	//.o_con_Wloadmux(wb_con_Wloadmux),
 	.o_con_Walupc8(wb_con_Walupc8),///////////
 	.o_con_Wmemtoreg(wb_con_Wmemtoreg),
 	.o_con_Wregwrite(id_con_Wregwrite),
@@ -222,7 +222,7 @@ writeback u_writeback(
 	.i_data_pc8(wb_data_pc8),////////////
 	.i_data_alures(mem_data_alures),
 	.i_data_memout(wb_data_memout),
-	.i_con_Wloadmux(wb_con_Wloadmux),
+	//.i_con_Wloadmux(wb_con_Wloadmux),
 	.i_con_Walupc8(wb_con_Walupc8),/////////////
 	.i_con_Wmemtoreg(wb_con_Wmemtoreg),
 
