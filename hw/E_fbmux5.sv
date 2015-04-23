@@ -16,6 +16,7 @@ case(i_con_fb)
   3'b010 : o_data_alusrb = i_data_alures;
   3'b100 : o_data_alusrb = i_data_lwM;
   3'b101 : o_data_alusrb = i_data_lwW;
+  default : o_data_alusrb = i_data_rt;
 endcase
 
 endmodule

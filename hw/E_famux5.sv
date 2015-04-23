@@ -26,6 +26,7 @@ case(i_con_fa)
   3'b010 : o_data_alusra = i_data_alures;
   3'b100 : o_data_alusra = i_data_lwM;
   3'b101 : o_data_alusra = i_data_lwW;
+  default : o_data_alusra = i_data_rs;
 endcase
 
 endmodule

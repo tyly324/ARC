@@ -50,7 +50,7 @@ module execute(
 	//forward feedback//////////////////////
 	output logic [4:0] o_addr_Erd,
 	output logic [4:0] o_addr_Mrt,
-	output logic [31:0] o_FaluresE,
+	//output logic [31:0] o_FaluresE,
 	//branch
 	output logic o_con_ifbranch
 	);
@@ -85,7 +85,7 @@ wire [31:0] famux5_o_data_alusra;
 wire [31:0] fbmux5_i_data_rt;
 wire [31:0] fbmux5_i_data_alures;
 wire [31:0] fbmux5_i_data_writeres;
-wire [31:0] fbmux5_i_data_imm;
+//wire [31:0] fbmux5_i_data_imm;
 wire [31:0] fbmux5_i_data_lwM;
 wire [31:0] fbmux5_i_data_lwW;
 wire [2:0]  fbmux5_i_con_fb;
@@ -204,7 +204,7 @@ assign o_con_Wregwrite = pipe_con_Wregwrite;
 //forward feedback////////////////////////////
 assign o_addr_Erd = rdmux_o_data_writeE;
 assign o_addr_Mrt = pipe_addr_rt;
-assign o_FaluresE = alu_o_data_AluRes;
+//assign o_FaluresE = alu_o_data_AluRes;
 //branch///////////////
 assign o_con_ifbranch = compare_o_con_ifbranch;
 

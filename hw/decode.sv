@@ -130,18 +130,18 @@ wire [4:0] for_i_addr_rtM;////////////
 wire [4:0] for_i_addr_rtW;//////////
 wire for_i_con_memreadM;///////////
 wire for_i_con_memreadW;/////////
-wire for_o_con_cmpalu;//////////////
-wire for_o_con_cmpmem;/////////////
-//cmpmux//////////////////////////
-wire [31:0] cmpmux_i_data_rs;
-wire [31:0] cmpmux_i_data_aluresE;
-wire cmpmux_i_con_cmpalu;
-wire [31:0] cmpmux_o_data_cmprs;
-//cmpmux2/////////////////
-wire [31:0] cmpmux2_i_data_rs;
-wire [31:0] cmpmux2_i_data_memout;
-wire cmpmux2_i_con_cmpmem;
-wire [31:0] cmpmux2_o_data_cmprs;
+// wire for_o_con_cmpalu;//////////////
+// wire for_o_con_cmpmem;/////////////
+// //cmpmux//////////////////////////
+// wire [31:0] cmpmux_i_data_rs;
+// wire [31:0] cmpmux_i_data_aluresE;
+// wire cmpmux_i_con_cmpalu;
+// wire [31:0] cmpmux_o_data_cmprs;
+// //cmpmux2/////////////////
+// wire [31:0] cmpmux2_i_data_rs;
+// wire [31:0] cmpmux2_i_data_memout;
+// wire cmpmux2_i_con_cmpmem;
+// wire [31:0] cmpmux2_o_data_cmprs;
 
 // ====================
 // Registers
@@ -237,7 +237,7 @@ assign control_i_con_instru = i_data_instr[31:26];
 //jbcon
 assign jbcon_i_con_instru = i_data_instr[31:26];
 assign jbcon_i_con_func = i_data_instr[5:0];
-//assign jbcon_i_con_rt = i_data_instr[16];//////////////
+assign jbcon_i_con_rt = i_data_instr[16];//////////////
 //pcadd
 assign pcadd_i_addr_pcadd4E = i_addr_pc4;
 assign pcadd_i_data_immshiftl = sl_o_data_immshiftl;
@@ -345,8 +345,8 @@ D_jb_control u_jb_control(
 .o_con_bop(jbcon_o_con_bop),
 .o_con_aluPC4(jbcon_o_con_aluPC4),
 .i_con_instru(jbcon_i_con_instru),        // opcode
-.i_con_func(jbcon_i_con_func)          // function code
-//.i_con_rt(jbcon_i_con_rt)////////////////
+.i_con_func(jbcon_i_con_func),          // function code
+.i_con_rt(jbcon_i_con_rt)////////////////
 );           // 16th of the instruction
 
 //pcadd

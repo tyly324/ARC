@@ -28,7 +28,7 @@ wire [2:0] for_o_con_Efbmux;
 wire [4:0] for_addr_rtM;
 wire [4:0] for_addr_rtW;
 wire [31:0] for_memout;
-wire [31:0] for_aluresE;
+//wire [31:0] for_aluresE;
 //execute
 wire [2:0] ex_con_bop;////////////
 wire [31:0] ex_data_pc4;
@@ -182,7 +182,7 @@ execute u_execute(
 	//forward feedback//////////////////////
 	.o_addr_Erd(for_o_addr_Erd),
 	.o_addr_Mrt(for_addr_rtM),
-	.o_FaluresE(for_aluresE),
+	//.o_FaluresE(for_aluresE),
 	//branch////////////
 	.o_con_ifbranch(if_con_b)
 	);
