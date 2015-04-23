@@ -1,0 +1,107 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : core
+Version: F-2011.09-SP2
+Date   : Thu Apr 23 21:35:51 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_mem/pipe_con_Wloadmux_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_execute/pipe_alures_reg[31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  core               10k                   c35_CORELIB
+  W_loadmux3         10k                   c35_CORELIB
+  writeback          10k                   c35_CORELIB
+  W_datamux          10k                   c35_CORELIB
+  E_fbmux5           10k                   c35_CORELIB
+  execute            10k                   c35_CORELIB
+  E_alubmux          10k                   c35_CORELIB
+  E_alu              10k                   c35_CORELIB
+  E_alu_DW01_sub_1   10k                   c35_CORELIB
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_mem/pipe_con_Wloadmux_reg[1]/C (DFC3)                 0.00 #     0.00 r
+  u_mem/pipe_con_Wloadmux_reg[1]/Q (DFC3)                 0.69       0.69 f
+  u_mem/o_con_Wloadmux[1] (mem)                           0.00       0.69 f
+  u_writeback/i_con_Wloadmux[1] (writeback)               0.00       0.69 f
+  u_writeback/u_loadmux/i_con_loadsig[1] (W_loadmux3)     0.00       0.69 f
+  u_writeback/u_loadmux/U17/Q (INV3)                      0.13       0.82 r
+  u_writeback/u_loadmux/U37/Q (NAND22)                    0.10       0.92 f
+  u_writeback/u_loadmux/U20/Q (INV3)                      0.11       1.03 r
+  u_writeback/u_loadmux/U19/Q (NAND22)                    0.09       1.12 f
+  u_writeback/u_loadmux/U26/Q (NAND22)                    0.19       1.30 r
+  u_writeback/u_loadmux/U16/Q (INV6)                      0.17       1.47 f
+  u_writeback/u_loadmux/U21/Q (NAND22)                    0.16       1.62 r
+  u_writeback/u_loadmux/o_data_Wdata[17] (W_loadmux3)     0.00       1.62 r
+  u_writeback/u_datamux/i_data_load[17] (W_datamux)       0.00       1.62 r
+  u_writeback/u_datamux/U36/Q (AOI222)                    0.13       1.76 f
+  u_writeback/u_datamux/U37/Q (CLKIN3)                    0.28       2.04 r
+  u_writeback/u_datamux/o_data_toreg[17] (W_datamux)      0.00       2.04 r
+  u_writeback/o_data_regwrite[17] (writeback)             0.00       2.04 r
+  u_execute/i_data_FMalures[17] (execute)                 0.00       2.04 r
+  u_execute/u_fbmux/i_data_writeres[17] (E_fbmux5)        0.00       2.04 r
+  u_execute/u_fbmux/U141/Q (AOI222)                       0.14       2.17 f
+  u_execute/u_fbmux/U19/Q (NAND26)                        0.17       2.34 r
+  u_execute/u_fbmux/o_data_alusrb[17] (E_fbmux5)          0.00       2.34 r
+  u_execute/u_alubmux/i_data_fb[17] (E_alubmux)           0.00       2.34 r
+  u_execute/u_alubmux/U38/Q (AOI222)                      0.13       2.48 f
+  u_execute/u_alubmux/U4/Q (INV3)                         0.21       2.69 r
+  u_execute/u_alubmux/o_data_alub[17] (E_alubmux)         0.00       2.69 r
+  u_execute/u_alu/i_data_B[17] (E_alu)                    0.00       2.69 r
+  u_execute/u_alu/U48/Q (BUF12)                           0.27       2.96 r
+  u_execute/u_alu/sub_34/B[1] (E_alu_DW01_sub_1)          0.00       2.96 r
+  u_execute/u_alu/sub_34/U18/Q (INV3)                     0.10       3.07 f
+  u_execute/u_alu/sub_34/U2_1/CO (ADD32)                  0.39       3.46 f
+  u_execute/u_alu/sub_34/U2_2/CO (ADD32)                  0.36       3.82 f
+  u_execute/u_alu/sub_34/U2_3/CO (ADD32)                  0.36       4.18 f
+  u_execute/u_alu/sub_34/U2_4/CO (ADD32)                  0.36       4.55 f
+  u_execute/u_alu/sub_34/U2_5/CO (ADD32)                  0.37       4.91 f
+  u_execute/u_alu/sub_34/U2_6/CO (ADD32)                  0.36       5.28 f
+  u_execute/u_alu/sub_34/U2_7/CO (ADD32)                  0.36       5.64 f
+  u_execute/u_alu/sub_34/U2_8/CO (ADD32)                  0.36       6.00 f
+  u_execute/u_alu/sub_34/U2_9/CO (ADD32)                  0.36       6.37 f
+  u_execute/u_alu/sub_34/U2_10/CO (ADD32)                 0.36       6.73 f
+  u_execute/u_alu/sub_34/U2_11/CO (ADD32)                 0.36       7.10 f
+  u_execute/u_alu/sub_34/U2_12/CO (ADD32)                 0.36       7.46 f
+  u_execute/u_alu/sub_34/U2_13/CO (ADD32)                 0.36       7.82 f
+  u_execute/u_alu/sub_34/U2_14/CO (ADD32)                 0.32       8.15 f
+  u_execute/u_alu/sub_34/U21/Q (XNR31)                    0.26       8.41 r
+  u_execute/u_alu/sub_34/DIFF[15] (E_alu_DW01_sub_1)      0.00       8.41 r
+  u_execute/u_alu/U254/Q (AOI221)                         0.13       8.54 f
+  u_execute/u_alu/U87/Q (OAI212)                          0.20       8.74 r
+  u_execute/u_alu/U30/Q (AOI2112)                         0.12       8.86 f
+  u_execute/u_alu/U7/Q (NAND22)                           0.14       8.99 r
+  u_execute/u_alu/o_data_AluRes[31] (E_alu)               0.00       8.99 r
+  u_execute/pipe_alures_reg[31]/D (DFC1)                  0.00       8.99 r
+  data arrival time                                                  8.99
+
+  clock clk (rise edge)                                   9.00       9.00
+  clock network delay (ideal)                             0.00       9.00
+  u_execute/pipe_alures_reg[31]/C (DFC1)                  0.00       9.00 r
+  library setup time                                      0.00       9.00
+  data required time                                                 9.00
+  --------------------------------------------------------------------------
+  data required time                                                 9.00
+  data arrival time                                                 -8.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
