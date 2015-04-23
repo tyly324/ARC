@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 module E_alu_control(
-	output logic [3:0] o_con_AluCtrl, 
+	output logic [3:0] o_con_AluCtrl,
+	output logic o_con_mul,//****************multu 
 	input logic [5:0] i_con_AluOp, 
 	input logic [5:0] i_con_FuncCode);
 
@@ -28,6 +29,7 @@ always_comb
 						///////////////////////////////////////
 						42: o_con_AluCtrl=9;	//R /slt(set on less than)
 						43:	o_con_AluCtrl=7;	//R /sltu 
+						19: o_con_mul=1;		//R /multu************
 					endcase
 					end
 			2'b11:  begin
@@ -40,9 +42,9 @@ always_comb
                         ///////////////////////////////////////
                         //5:	o_con_AluCtrl=5; 	// bne
                         ///////////////////////////////////////
-                        6:  o_con_AluCtrl=7;    // slti/sltiu
+                        6:  o_con_AluCtrl=9;    // slti
                         7:	o_con_AluCtrl=8;	//I//lui
-                        //8: 	o_con_AluCtrl=9;	//J//jal
+                        9: 	o_con_AluCtrl=7;	//sltiu
                     endcase
 			        end
 		endcase

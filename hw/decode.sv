@@ -45,7 +45,7 @@ module decode(
 	output logic o_con_Eregdst,
 	output logic o_con_Mmemread,
 	output logic o_con_Mmemwrite,
-	output logic [1:0] o_con_Wloadmux,
+	//output logic [1:0] o_con_Wloadmux,
 	output logic o_con_Walupc8,///////////
 	output logic o_con_Wmemtoreg,
 	output logic o_con_Wregwrite,
@@ -77,7 +77,7 @@ wire control_o_con_memwrite;
 wire control_o_con_alusrc;
 wire control_o_con_regwrite;
 wire control_o_con_ifsign;
-wire [1:0] control_o_con_loadsig;
+//wire [1:0] control_o_con_loadsig;
 wire [5:0] control_o_con_aluop; 
 wire [5:0] control_i_con_instru;
 
@@ -88,7 +88,7 @@ wire jbcon_o_con_aluPC4;
 wire [5:0] jbcon_i_con_instru;
 wire [5:0] jbcon_i_con_func;
 wire jbcon_o_con_ifstall;
-//wire jbcon_i_con_rt;////////////////
+wire jbcon_i_con_rt;////////////////
 
 //pcadd
 wire [31:0] pcadd_i_addr_pcadd4E, pcadd_i_data_immshiftl;
@@ -159,7 +159,7 @@ logic pipe_con_Eregdst;
 logic pipe_con_EaluPC4;
 logic pipe_con_Mmemread;
 logic pipe_con_Mmemwrite;
-logic [1:0] pipe_con_Wloadmux;
+//logic [1:0] pipe_con_Wloadmux;
 logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
 logic [31:0]pipe_signext_o_data_immD;
@@ -186,7 +186,7 @@ begin
 		pipe_con_EaluPC4 <= 0;
 		pipe_con_Mmemread <= 0;
 		pipe_con_Mmemwrite <= 0;
-		pipe_con_Wloadmux <= 0;
+		//pipe_con_Wloadmux <= 0;
 		pipe_con_Wmemtoreg <= 0;
 		pipe_con_Wregwrite <= 0;
 		pipe_signext_o_data_immD <= 0;
@@ -211,7 +211,7 @@ begin
 		pipe_con_EaluPC4 <= jbcon_o_con_aluPC4;
 		pipe_con_Mmemread <= control_o_con_memread;
 		pipe_con_Mmemwrite <= control_o_con_memwrite;
-		pipe_con_Wloadmux <= control_o_con_loadsig;
+		//pipe_con_Wloadmux <= control_o_con_loadsig;
 		pipe_con_Wmemtoreg <= control_o_con_memtoreg;
 		pipe_con_Wregwrite <= control_o_con_regwrite;
 		pipe_signext_o_data_immD <= signext_o_data_immD;
@@ -298,7 +298,7 @@ assign o_con_Eregdst = pipe_con_Eregdst;
 assign o_con_Walupc8 = pipe_con_EaluPC4;
 assign o_con_Mmemread = pipe_con_Mmemread;
 assign o_con_Mmemwrite = pipe_con_Mmemwrite;
-assign o_con_Wloadmux = pipe_con_Wloadmux;
+//assign o_con_Wloadmux = pipe_con_Wloadmux;
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
 //branch////////////
@@ -333,7 +333,7 @@ D_control u_control(
 .o_con_alusrc(control_o_con_alusrc), 
 .o_con_regwrite(control_o_con_regwrite), 
 .o_con_ifsign(control_o_con_ifsign),
-.o_con_loadsig(control_o_con_loadsig),
+//.o_con_loadsig(control_o_con_loadsig),
 .o_con_aluop(control_o_con_aluop), 
 .i_con_instru(control_i_con_instru)
 );
