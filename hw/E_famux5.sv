@@ -1,4 +1,4 @@
-
+`timescale 1ns / 1ps
 module E_famux5(
   input  logic[31:0] i_data_rs, 
   input logic [31:0] i_data_alures, 
@@ -7,17 +7,6 @@ module E_famux5(
   input logic [31:0] i_data_lwW,
   input  logic[2:0]  i_con_fa, 
   output logic[31:0] o_data_alusra);
-
-  // always_comb
-  // begin
-  //  o_data_alusra=0;
-  //   if(i_con_fa==2'b00)
-  //      o_data_alusra=i_data_rs;
-  //   if(i_con_fa==2'b10) 
-  //      o_data_alusra=i_data_alures;
-  //   if(i_con_fa==2'b01)
-  //      o_data_alusra=i_data_writeres;
-  // end 
 
 always_comb
 case(i_con_fa)

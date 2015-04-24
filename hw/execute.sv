@@ -21,6 +21,8 @@ module execute(
 	input logic [31:0] i_data_FMalures,
 	input logic [31:0] i_data_FMmemout,////////////
 	input logic [31:0] i_data_FWmemout,////////////
+	input logic [2:0] i_con_Efamux,
+	input logic [2:0] i_con_Efbmux,
 	//control
 	input logic [5:0] i_con_Ealuop,
 	input logic i_con_Ealusrc,
@@ -28,12 +30,9 @@ module execute(
 	input logic i_con_Mmemread,
 	input logic i_con_Mmemwrite,
 	//input logic [1:0] i_con_Wloadmux,
-	input logic i_con_Walupc8,///////////
+	input logic i_con_Malupc8,///////////
 	input logic i_con_Wmemtoreg,
 	input logic i_con_Wregwrite,
-	//forward unit///////////////////
-	input logic [2:0] i_con_Efamux,
-	input logic [2:0] i_con_Efbmux,
 	//branch
 	input logic [2:0] i_con_bop,
 
@@ -44,7 +43,7 @@ module execute(
 	output logic o_con_Mmemread,
 	output logic o_con_Mmemwrite,
 	//output logic [1:0] o_con_Wloadmux,
-	output logic o_con_Walupc8,///////////
+	output logic o_con_Malupc8,///////////
 	output logic o_con_Wmemtoreg,
 	output logic o_con_Wregwrite,
 	//forward feedback//////////////////////
@@ -115,7 +114,7 @@ logic [31:0] pipe_pc4;///////////
 logic pipe_con_Mmemread;
 logic pipe_con_Mmemwrite;
 //logic [1:0] pipe_con_Wloadmux;
-logic pipe_con_Walupc8;///////////
+logic pipe_con_Malupc8;///////////
 logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
 //forward 
@@ -131,7 +130,7 @@ begin
 		pipe_con_Mmemread <= 0;
 		pipe_con_Mmemwrite <= 0;
 		//pipe_con_Wloadmux <= 0;
-		pipe_con_Walupc8 <= 0;/////////////
+		pipe_con_Malupc8 <= 0;/////////////
 		pipe_con_Wmemtoreg <= 0;
 		pipe_con_Wregwrite <= 0;
 		pipe_addr_rt <= 0;
@@ -144,7 +143,7 @@ begin
 		pipe_con_Mmemread <= i_con_Mmemread;
 		pipe_con_Mmemwrite <= i_con_Mmemwrite;
 		//pipe_con_Wloadmux <= i_con_Wloadmux;
-		pipe_con_Walupc8 <= i_con_Walupc8;//////////
+		pipe_con_Malupc8 <= i_con_Malupc8;//////////
 		pipe_con_Wmemtoreg <= i_con_Wmemtoreg;
 		pipe_con_Wregwrite <= i_con_Wregwrite;
 		pipe_addr_rt <= i_addr_rt;
@@ -188,7 +187,7 @@ assign alubmux_i_con_imm = i_con_Ealusrc;
 assign rdmux_i_data_rdE = i_addr_rd;
 assign rdmux_i_data_rtE = i_addr_rt;
 assign rdmux_i_con_regdst = i_con_Eregdst;
-assign rdmux_i_con_jal = i_con_Walupc8;//********
+assign rdmux_i_con_jal = i_con_Malupc8;//********
 
 // ==outputs
 assign o_data_pc4 = pipe_pc4;///////////
@@ -198,7 +197,7 @@ assign o_addr_regdst = pipe_regdst;
 assign o_con_Mmemread = pipe_con_Mmemread;
 assign o_con_Mmemwrite = pipe_con_Mmemwrite;
 //assign o_con_Wloadmux = pipe_con_Wloadmux;
-assign o_con_Walupc8 = pipe_con_Walupc8;
+assign o_con_Malupc8 = pipe_con_Malupc8;
 assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
 //forward feedback////////////////////////////
