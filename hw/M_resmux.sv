@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module W_resmux(
+module M_resmux(
 	input logic [31:0] i_data_alures, 
 	input logic [31:0] i_data_pc8, 
 	input logic i_con_pc8, 
