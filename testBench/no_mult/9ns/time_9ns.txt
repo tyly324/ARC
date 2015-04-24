@@ -1,0 +1,91 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:28:04 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_decode/pipe_con_Efamux_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_execute/pipe_alures_reg[29]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  core               10k                   c35_CORELIB
+  E_famux5           10k                   c35_CORELIB
+  execute            10k                   c35_CORELIB
+  E_alu              10k                   c35_CORELIB
+  E_alu_DW01_sub_0   10k                   c35_CORELIB
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_decode/pipe_con_Efamux_reg[1]/C (DFC3)                0.00 #     0.00 r
+  u_decode/pipe_con_Efamux_reg[1]/Q (DFC3)                0.53       0.53 r
+  u_decode/o_con_Efamux[1] (decode)                       0.00       0.53 r
+  u_execute/i_con_Efamux[1] (execute)                     0.00       0.53 r
+  u_execute/u_famux5/i_con_fa[1] (E_famux5)               0.00       0.53 r
+  u_execute/u_famux5/U112/Q (CLKIN3)                      0.15       0.68 f
+  u_execute/u_famux5/U23/Q (NAND30)                       0.48       1.16 r
+  u_execute/u_famux5/U79/Q (INV3)                         0.25       1.41 f
+  u_execute/u_famux5/U68/Q (BUF2)                         0.61       2.01 f
+  u_execute/u_famux5/U77/Q (AOI221)                       0.28       2.29 r
+  u_execute/u_famux5/U75/Q (NAND31)                       0.16       2.45 f
+  u_execute/u_famux5/o_data_alusra[17] (E_famux5)         0.00       2.45 f
+  u_execute/u_alu/i_data_A[17] (E_alu)                    0.00       2.45 f
+  u_execute/u_alu/U44/Q (BUF6)                            0.43       2.88 f
+  u_execute/u_alu/sub_1_root_sub_35_2/A[1] (E_alu_DW01_sub_0)
+                                                          0.00       2.88 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_1/CO (ADD32)     0.41       3.29 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_2/CO (ADD32)     0.36       3.65 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_3/CO (ADD32)     0.36       4.01 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_4/CO (ADD32)     0.36       4.38 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_5/CO (ADD32)     0.36       4.74 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_6/CO (ADD32)     0.39       5.13 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U4/Q (NAND22)       0.17       5.30 r
+  u_execute/u_alu/sub_1_root_sub_35_2/U7/Q (NAND33)       0.08       5.38 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_8/CO (ADD32)     0.35       5.73 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_9/CO (ADD32)     0.37       6.10 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_10/CO (ADD32)
+                                                          0.36       6.46 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_11/CO (ADD32)
+                                                          0.36       6.83 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U2_12/CO (ADD32)
+                                                          0.38       7.21 f
+  u_execute/u_alu/sub_1_root_sub_35_2/U26/Q (XOR31)       0.65       7.86 r
+  u_execute/u_alu/sub_1_root_sub_35_2/DIFF[13] (E_alu_DW01_sub_0)
+                                                          0.00       7.86 r
+  u_execute/u_alu/U91/Q (AOI221)                          0.19       8.04 f
+  u_execute/u_alu/U114/Q (OAI212)                         0.20       8.24 r
+  u_execute/u_alu/U4/Q (AOI2111)                          0.23       8.47 f
+  u_execute/u_alu/U24/Q (NAND41)                          0.52       8.99 r
+  u_execute/u_alu/o_data_AluRes[29] (E_alu)               0.00       8.99 r
+  u_execute/pipe_alures_reg[29]/D (DFC1)                  0.00       8.99 r
+  data arrival time                                                  8.99
+
+  clock clk (rise edge)                                   9.00       9.00
+  clock network delay (ideal)                             0.00       9.00
+  u_execute/pipe_alures_reg[29]/C (DFC1)                  0.00       9.00 r
+  library setup time                                      0.00       9.00
+  data required time                                                 9.00
+  --------------------------------------------------------------------------
+  data required time                                                 9.00
+  data arrival time                                                 -8.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

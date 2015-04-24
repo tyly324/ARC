@@ -1,0 +1,97 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:39:09 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_fetch/pipe_instr_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_decode/pipe_addr_branch_reg[31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  core               10k                   c35_CORELIB
+  D_pcadd_DW01_add_0 10k                   c35_CORELIB
+  decode             10k                   c35_CORELIB
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_fetch/pipe_instr_reg[0]/C (DFC3)                      0.00 #     0.00 r
+  u_fetch/pipe_instr_reg[0]/Q (DFC3)                      0.77       0.77 f
+  u_fetch/o_data_instr[0] (fetch)                         0.00       0.77 f
+  u_decode/i_data_instr[0] (decode)                       0.00       0.77 f
+  u_decode/u_sl/i_data_immE[0] (D_shiftleft)              0.00       0.77 f
+  u_decode/u_sl/o_data_immshiftl[2] (D_shiftleft)         0.00       0.77 f
+  u_decode/u_pcadd/i_data_immshiftl[2] (D_pcadd)          0.00       0.77 f
+  u_decode/u_pcadd/add_5/B[2] (D_pcadd_DW01_add_0)        0.00       0.77 f
+  u_decode/u_pcadd/add_5/U1_2/CO (ADD32)                  0.41       1.18 f
+  u_decode/u_pcadd/add_5/U1_3/CO (ADD32)                  0.36       1.54 f
+  u_decode/u_pcadd/add_5/U1_4/CO (ADD32)                  0.36       1.90 f
+  u_decode/u_pcadd/add_5/U1_5/CO (ADD32)                  0.39       2.29 f
+  u_decode/u_pcadd/add_5/U12/Q (NAND22)                   0.16       2.46 r
+  u_decode/u_pcadd/add_5/U4/Q (NAND33)                    0.09       2.55 f
+  u_decode/u_pcadd/add_5/U3/Q (NAND22)                    0.15       2.70 r
+  u_decode/u_pcadd/add_5/U1/Q (NAND33)                    0.09       2.79 f
+  u_decode/u_pcadd/add_5/U30/Q (NAND22)                   0.12       2.91 r
+  u_decode/u_pcadd/add_5/U7/Q (NAND31)                    0.18       3.09 f
+  u_decode/u_pcadd/add_5/U15/Q (NAND22)                   0.18       3.27 r
+  u_decode/u_pcadd/add_5/U9/Q (NAND33)                    0.10       3.38 f
+  u_decode/u_pcadd/add_5/U22/Q (NAND22)                   0.20       3.58 r
+  u_decode/u_pcadd/add_5/U6/Q (NAND33)                    0.11       3.69 f
+  u_decode/u_pcadd/add_5/U34/Q (NAND22)                   0.16       3.85 r
+  u_decode/u_pcadd/add_5/U14/Q (NAND31)                   0.15       4.00 f
+  u_decode/u_pcadd/add_5/U1_12/CO (ADD32)                 0.37       4.37 f
+  u_decode/u_pcadd/add_5/U1_13/CO (ADD32)                 0.36       4.74 f
+  u_decode/u_pcadd/add_5/U1_14/CO (ADD32)                 0.36       5.10 f
+  u_decode/u_pcadd/add_5/U1_15/CO (ADD32)                 0.36       5.46 f
+  u_decode/u_pcadd/add_5/U1_16/CO (ADD32)                 0.36       5.82 f
+  u_decode/u_pcadd/add_5/U1_17/CO (ADD32)                 0.36       6.19 f
+  u_decode/u_pcadd/add_5/U1_18/CO (ADD32)                 0.39       6.58 f
+  u_decode/u_pcadd/add_5/U27/Q (NAND22)                   0.17       6.74 r
+  u_decode/u_pcadd/add_5/U18/Q (NAND33)                   0.09       6.83 f
+  u_decode/u_pcadd/add_5/U33/Q (NAND22)                   0.12       6.96 r
+  u_decode/u_pcadd/add_5/U8/Q (NAND31)                    0.15       7.11 f
+  u_decode/u_pcadd/add_5/U1_21/CO (ADD32)                 0.38       7.49 f
+  u_decode/u_pcadd/add_5/U1_22/CO (ADD32)                 0.36       7.85 f
+  u_decode/u_pcadd/add_5/U1_23/CO (ADD32)                 0.36       8.22 f
+  u_decode/u_pcadd/add_5/U1_24/CO (ADD32)                 0.36       8.58 f
+  u_decode/u_pcadd/add_5/U1_25/CO (ADD32)                 0.36       8.94 f
+  u_decode/u_pcadd/add_5/U1_26/CO (ADD32)                 0.36       9.31 f
+  u_decode/u_pcadd/add_5/U1_27/CO (ADD32)                 0.36       9.67 f
+  u_decode/u_pcadd/add_5/U1_28/CO (ADD32)                 0.36      10.04 f
+  u_decode/u_pcadd/add_5/U1_29/CO (ADD32)                 0.36      10.40 f
+  u_decode/u_pcadd/add_5/U1_30/CO (ADD32)                 0.33      10.73 f
+  u_decode/u_pcadd/add_5/U45/Q (XOR31)                    0.27      11.00 f
+  u_decode/u_pcadd/add_5/SUM[31] (D_pcadd_DW01_add_0)     0.00      11.00 f
+  u_decode/u_pcadd/o_addr_pcbranchE[31] (D_pcadd)         0.00      11.00 f
+  u_decode/pipe_addr_branch_reg[31]/D (DFC1)              0.00      11.00 f
+  data arrival time                                                 11.00
+
+  clock clk (rise edge)                                  11.00      11.00
+  clock network delay (ideal)                             0.00      11.00
+  u_decode/pipe_addr_branch_reg[31]/C (DFC1)              0.00      11.00 r
+  library setup time                                      0.00      11.00
+  data required time                                                11.00
+  --------------------------------------------------------------------------
+  data required time                                                11.00
+  data arrival time                                                -11.00
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

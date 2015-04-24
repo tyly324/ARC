@@ -1,0 +1,68 @@
+ 
+****************************************
+Report : qor
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:39:10 2015
+****************************************
+
+
+  Timing Path Group 'clk'
+  -----------------------------------
+  Levels of Logic:              38.00
+  Critical Path Length:         11.00
+  Critical Path Slack:           0.00
+  Critical Path Clk Period:     11.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         43
+  Hierarchical Port Count:       3992
+  Leaf Cell Count:               4713
+  Buf/Inv Cell Count:             638
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:      3181
+  Sequential Cell Count:         1532
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:   344089.195686
+  Noncombinational Area:
+                        512439.184204
+  Net Area:             142920.000000
+  -----------------------------------
+  Cell Area:            856528.379890
+  Design Area:          999448.379890
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          4891
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: hind.ecs.soton.ac.uk
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    3.88
+  Logic Optimization:                  5.73
+  Mapping Optimization:               21.82
+  -----------------------------------------
+  Overall Compile Time:               35.44
+  Overall Compile Wall Clock Time:    36.33
+
+1

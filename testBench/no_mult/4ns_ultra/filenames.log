@@ -1,0 +1,116 @@
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/dv/dv_setup.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/syn/snpsSynProcs.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/package.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/syn/layout/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/fanoutviewer/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/layout/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/docBrowser/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/timing/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/misc/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/regressionToolkit/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/qtcl/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/select/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/menus/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/pathinspector/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/profiler/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/WindowFrameWork/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/view/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/hierarchy/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/setup/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/strokes/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/tcl-dp/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/histogram/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/highlight/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/libviewer/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/schematic/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/table/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/opdlg/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/snps_tcl/snpsTclPro/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/snps_tcl/snpsUtils/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/snps_tcl/snpsTest/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/snps_tcl/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/http1.0/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/tcltest/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/opt/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/reg/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/msgcat/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/http/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/lib/tcl8.4/dde/pkgIndex.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/setup/snpsCommonSetup.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/setup/snpsCustomize.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/setup/snpsProcheck.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/qtcl/.synopsys_qtcl.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/highlight/highlight.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/misc/base.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/misc/timing.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/misc/setting.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/docBrowser/docBrowser.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/tcllib/snps_tcl/snpsUtils/snpsUtils.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/WindowFrameWork/windowFrameWork.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/WindowFrameWork/skipBusyCursorCmdList.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/ObjectChooser.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/misc/DialogObjectChooser.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/HistBinInformation.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/HistBin1Information.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/BinsOnlyInformation.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/FileChooser.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/PathPinSimpleInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/PathsBasicInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/PathsBasicSimpleInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/SlctOperationInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/ObjectListInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/FanInOutInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/NumberOfLevelsChooser.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/WindowReuseInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/ReportOutputOptionInfo.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/setup/snpsCollections.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/dialogs/CompileLinkDesign.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/histogram/DialogEndpointSlack.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/histogram/DialogPathsSlack.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/histogram/DialogNetCapacitance.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/schematic/DialogPathSchematicFanInOut.tcl
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/auxx/gui/common/schematic/DialogPathSchematicAddPaths.tcl
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/all.tcl
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/library_Setup
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/core.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_compare.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_control.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_forward.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_jb_control.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_jump_ext.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_pcadd.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_register_bank.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_shiftleft.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/D_sign_extend.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/decode.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/E_alu.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/E_alu_control.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/E_alubmux.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/E_famux5.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/E_fbmux5.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/E_rdmux.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/execute.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/F_add4.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/F_branchmux.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/F_jumpmux.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/F_pc.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/fetch.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/M_resmux.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/mem.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/W_datamux.sv
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/writeback.sv
+/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/libraries/syn/gtech.db
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/libraries/syn/standard.sldb
+/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/alib-52/c35_CORELIB.db.alib
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/alib-52/alib_analyze_libs.tcl.e
+/opt/esdcad/software/synopsys/linux/coreTools_F-2011.09-SP2/libraries/syn/dw_foundation.sldb
+/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/alib-52/c35_CORELIB.db.alib
+/home/zj2g14/synopsys_cache_F-2011.09-SP2/DW01/DW01_NAND2/str/c35_CORELIB_8184/element.ddc
+/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db
+/home/zj2g14/Courses/S2/ELEC6231 VLSI Design Project/ARC/testBench/synth_24/4ns/alib-52/c35_CORELIB.db.alib
+/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db
+/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db

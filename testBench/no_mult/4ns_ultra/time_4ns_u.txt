@@ -1,0 +1,71 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:28:34 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_decode/pipe_con_Efbmux_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_execute/pipe_alures_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  core               10k                   c35_CORELIB
+  execute            10k                   c35_CORELIB
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_decode/pipe_con_Efbmux_reg[1]/C (DFC3)                0.00 #     0.00 r
+  u_decode/pipe_con_Efbmux_reg[1]/Q (DFC3)                0.68       0.68 f
+  u_execute/i_con_Efbmux[1] (execute)                     0.00       0.68 f
+  u_execute/U2657/Q (CLKIN6)                              0.11       0.79 r
+  u_execute/U2660/Q (INV12)                               0.09       0.88 f
+  u_execute/U2726/Q (NOR33)                               0.16       1.04 r
+  u_execute/U2700/Q (CLKBU15)                             0.31       1.34 r
+  u_execute/U1380/Q (NAND24)                              0.11       1.45 f
+  u_execute/U1767/Q (NAND33)                              0.28       1.73 r
+  u_execute/U1069/Q (NOR33)                               0.20       1.93 f
+  u_execute/U1068/Q (NOR24)                               0.21       2.14 r
+  u_execute/U1174/Q (INV8)                                0.10       2.23 f
+  u_execute/U1740/Q (INV12)                               0.11       2.34 r
+  u_execute/u_alu/lt_x_11/U92/Q (NAND20)                  0.18       2.52 f
+  u_execute/U574/Q (INV3)                                 0.11       2.64 r
+  u_execute/U575/Q (AOI310)                               0.20       2.83 f
+  u_execute/U1815/Q (OAI211)                              0.26       3.09 r
+  u_execute/u_alu/lt_x_11/U82/Q (AOI211)                  0.20       3.29 f
+  u_execute/u_alu/lt_x_11/U58/Q (OAI212)                  0.22       3.51 r
+  u_execute/U1177/Q (AOI212)                              0.13       3.64 f
+  u_execute/u_alu/lt_x_11/U1/Q (OAI212)                   0.18       3.81 r
+  u_execute/U2896/Q (NAND22)                              0.06       3.87 f
+  u_execute/U2467/Q (NAND22)                              0.12       3.99 r
+  u_execute/pipe_alures_reg[0]/D (DFC1)                   0.00       4.00 r
+  data arrival time                                                  4.00
+
+  clock clk (rise edge)                                   4.00       4.00
+  clock network delay (ideal)                             0.00       4.00
+  u_execute/pipe_alures_reg[0]/C (DFC1)                   0.00       4.00 r
+  library setup time                                      0.00       4.00
+  data required time                                                 4.00
+  --------------------------------------------------------------------------
+  data required time                                                 4.00
+  data arrival time                                                 -4.00
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

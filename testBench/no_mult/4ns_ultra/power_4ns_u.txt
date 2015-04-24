@@ -1,0 +1,59 @@
+Loading db file '/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:28:34 2015
+****************************************
+
+
+Library(s) Used:
+
+    c35_CORELIB (File: /opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db)
+
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+core                   10k               c35_CORELIB
+execute                10k               c35_CORELIB
+D_register_bank        10k               c35_CORELIB
+
+
+Global Operating Voltage = 3.3  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  = 122.1805 mW   (90%)
+  Net Switching Power  =  14.2024 mW   (10%)
+                         ---------
+Total Dynamic Power    = 136.3829 mW  (100%)
+
+Cell Leakage Power     = 808.6907 nW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register         117.1685            2.0326        4.9836e+05          119.2015  (  87.40%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      5.0121           12.1698        3.1032e+05           17.1823  (  12.60%)
+--------------------------------------------------------------------------------------------------
+Total            122.1806 mW        14.2024 mW     8.0869e+05 pW       136.3838 mW
+1

@@ -1,0 +1,100 @@
+Loading db file '/opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:28:04 2015
+****************************************
+
+
+Library(s) Used:
+
+    c35_CORELIB (File: /opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db)
+
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+core                   10k               c35_CORELIB
+fetch                  10k               c35_CORELIB
+decode                 10k               c35_CORELIB
+execute                10k               c35_CORELIB
+mem                    10k               c35_CORELIB
+writeback              10k               c35_CORELIB
+F_jumpmux              10k               c35_CORELIB
+F_branchmux            10k               c35_CORELIB
+F_pc                   10k               c35_CORELIB
+F_add4                 10k               c35_CORELIB
+D_control              10k               c35_CORELIB
+D_jb_control           10k               c35_CORELIB
+D_pcadd                10k               c35_CORELIB
+D_register_bank        10k               c35_CORELIB
+D_shiftleft            10k               c35_CORELIB
+D_sign_extend          10k               c35_CORELIB
+D_jump_ext             10k               c35_CORELIB
+D_forward              10k               c35_CORELIB
+E_alu                  10k               c35_CORELIB
+E_alu_control          10k               c35_CORELIB
+E_famux5               10k               c35_CORELIB
+E_fbmux5               10k               c35_CORELIB
+E_alubmux              10k               c35_CORELIB
+E_rdmux                10k               c35_CORELIB
+D_compare              10k               c35_CORELIB
+M_resmux               10k               c35_CORELIB
+W_datamux              10k               c35_CORELIB
+D_compare_DW01_cmp6_0  10k               c35_CORELIB
+E_alu_DW01_ash_0       10k               c35_CORELIB
+E_alu_DW01_sub_0       10k               c35_CORELIB
+E_alu_DW01_sub_1       10k               c35_CORELIB
+E_alu_DW01_add_0       10k               c35_CORELIB
+E_alu_DW01_add_1       10k               c35_CORELIB
+E_alu_DW01_add_2       10k               c35_CORELIB
+E_alu_DW01_add_3       10k               c35_CORELIB
+E_alu_DW01_add_4       10k               c35_CORELIB
+E_alu_DW01_add_5       10k               c35_CORELIB
+E_alu_DW01_add_6       10k               c35_CORELIB
+E_alu_DW_rash_0        10k               c35_CORELIB
+E_alu_DW01_cmp2_1      10k               c35_CORELIB
+F_add4_DW01_add_1      10k               c35_CORELIB
+D_pcadd_DW01_add_1     10k               c35_CORELIB
+mem_DW01_add_1         10k               c35_CORELIB
+E_alu_DW01_sub_3       10k               c35_CORELIB
+
+
+Global Operating Voltage = 3.3  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  =  57.1545 mW   (91%)
+  Net Switching Power  =   5.5525 mW    (9%)
+                         ---------
+Total Dynamic Power    =  62.7070 mW  (100%)
+
+Cell Leakage Power     = 778.5160 nW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register          53.2722            1.3593        5.0750e+05           54.6319  (  87.12%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      3.8822            4.1933        2.7100e+05            8.0758  (  12.88%)
+--------------------------------------------------------------------------------------------------
+Total             57.1544 mW         5.5525 mW     7.7850e+05 pW        62.7078 mW
+1

@@ -1,0 +1,76 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:31:58 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_decode/pipe_con_Efamux_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_execute/pipe_alures_reg[21]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  core               10k                   c35_CORELIB
+  execute            10k                   c35_CORELIB
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_decode/pipe_con_Efamux_reg[1]/C (DFC3)                0.00 #     0.00 r
+  u_decode/pipe_con_Efamux_reg[1]/Q (DFC3)                0.74       0.74 f
+  u_execute/i_con_Efamux[1] (execute)                     0.00       0.74 f
+  u_execute/U594/Q (INV3)                                 0.19       0.93 r
+  u_execute/U1268/Q (NAND22)                              0.06       1.00 f
+  u_execute/U297/Q (INV3)                                 0.34       1.33 r
+  u_execute/U568/Q (INV15)                                0.19       1.53 f
+  u_execute/U917/Q (NOR21)                                0.20       1.73 r
+  u_execute/U916/Q (AOI2111)                              0.25       1.98 f
+  u_execute/U17/Q (NAND23)                                0.54       2.53 r
+  u_execute/u_alu/add_x_1/U10/Q (NOR22)                   0.31       2.84 f
+  u_execute/u_alu/add_x_1/U7/Q (OAI212)                   0.22       3.06 r
+  u_execute/u_alu/add_x_1/U5/Q (AOI211)                   0.15       3.21 f
+  u_execute/u_alu/add_x_1/U3/Q (OAI212)                   0.22       3.43 r
+  u_execute/DP_OP_77_130_260/U27/Q (AOI212)               0.17       3.61 f
+  u_execute/DP_OP_77_130_260/U21/Q (OAI212)               0.25       3.86 r
+  u_execute/U157/Q (AOI212)                               0.17       4.03 f
+  u_execute/DP_OP_77_130_260/U7/Q (OAI212)                0.24       4.28 r
+  u_execute/U618/CO (ADD32)                               0.33       4.60 r
+  u_execute/U619/CO (ADD32)                               0.31       4.92 r
+  u_execute/U620/CO (ADD32)                               0.31       5.23 r
+  u_execute/U621/CO (ADD32)                               0.41       5.64 r
+  u_execute/U323/Q (NAND23)                               0.12       5.77 f
+  u_execute/U142/Q (CLKIN4)                               0.24       6.01 r
+  u_execute/U96/Q (NAND20)                                0.12       6.13 f
+  u_execute/U99/Q (NAND30)                                0.30       6.43 r
+  u_execute/U140/Q (AOI210)                               0.23       6.66 f
+  u_execute/U141/Q (NAND20)                               0.33       6.99 r
+  u_execute/pipe_alures_reg[21]/D (DFC1)                  0.00       6.99 r
+  data arrival time                                                  6.99
+
+  clock clk (rise edge)                                   7.00       7.00
+  clock network delay (ideal)                             0.00       7.00
+  u_execute/pipe_alures_reg[21]/C (DFC1)                  0.00       7.00 r
+  library setup time                                      0.00       7.00
+  data required time                                                 7.00
+  --------------------------------------------------------------------------
+  data required time                                                 7.00
+  data arrival time                                                 -6.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.01
+
+
+1

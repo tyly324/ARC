@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 17:31:55 2015
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'core' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    c35_CORELIB (File: /opt/esdcad/designkits/ams/v370/synopsys/c35_3.3V/c35_CORELIB.db)
+
+Number of ports:                          164
+Number of nets:                          1351
+Number of cells:                         1039
+Number of combinational cells:            662
+Number of sequential cells:               375
+Number of macros:                           0
+Number of buf/inv:                        117
+Number of references:                      47
+
+Combinational area:       331895.200195
+Noncombinational area:    504431.184540
+Net Interconnect area:    160740.000000
+
+Total cell area:          836326.384735
+Total area:               997066.384735
+1
