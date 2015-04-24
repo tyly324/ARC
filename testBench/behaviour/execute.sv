@@ -241,7 +241,7 @@ E_famux5 u_famux5(
 .o_data_alusra(famux5_o_data_alusra)
 );
 //fbmux5
-E_fbmux5 u_fbmux(
+E_fbmux5 u_fbmux5(
 .i_data_rt(fbmux5_i_data_rt),
 .i_data_alures(fbmux5_i_data_alures),
 .i_data_writeres(fbmux5_i_data_writeres),

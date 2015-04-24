@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version F-2011.09-SP2 for linux -- Nov 24, 2011
-#@ # Date:   Thu Apr 23 21:39:45 2015
+#@ # Date:   Fri Apr 24 02:33:57 2015
 #@ # Run by: zj2g14@hind.ecs.soton.ac.uk
 #@ 
 
@@ -4733,7 +4733,7 @@ source all.tcl
 #@ # -- End source library_Setup
 
 #@ 
-#@ analyze -format sverilog {./core.sv ./D_compare.sv ./D_control.sv ./D_jb_control.sv ./D_jump_ext.sv ./D_pcadd.sv ./D_register_bank.sv ./D_shiftleft.sv ./D_sign_extend.sv ./decode.sv ./E_alu.sv ./E_alu_control.sv ./E_alubmux.sv ./E_famux5.sv ./E_fbmux5.sv ./E_forward.sv ./E_rdmux.sv ./execute.sv ./F_add4.sv ./F_branchmux.sv ./F_jumpmux.sv ./F_pc.sv ./fetch.sv ./mem.sv ./W_datamux.sv ./W_loadmux3.sv ./W_resmux.sv ./writeback.sv}
+#@ analyze -format sverilog {./core.sv ./D_compare.sv ./D_control.sv ./D_forward.sv ./D_jb_control.sv ./D_jump_ext.sv ./D_pcadd.sv ./D_register_bank.sv ./D_shiftleft.sv ./D_sign_extend.sv ./decode.sv ./E_alu.sv ./E_alu_control.sv ./E_alubmux.sv ./E_famux5.sv ./E_fbmux5.sv ./E_rdmux.sv ./execute.sv ./F_add4.sv ./F_branchmux.sv ./F_jumpmux.sv ./F_pc.sv ./fetch.sv ./M_resmux.sv ./mem.sv ./W_datamux.sv ./writeback.sv}
 #@ 
 #@ elaborate core
 #@ 
@@ -4752,7 +4752,8 @@ source all.tcl
 #@ write_sdf design_5ns.sdf
 #@ 
 #@ create_clock clk -name clk -period 6
-#@ write_sdc design_6nss.sdc
-#@ write_sdf design_6nss.sdf
+#@ write_sdc design_5nss.sdc
+#@ write_sdf design_5nss.sdf
 #@ # -- End source all.tcl
 
+link

@@ -3,14 +3,14 @@
 Report : qor
 Design : core
 Version: F-2011.09-SP2
-Date   : Thu Apr 23 21:45:46 2015
+Date   : Fri Apr 24 02:35:00 2015
 ****************************************
 
 
   Timing Path Group 'clk'
   -----------------------------------
-  Levels of Logic:              22.00
-  Critical Path Length:          4.88
+  Levels of Logic:              23.00
+  Critical Path Length:          5.00
   Critical Path Slack:           0.00
   Critical Path Clk Period:      5.00
   Total Negative Slack:          0.00
@@ -23,31 +23,31 @@ Date   : Thu Apr 23 21:45:46 2015
 
   Cell Count
   -----------------------------------
-  Hierarchical Cell Count:         44
-  Hierarchical Port Count:       4108
-  Leaf Cell Count:               6957
-  Buf/Inv Cell Count:            1425
+  Hierarchical Cell Count:         35
+  Hierarchical Port Count:       3838
+  Leaf Cell Count:               6076
+  Buf/Inv Cell Count:            1083
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:      5386
-  Sequential Cell Count:         1571
+  Combinational Cell Count:      4544
+  Sequential Cell Count:         1532
   Macro Count:                      0
   -----------------------------------
 
 
   Area
   -----------------------------------
-  Combinational Area:   465519.594933
+  Combinational Area:   411611.195259
   Noncombinational Area:
-                        524068.984039
-  Net Area:             177444.000000
+                        512439.184204
+  Net Area:             163116.000000
   -----------------------------------
-  Cell Area:            989588.578972
-  Design Area:         1167032.578972
+  Cell Area:            924050.379463
+  Design Area:         1087166.379463
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:          7023
+  Total Number of Nets:          6142
   Nets With Violations:             0
   Max Trans Violations:             0
   Max Cap Violations:               0
@@ -58,11 +58,11 @@ Date   : Thu Apr 23 21:45:46 2015
 
   Compile CPU Statistics
   -----------------------------------------
-  Resource Sharing:                    4.07
-  Logic Optimization:                 26.18
-  Mapping Optimization:               37.73
+  Resource Sharing:                    3.78
+  Logic Optimization:                 15.35
+  Mapping Optimization:               28.64
   -----------------------------------------
-  Overall Compile Time:               72.49
-  Overall Compile Wall Clock Time:    74.05
+  Overall Compile Time:               52.08
+  Overall Compile Wall Clock Time:    53.07
 
 1

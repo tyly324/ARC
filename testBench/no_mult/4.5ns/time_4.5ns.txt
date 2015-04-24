@@ -1,0 +1,90 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : core
+Version: F-2011.09-SP2
+Date   : Fri Apr 24 03:34:35 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: c35_CORELIB
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_decode/pipe_con_Efamux_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: u_fetch/u_pc/program_counter_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  core               10k                   c35_CORELIB
+  E_famux5           10k                   c35_CORELIB
+  execute            10k                   c35_CORELIB
+  D_compare_DW01_cmp6_1
+                     10k                   c35_CORELIB
+  D_compare          10k                   c35_CORELIB
+  F_branchmux        10k                   c35_CORELIB
+  fetch              10k                   c35_CORELIB
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_decode/pipe_con_Efamux_reg[2]/C (DFC3)                0.00 #     0.00 r
+  u_decode/pipe_con_Efamux_reg[2]/Q (DFC3)                0.73       0.73 f
+  u_decode/o_con_Efamux[2] (decode)                       0.00       0.73 f
+  u_execute/i_con_Efamux[2] (execute)                     0.00       0.73 f
+  u_execute/u_famux5/i_con_fa[2] (E_famux5)               0.00       0.73 f
+  u_execute/u_famux5/U49/Q (INV6)                         0.16       0.89 r
+  u_execute/u_famux5/U55/Q (NOR32)                        0.21       1.10 f
+  u_execute/u_famux5/U29/Q (BUF8)                         0.40       1.51 f
+  u_execute/u_famux5/U12/Q (AOI221)                       0.27       1.77 r
+  u_execute/u_famux5/U2/Q (NAND33)                        0.08       1.85 f
+  u_execute/u_famux5/o_data_alusra[4] (E_famux5)          0.00       1.85 f
+  u_execute/U23/Q (CLKIN6)                                0.11       1.96 r
+  u_execute/U6/Q (INV12)                                  0.14       2.10 f
+  u_execute/u_compare/i_data_rs[4] (D_compare)            0.00       2.10 f
+  u_execute/u_compare/r49/A[4] (D_compare_DW01_cmp6_1)
+                                                          0.00       2.10 f
+  u_execute/u_compare/r49/U3/Q (CLKIN3)                   0.14       2.24 r
+  u_execute/u_compare/r49/U68/Q (NAND22)                  0.05       2.29 f
+  u_execute/u_compare/r49/U31/Q (NAND22)                  0.14       2.43 r
+  u_execute/u_compare/r49/U11/Q (NOR22)                   0.15       2.58 f
+  u_execute/u_compare/r49/U10/Q (NAND23)                  0.19       2.77 r
+  u_execute/u_compare/r49/U63/Q (NOR24)                   0.13       2.90 f
+  u_execute/u_compare/r49/U62/Q (NAND26)                  0.17       3.07 r
+  u_execute/u_compare/r49/U103/Q (INV6)                   0.04       3.11 f
+  u_execute/u_compare/r49/U86/Q (NAND34)                  0.14       3.25 r
+  u_execute/u_compare/r49/NE (D_compare_DW01_cmp6_1)      0.00       3.25 r
+  u_execute/u_compare/U19/Q (NOR24)                       0.09       3.34 f
+  u_execute/u_compare/U29/Q (OAI312)                      0.31       3.66 r
+  u_execute/u_compare/o_con_ifbranch (D_compare)          0.00       3.66 r
+  u_execute/o_con_ifbranch (execute)                      0.00       3.66 r
+  u_fetch/i_con_b (fetch)                                 0.00       3.66 r
+  u_fetch/u_branchmux/i_con_ifbranch (F_branchmux)        0.00       3.66 r
+  u_fetch/u_branchmux/U2/Q (BUF15)                        0.29       3.95 r
+  u_fetch/u_branchmux/U32/Q (MUX22)                       0.44       4.39 r
+  u_fetch/u_branchmux/o_addr_nextpc[0] (F_branchmux)      0.00       4.39 r
+  u_fetch/u_pc/i_addr_next_pc[0] (F_pc)                   0.00       4.39 r
+  u_fetch/u_pc/program_counter_reg[0]/D (DFEC3)           0.00       4.39 r
+  data arrival time                                                  4.39
+
+  clock clk (rise edge)                                   4.50       4.50
+  clock network delay (ideal)                             0.00       4.50
+  u_fetch/u_pc/program_counter_reg[0]/C (DFEC3)           0.00       4.50 r
+  library setup time                                     -0.11       4.39
+  data required time                                                 4.39
+  --------------------------------------------------------------------------
+  data required time                                                 4.39
+  data arrival time                                                 -4.39
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

@@ -120,10 +120,10 @@ wire [31:0] jumpext_o_addr_j;
 //forward////////////////////////////////
 wire [4:0] for_i_addr_rs; 
 wire [4:0] for_i_addr_rt;
+wire [4:0] for_i_addr_rdE;
 wire [4:0] for_i_addr_rdM;
-wire [4:0] for_i_addr_rdW;
+wire for_i_con_regwriteE;
 wire for_i_con_regwriteM;
-wire for_i_con_regwriteW;
 wire [2:0] for_o_con_fa;
 wire [2:0] for_o_con_fb;
 wire [4:0] for_i_addr_rtM;////////////
@@ -259,10 +259,10 @@ assign jumpext_i_PC4_j = i_addr_pc4[31:28];
 //forward/////////////////////////////////////////
 assign for_i_addr_rs = i_data_instr[25:21];
 assign for_i_addr_rt = i_data_instr[20:16];
-assign for_i_addr_rdM = i_addr_Erd;
-assign for_i_addr_rdW = i_addr_Mrd;
-assign for_i_con_regwriteM = i_con_Eregwrite;
-assign for_i_con_regwriteW = i_con_Mregwrite;
+assign for_i_addr_rdE = i_addr_Erd;
+assign for_i_addr_rdM = i_addr_Mrd;
+assign for_i_con_regwriteE = i_con_Eregwrite;
+assign for_i_con_regwriteM = i_con_Mregwrite;
 assign for_i_addr_rtM = i_addr_rtM;/////////////
 assign for_i_addr_rtW = i_addr_rtW;///////////
 assign for_i_con_memreadM = i_con_memreadM;///////////
@@ -393,12 +393,12 @@ D_jump_ext u_jump_ext(
 E_forward u_forward(
 .i_addr_rs(for_i_addr_rs), 
 .i_addr_rt(for_i_addr_rt), 
+.i_addr_rdE(for_i_addr_rdE), 
 .i_addr_rdM(for_i_addr_rdM), 
-.i_addr_rdW(for_i_addr_rdW), 
 .i_addr_rtM(for_i_addr_rtM),
 .i_addr_rtW(for_i_addr_rtW),
-.i_con_regwriteM(for_i_con_regwriteM), 
-.i_con_regwriteW(for_i_con_regwriteW),
+.i_con_regwriteE(for_i_con_regwriteE), 
+.i_con_regwriteM(for_i_con_regwriteM),
 .i_con_memreadM(for_i_con_memreadM),
 .i_con_memreadW(for_i_con_memreadW),
 .o_con_fa(for_o_con_fa), 

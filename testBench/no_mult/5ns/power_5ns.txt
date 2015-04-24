@@ -8,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : core
 Version: F-2011.09-SP2
-Date   : Thu Apr 23 21:45:46 2015
+Date   : Fri Apr 24 02:35:00 2015
 ****************************************
 
 
@@ -39,7 +39,7 @@ D_register_bank        10k               c35_CORELIB
 D_shiftleft            10k               c35_CORELIB
 D_sign_extend          10k               c35_CORELIB
 D_jump_ext             10k               c35_CORELIB
-E_forward              10k               c35_CORELIB
+D_forward              10k               c35_CORELIB
 E_alu                  10k               c35_CORELIB
 E_alu_control          10k               c35_CORELIB
 E_famux5               10k               c35_CORELIB
@@ -47,26 +47,17 @@ E_fbmux5               10k               c35_CORELIB
 E_alubmux              10k               c35_CORELIB
 E_rdmux                10k               c35_CORELIB
 D_compare              10k               c35_CORELIB
-W_resmux               10k               c35_CORELIB
-W_loadmux3             10k               c35_CORELIB
+M_resmux               10k               c35_CORELIB
 W_datamux              10k               c35_CORELIB
+E_alu_DW01_sub_1       10k               c35_CORELIB
+E_alu_DW01_add_1       10k               c35_CORELIB
 E_alu_DW01_cmp2_1      10k               c35_CORELIB
 F_add4_DW01_add_1      10k               c35_CORELIB
 D_pcadd_DW01_add_1     10k               c35_CORELIB
 mem_DW01_add_1         10k               c35_CORELIB
-E_alu_DW01_sub_3       10k               c35_CORELIB
-E_alu_DW01_add_7       10k               c35_CORELIB
-E_alu_DW01_add_8       10k               c35_CORELIB
-E_alu_DW01_add_9       10k               c35_CORELIB
-E_alu_DW01_add_10      10k               c35_CORELIB
-E_alu_DW01_add_11      10k               c35_CORELIB
-E_alu_DW01_add_12      10k               c35_CORELIB
-E_alu_DW01_add_13      10k               c35_CORELIB
-E_alu_DW01_ash_1       10k               c35_CORELIB
 E_alu_DW_rash_1        10k               c35_CORELIB
+E_alu_DW01_ash_1       10k               c35_CORELIB
 D_compare_DW01_cmp6_1  10k               c35_CORELIB
-E_alu_DW01_sub_6       10k               c35_CORELIB
-E_alu_DW01_sub_7       10k               c35_CORELIB
 
 
 Global Operating Voltage = 3.3  
@@ -78,12 +69,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  = 106.1393 mW   (89%)
-  Net Switching Power  =  13.1034 mW   (11%)
+  Cell Internal Power  = 102.6067 mW   (90%)
+  Net Switching Power  =  10.8327 mW   (10%)
                          ---------
-Total Dynamic Power    = 119.2427 mW  (100%)
+Total Dynamic Power    = 113.4394 mW  (100%)
 
-Cell Leakage Power     = 869.5466 nW
+Cell Leakage Power     = 819.0892 nW
 
 
                  Internal         Switching           Leakage            Total
@@ -93,9 +84,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register          98.6575            1.9295        5.1644e+05          100.5875  (  84.35%)
+register          95.8300            1.9822        5.0749e+05           97.8129  (  86.22%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational      7.4818           11.1739        3.5309e+05           18.6561  (  15.65%)
+combinational      6.7767            8.8504        3.1158e+05           15.6274  (  13.78%)
 --------------------------------------------------------------------------------------------------
-Total            106.1393 mW        13.1034 mW     8.6953e+05 pW       119.2436 mW
+Total            102.6066 mW        10.8327 mW     8.1908e+05 pW       113.4403 mW
 1
