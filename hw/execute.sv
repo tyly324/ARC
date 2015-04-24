@@ -51,7 +51,12 @@ module execute(
 	output logic [4:0] o_addr_Mrt,
 	//output logic [31:0] o_FaluresE,
 	//branch
-	output logic o_con_ifbranch
+	output logic o_con_ifbranch,
+	/////mul mflo mfhi
+	output logic o_con_pause,
+	output logic [1:0]o_con_mfhl,
+	output logic [31:0] o_data_Hi;
+	output logic [31:0] o_data_Lo
 	);
 
 // ====================
@@ -72,6 +77,8 @@ wire [4:0] alu_i_data_shamt;
 wire [3:0] aluc_o_con_AluCtrl;
 wire [5:0] aluc_i_con_AluOp;
 wire [5:0] aluc_i_con_FuncCode;
+wire aluc_o_con_Mul;
+wire [1:0] aluc_o_con_mf;
 //famux5 
 wire [31:0] famux5_i_data_rs; 
 wire [31:0] famux5_i_data_alures; 
@@ -99,6 +106,12 @@ wire [4:0] rdmux_i_data_rtE, rdmux_i_data_rdE;
 wire rdmux_i_con_regdst;
 wire [4:0] rdmux_o_data_writeE;
 wire rdmux_i_con_jal;
+//counter
+wire counter_o_con_pause;
+//multop
+wire [31:0] multop_o_data_Hi;
+wire [31:0] multop_o_data_Lo;
+
 
 
 // ====================
@@ -119,6 +132,10 @@ logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
 //forward 
 logic [4:0] pipe_addr_rt;
+//mul
+logic [31:0] pipe_data_Hi;////////
+logic [31:0] pipe_data_Lo;////////
+logic [1:0] pipe_con_mf;
 
 always_ff @(posedge i_clk, negedge i_nrst)
 begin
@@ -134,6 +151,9 @@ begin
 		pipe_con_Wmemtoreg <= 0;
 		pipe_con_Wregwrite <= 0;
 		pipe_addr_rt <= 0;
+		pipe_data_Hi <= 0;
+		pipe_data_Lo <= 0;
+		pipe_con_mf <=0;
 	end
 	else begin
 		pipe_pc4 <= i_data_pc4;//////////
@@ -145,8 +165,15 @@ begin
 		//pipe_con_Wloadmux <= i_con_Wloadmux;
 		pipe_con_Malupc8 <= i_con_Malupc8;//////////
 		pipe_con_Wmemtoreg <= i_con_Wmemtoreg;
-		pipe_con_Wregwrite <= i_con_Wregwrite;
+		pipe_con_Wregwrite <= mulmux_o_con_Wregwrite;
 		pipe_addr_rt <= i_addr_rt;
+		pipe_con_mf <= aluc_o_con_mf;
+		if(aluc_o_con_Mul)
+		begin
+			pipe_data_Hi <= multop_o_data_Hi; 
+			pipe_data_Lo <= multop_o_data_Lo;
+		end
+
 	end
 end
 // ====================
@@ -191,7 +218,9 @@ assign rdmux_i_con_jal = i_con_Malupc8;//********
 
 // ==outputs
 assign o_data_pc4 = pipe_pc4;///////////
+
 assign o_data_alures = pipe_alures;
+
 assign o_data_rt = pipe_rt;
 assign o_addr_regdst = pipe_regdst;
 assign o_con_Mmemread = pipe_con_Mmemread;
@@ -206,6 +235,13 @@ assign o_addr_Mrt = pipe_addr_rt;
 //assign o_FaluresE = alu_o_data_AluRes;
 //branch///////////////
 assign o_con_ifbranch = compare_o_con_ifbranch;
+//counter
+assign o_con_pause = counter_o_con_pause;
+//mflo mfhi
+assign o_data_Hi = pipe_data_Hi;
+assign o_data_Lo = pipe_data_Lo;
+assign o_con_mfhl = pipe_con_mf;
+
 
 
 // ====================
@@ -225,6 +261,8 @@ E_alu u_alu(
 //alucontrol
 E_alu_control u_alu_control(
 .o_con_AluCtrl(aluc_o_con_AluCtrl),
+.o_con_mul(aluc_o_con_Mul),
+.o_con_mf(aluc_o_con_mf),
 .i_con_AluOp(aluc_i_con_AluOp), 
 .i_con_FuncCode(aluc_i_con_FuncCode)
 );
@@ -273,4 +311,31 @@ D_compare u_compare(
 .i_data_rt(compare_i_data_rt),     // 20:16     
 .i_con_bop(compare_i_con_bop)     // come from branch_jump 
 );
+
+
+//mulmux
+E_mulmux u_mulmux(
+.o_con_regwrite(mulmux_o_con_Wregwrite),
+.i_con_regwrite(i_con_Wregwrite), 
+.i_con_mul(aluc_o_con_Mul)
+);
+
+//E_counter
+E_counter u_counter(
+.o_con_pause(counter_o_con_pause), 
+.i_con_mul(aluc_o_con_Mul), 
+.i_clk(i_clk), 
+.i_nrst(i_nrst)
+);
+//multop
+E_multop u_multop(
+.o_data_Hi(multop_o_data_Hi), 
+.o_data_Lo(multop_o_data_Lo), 
+.i_data_A(alu_i_data_A), 
+.i_data_B(alu_i_data_B), 
+.i_con_mul(aluc_o_con_Mul),
+.clock(i_clk),
+.n_rst(i_nrst)
+	);
+
 endmodule

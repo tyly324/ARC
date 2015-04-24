@@ -11,6 +11,10 @@ module mem(
 	//forward ////////////
 	input logic i_con_FWmemread,
 	input logic [4:0] i_addr_Mrt,
+	///mflo mfhi//////
+	input logic [31:0] i_data_Hi;
+	input logic [31:0] i_data_lo;
+	input logic [1:0] i_con_mf;
 
 	output logic [31:0] o_data_alures,
 	output logic [31:0] o_data_memout,
@@ -34,6 +38,11 @@ wire [31:0] resmux_i_data_alures;
 wire [31:0] resmux_i_data_pc8;
 wire resmux_i_con_pc8;
 wire [31:0] resmux_o_data_alu;
+
+//mflo mfhi
+wire [31:0] data_hi_lo;
+//mf alures mux
+wire [31:0] mf_res_data;
 
 
 // ====================
@@ -62,7 +71,7 @@ begin
 		pipe_rt <= 0;///////////////
 	end
 	else begin
-		pipe_data_alures <= resmux_o_data_alu;
+		pipe_data_alures <= mf_res_data;
 		pipe_data_memout <= i_data_memout;
 		pipe_addr_regdst <= i_addr_regdst;
 		pipe_con_Wmemtoreg <= i_con_Wmemtoreg;
@@ -89,6 +98,11 @@ assign o_con_Wmemtoreg = pipe_con_Wmemtoreg;
 assign o_con_Wregwrite = pipe_con_Wregwrite;
 assign o_con_FWmemread = pipe_con_FWmemread;/////////////
 assign o_addr_Wrt = pipe_rt;//////////////
+
+//data_hi_lo
+assign data_hi_lo = i_con_mf[0] ? i_data_Hi : i_data_lo;
+//
+assign mf_res_data = i_con_mf[1] ? data_hi_lo : resmux_o_data_alu;
 
 // ====================
 // Hirearchy

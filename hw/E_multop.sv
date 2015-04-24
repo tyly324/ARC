@@ -1,10 +1,11 @@
 `timescale 1ns / 1ps
 
 module E_multop (
-	output logic [31:0]Hi, 
-	output logic [31:0]Lo, 
-	input logic [31:0]i_A, 
-	input logic [31:0]i_B, 
+	output logic [31:0]o_data_Hi, 
+	output logic [31:0]o_data_Lo, 
+	input logic [31:0]i_data_A, 
+	input logic [31:0]i_data_B, 
+	input logic i_con_mul,
 	input logic clock,
 	input logic n_rst
 	);
@@ -87,8 +88,16 @@ if(~n_rst)
 	end
 else
 	begin
-	A  <=i_A;
-	B  <=i_B;
+	if(i_con_mul)
+		begin
+			A <=i_data_A;
+			B <=i_data_B;
+		end
+	else
+		begin
+			A<=0;
+			B<=0;
+		end
 	A_a<=A1;
 	B_a<=B1;
 	A_b<=A2;
@@ -220,8 +229,8 @@ end
 
     E_mula mula_0 (.A(E_a), .B(F_b), .C(F2));
 
-    E_mulg mulg_0 (.A_a(E_d), .A_b(D_d[7:0]), .A_c(C_m[7:0]), .B(F_a[31:16]), .C(Hi));
+    E_mulg mulg_0 (.A_a(E_d), .A_b(D_d[7:0]), .A_c(C_m[7:0]), .B(F_a[31:16]), .C(o_data_Hi));
 
-    assign Lo = {F_a[15:0], D_a[7:0], C_a[7:0]};
+    assign o_data_Lo = {F_a[15:0], D_a[7:0], C_a[7:0]};
     
 endmodule

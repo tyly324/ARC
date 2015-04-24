@@ -3,6 +3,7 @@ module F_pc(
 	input logic i_clk,
 	input logic i_rst_n,
 	input logic i_con_stall,
+	input logic i_con_mulpause,
 	input logic [31:0] i_addr_next_pc,
 	output logic [31:0] o_addr_pc
 );
@@ -16,7 +17,7 @@ begin
 	if(~i_rst_n) begin
 		program_counter <= 0;
 	end 
-	else if (i_con_stall) begin
+	else if (i_con_stall||i_con_mulpause) begin
 		program_counter <= i_addr_next_pc;
 	end
 	else 

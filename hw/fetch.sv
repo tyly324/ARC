@@ -12,6 +12,8 @@ module fetch(
 	input logic [31:0]i_data_instr,
 	//branch/////////////
 	input logic i_con_ifstall,
+	//mul counter////////////
+	input logic i_con_mulpause,
 
 	output logic [31:0] o_addr_pc,
 	output logic [31:0] o_addr_pc4,
@@ -106,6 +108,7 @@ F_pc u_pc(
 .i_clk(i_clk),
 .i_rst_n(i_nrst),
 .i_con_stall(pc_i_con_stall),
+.i_con_mulpause(i_con_mulpause),///////////
 .i_addr_next_pc(pc_i_addr_next_pc),
 .o_addr_pc(pc_o_addr_pc)
 );

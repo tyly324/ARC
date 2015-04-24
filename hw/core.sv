@@ -40,6 +40,10 @@ wire [4:0] ex_addr_rd;
 wire [5:0] ex_con_Ealuop;
 //wire [1:0] ex_con_Wloadmux;
 wire [31:0] ex_data_alures;
+
+wire [31:0] ex_data_Hi;
+wire [31:0] ex_data_Lo;
+wire [1:0] ex_con_mf;
 ///////////////forward in execute/////////////////////
 wire [4:0] for_o_addr_Erd;
 //memory
@@ -48,7 +52,7 @@ wire [31:0] mem_data_alures;
 wire [4:0] mem_addr_regdst;
 //wire [1:0] mem_con_Wloadmux;
 //write back
-wire [31:0] wb_data_pc8;
+//wire [31:0] wb_data_pc8;
 wire [31:0] wb_data_memout;
 //wire [1:0] wb_con_Wloadmux;
 
@@ -56,8 +60,8 @@ wire if_con_b, id_con_Wregwrite, ex_con_Ealusrc,
 ex_con_Eregdst, ex_con_Mmemread, ex_con_Mmemwrite, 
 ex_con_Wmemtoreg, ex_con_Malupc8, ex_con_Wregwrite, 
 mem_con_Malupc8, mem_con_Wregwrite, mem_con_Wmemtoreg, 
-wb_con_Malupc8, wb_con_Wmemtoreg, 
-if_con_ifstall, for_FWmemread;
+ wb_con_Wmemtoreg, 
+if_con_ifstall, for_FWmemread, ex_con_pause;
 
 
 
@@ -76,6 +80,8 @@ fetch u_fetch(
 	.i_data_instr(read_instruction),
 	//branch/////////////
 	.i_con_ifstall(if_con_ifstall),
+	//mulcounter//////////
+	.i_con_mulpause(ex_con_pause),
 
 	.o_addr_pc(if_addr_pc),
 	.o_addr_pc4(id_addr_pc4),
@@ -182,7 +188,13 @@ execute u_execute(
 	.o_addr_Mrt(for_addr_rtM),
 	//.o_FaluresE(for_aluresE),
 	//branch////////////
-	.o_con_ifbranch(if_con_b)
+	.o_con_ifbranch(if_con_b),
+	//counter
+	.o_con_pause(ex_con_pause),
+	//mf
+	.o_con_mfhl(ex_con_mf),
+	.o_data_Hi(ex_data_Hi),
+	.o_data_Lo(ex_data_Lo)
 	);
 
 
@@ -200,7 +212,10 @@ mem u_mem(
 	//forward ////////////
 	.i_con_FWmemread(ex_con_Mmemread),////////////
 	.i_addr_Mrt(for_addr_rtM),////////////////
-
+	//mfhl
+	.i_data_Hi(ex_data_Hi),
+	.i_data_lo(ex_data_Lo),
+	.i_con_mf(ex_con_mf),
 
 	.o_data_alures(mem_data_alures),
 	.o_data_memout(wb_data_memout),

@@ -1,13 +1,16 @@
 `timescale 1ns / 1ps
 module E_alu_control(
 	output logic [3:0] o_con_AluCtrl,
-	//output logic o_con_mul,//****************multu 
+	output logic o_con_mul,//****************multu 
+	output logic [1:0]o_con_mf, 
 	input logic [5:0] i_con_AluOp, 
 	input logic [5:0] i_con_FuncCode);
 
 always_comb
 	begin:COM 
 		o_con_AluCtrl = 15;	//shouldnt happend
+		o_con_mf = 0;
+		o_con_mul=0;
 		case(i_con_AluOp[1:0])
 			2'b00:	o_con_AluCtrl=2; 	//LW SW lbu lhbu / add / nop
 			//2'b01:	o_con_AluCtrl=6;	//sub
@@ -19,6 +22,9 @@ always_comb
 						///////////////////////////////////////
 						//8:	o_con_AluCtrl=14; 	//R /jr (jump register)
 						///////////////////////////////////////
+						10:	o_con_mf=2'b11;		//R //mfhi
+						12: o_con_mf=2'b10;		//R //mflo
+						/////////////////////////////////
 						32,33:	o_con_AluCtrl=2;	//R /add /addu	
 						34,35:	o_con_AluCtrl=6;	//R /sub /subu
 						///////////////////////////////////////
@@ -29,7 +35,8 @@ always_comb
 						///////////////////////////////////////
 						42: o_con_AluCtrl=9;	//R /slt(set on less than)
 						43:	o_con_AluCtrl=7;	//R /sltu 
-						//19: o_con_mul=1;		//R /multu************
+						19: o_con_mul=1;		//R /multu************
+
 					endcase
 					end
 			2'b11:  begin
