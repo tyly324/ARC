@@ -38,3 +38,10 @@ Trace back: invalid command name ""
     (command bound to event)
   <2:C:/modeltech64_10.3c/win64/tk8.5/bgerror.tcl:92: ::tkerror {invalid command name ""}
   <1:eval:1: ::tk::dialog::error::bgerror {invalid command name ""}
+Thu Apr 23 23:04:58 BST 2015
+Trace back: can't read "ProjectFiles(H:/arc_test/E_alubmux.sv)": no such element in array
+    while executing
+".vcop Eval Project::compileAllFiles"
+    (menu invoke)
+  <2:C:/modeltech64_10.3c/win64/tk8.5/bgerror.tcl:92: ::tkerror {can't read "ProjectFiles(H:/arc_test/E_alubmux.sv)": no such element in array}
+  <1:eval:1: ::tk::dialog::error::bgerror {can't read "ProjectFiles(H:/arc_test/E_alubmux.sv)": no such element in array}
