@@ -19,10 +19,12 @@ module execute(
 	//forward
 	input logic [31:0] i_data_FEalures,
 	input logic [31:0] i_data_FMalures,
-	input logic [31:0] i_data_FMmemout,////////////
-	input logic [31:0] i_data_FWmemout,////////////
-	input logic [2:0] i_con_Efamux,
-	input logic [2:0] i_con_Efbmux,
+	// input logic [31:0] i_data_FMmemout,////////////
+	// input logic [31:0] i_data_FWmemout,////////////
+	input logic [31:0] i_data_famemout,
+	input logic [31:0] i_data_fbmemout,
+	input logic [1:0] i_con_Efamux,
+	input logic [1:0] i_con_Efbmux,
 	//control
 	input logic [5:0] i_con_Ealuop,
 	input logic i_con_Ealusrc,
@@ -76,18 +78,19 @@ wire [5:0] aluc_i_con_FuncCode;
 wire [31:0] famux5_i_data_rs; 
 wire [31:0] famux5_i_data_alures; 
 wire [31:0] famux5_i_data_writeres;
-wire [31:0] famux5_i_data_lwM;
-wire [31:0] famux5_i_data_lwW;
-wire [2:0]  famux5_i_con_fa;
+// wire [31:0] famux5_i_data_lwM;
+// wire [31:0] famux5_i_data_lwW;
+wire [31:0] famux5_i_data_memout;
+wire [1:0]  famux5_i_con_fa;
 wire [31:0] famux5_o_data_alusra;
 //fbmux5
 wire [31:0] fbmux5_i_data_rt;
 wire [31:0] fbmux5_i_data_alures;
 wire [31:0] fbmux5_i_data_writeres;
-//wire [31:0] fbmux5_i_data_imm;
-wire [31:0] fbmux5_i_data_lwM;
-wire [31:0] fbmux5_i_data_lwW;
-wire [2:0]  fbmux5_i_con_fb;
+// wire [31:0] fbmux5_i_data_lwM;
+// wire [31:0] fbmux5_i_data_lwW;
+wire [31:0] fbmux5_i_data_memout;
+wire [1:0]  fbmux5_i_con_fb;
 wire [31:0] fbmux5_o_data_alusrb;
 //alubmux
 wire [31:0] alubmux_i_data_fb;
@@ -169,15 +172,17 @@ assign aluc_i_con_FuncCode = i_data_immext[5:0];
 assign famux5_i_data_rs = i_data_rs;
 assign famux5_i_data_alures = i_data_FEalures;
 assign famux5_i_data_writeres = i_data_FMalures;
-assign famux5_i_data_lwM = i_data_FMmemout;//////////////
-assign famux5_i_data_lwW = i_data_FWmemout;//////////////
+// assign famux5_i_data_lwM = i_data_FMmemout;//////////////
+// assign famux5_i_data_lwW = i_data_FWmemout;//////////////
+assign famux5_i_data_memout = i_data_famemout;
 assign famux5_i_con_fa = i_con_Efamux;
 //fbmux5
 assign fbmux5_i_data_rt = i_data_rt;
 assign fbmux5_i_data_alures = i_data_FEalures;
 assign fbmux5_i_data_writeres = i_data_FMalures;
-assign fbmux5_i_data_lwM = i_data_FMmemout;//////////////
-assign fbmux5_i_data_lwW = i_data_FWmemout;//////////////
+// assign fbmux5_i_data_lwM = i_data_FMmemout;//////////////
+// assign fbmux5_i_data_lwW = i_data_FWmemout;//////////////
+assign fbmux5_i_data_memout = i_data_fbmemout;
 assign fbmux5_i_con_fb = i_con_Efbmux;
 //alubmux
 assign alubmux_i_data_fb = fbmux5_o_data_alusrb;
@@ -234,8 +239,9 @@ E_famux5 u_famux5(
 .i_data_rs(famux5_i_data_rs), 
 .i_data_alures(famux5_i_data_alures), 
 .i_data_writeres(famux5_i_data_writeres),
-.i_data_lwM(famux5_i_data_lwM),
-.i_data_lwW(famux5_i_data_lwW),
+// .i_data_lwM(famux5_i_data_lwM),
+// .i_data_lwW(famux5_i_data_lwW),
+.i_data_memout(famux5_i_data_memout),
 .i_con_fa(famux5_i_con_fa), 
 .o_data_alusra(famux5_o_data_alusra)
 );
@@ -244,8 +250,9 @@ E_fbmux5 u_fbmux(
 .i_data_rt(fbmux5_i_data_rt),
 .i_data_alures(fbmux5_i_data_alures),
 .i_data_writeres(fbmux5_i_data_writeres),
-.i_data_lwM(fbmux5_i_data_lwM),
-.i_data_lwW(fbmux5_i_data_lwW),
+// .i_data_lwM(fbmux5_i_data_lwM),
+// .i_data_lwW(fbmux5_i_data_lwW),
+.i_data_memout(fbmux5_i_data_memout),
 .i_con_fb(fbmux5_i_con_fb), 
 .o_data_alusrb(fbmux5_o_data_alusrb)
 );

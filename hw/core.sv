@@ -23,11 +23,13 @@ wire [31:0]id_data_instr;
 wire [31:0]id_data_Wregwrite;
 wire [4:0] id_addr_Wregwrite;
 ///////////////forward in decode/////////////////////
-wire [2:0] for_o_con_Efamux;
-wire [2:0] for_o_con_Efbmux;
+wire [1:0] for_o_con_Efamux;
+wire [1:0] for_o_con_Efbmux;
 wire [4:0] for_addr_rtM;
 wire [4:0] for_addr_rtW;
-wire [31:0] for_memout;
+wire [31:0] for_famemout;
+wire [31:0] for_fbmemout;
+//wire [31:0] for_memout;
 //wire [31:0] for_aluresE;
 //execute
 wire [2:0] ex_con_bop;////////////
@@ -48,7 +50,6 @@ wire [31:0] mem_data_alures;
 wire [4:0] mem_addr_regdst;
 //wire [1:0] mem_con_Wloadmux;
 //write back
-wire [31:0] wb_data_pc8;
 wire [31:0] wb_data_memout;
 //wire [1:0] wb_con_Wloadmux;
 
@@ -56,8 +57,7 @@ wire if_con_b, id_con_Wregwrite, ex_con_Ealusrc,
 ex_con_Eregdst, ex_con_Mmemread, ex_con_Mmemwrite, 
 ex_con_Wmemtoreg, ex_con_Malupc8, ex_con_Wregwrite, 
 mem_con_Malupc8, mem_con_Wregwrite, mem_con_Wmemtoreg, 
-wb_con_Malupc8, wb_con_Wmemtoreg, 
-if_con_ifstall, for_FWmemread;
+wb_con_Wmemtoreg, if_con_ifstall, for_FWmemread;
 
 
 
@@ -100,6 +100,7 @@ decode u_decode(
 	.i_addr_rtW(for_addr_rtW),///////////
 	.i_con_memreadM(mem_read),///////////
 	.i_con_memreadW(for_FWmemread),/////////
+	.i_data_Mmemout(read_data),
 	.i_data_Wmemout(wb_data_memout),
 
 	//registers
@@ -133,7 +134,8 @@ decode u_decode(
 	//forward unit/////////////////
 	.o_con_Efamux(for_o_con_Efamux),
 	.o_con_Efbmux(for_o_con_Efbmux),
-	.o_data_Fmemout(for_memout)
+	.o_data_Famemout(for_famemout),
+	.o_data_Fbmemout(for_fbmemout)
 	);
 
 
@@ -150,8 +152,10 @@ execute u_execute(
 	//forward
 	.i_data_FEalures(ex_data_alures),
 	.i_data_FMalures(mem_data_alures),
-	.i_data_FMmemout(wb_data_memout),////////////
-	.i_data_FWmemout(for_memout),////////////
+	// .i_data_FMmemout(wb_data_memout),////////////
+	// .i_data_FWmemout(for_memout),////////////
+	.i_data_famemout(for_famemout),
+	.i_data_fbmemout(for_fbmemout),
 	.i_con_Efamux(for_o_con_Efamux),
 	.i_con_Efbmux(for_o_con_Efbmux),
 	//control
@@ -212,7 +216,6 @@ mem u_mem(
 	.o_con_FWmemread(for_FWmemread),
 	.o_addr_Wrt(for_addr_rtW)
 );
-
 
 
 writeback u_writeback(
