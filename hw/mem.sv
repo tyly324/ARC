@@ -12,9 +12,9 @@ module mem(
 	input logic i_con_FWmemread,
 	input logic [4:0] i_addr_Mrt,
 	///mflo mfhi//////
-	input logic [31:0] i_data_Hi;
-	input logic [31:0] i_data_lo;
-	input logic [1:0] i_con_mf;
+	input logic [31:0] i_data_Hi,
+	input logic [31:0] i_data_lo,
+	input logic [1:0] i_con_mf,
 
 	output logic [31:0] o_data_alures,
 	output logic [31:0] o_data_memout,

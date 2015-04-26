@@ -31,10 +31,11 @@ begin:SEQ
 					end
 				end
 			1:begin
-				if(counter==8)
+				if(counter==3)
 					begin
 						o_con_pause<=0;
 						state<=0;
+						counter<=counter+1;
 					end
 				else
 					begin

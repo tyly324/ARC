@@ -22,8 +22,8 @@ always_comb
 						///////////////////////////////////////
 						//8:	o_con_AluCtrl=14; 	//R /jr (jump register)
 						///////////////////////////////////////
-						10:	o_con_mf=2'b11;		//R //mfhi
-						12: o_con_mf=2'b10;		//R //mflo
+						16:	o_con_mf=2'b11;		//R //mfhi
+						18: o_con_mf=2'b10;		//R //mflo
 						/////////////////////////////////
 						32,33:	o_con_AluCtrl=2;	//R /add /addu	
 						34,35:	o_con_AluCtrl=6;	//R /sub /subu
@@ -35,7 +35,7 @@ always_comb
 						///////////////////////////////////////
 						42: o_con_AluCtrl=9;	//R /slt(set on less than)
 						43:	o_con_AluCtrl=7;	//R /sltu 
-						19: o_con_mul=1;		//R /multu************
+						25: o_con_mul=1;		//R /multu************
 
 					endcase
 					end

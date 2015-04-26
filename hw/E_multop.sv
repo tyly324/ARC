@@ -2,14 +2,16 @@
 
 module E_multop (
 	output logic [31:0]o_data_Hi, 
-	output logic [31:0]o_data_Lo, 
+	output logic [31:0]o_data_Lo,
+	output logic o_con_mul,
+	input logic i_con_mul,
 	input logic [31:0]i_data_A, 
 	input logic [31:0]i_data_B, 
-	input logic i_con_mul,
 	input logic clock,
 	input logic n_rst
 	);
 logic [31:0] A, B;
+logic mul_a, mul_b, mul_c, mul_d, mul_e, mul_f, mul_g;
 logic [15:0]C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16;
 logic [15:0]C_a, C_b, C_c, C_d, C_e, C_f, C_g, C_h, C_i, C_j, C_k, C_l, C_m, C_n, C_o, C_p;
 logic [15:0]D1, D2, D3, D4;
@@ -27,6 +29,13 @@ if(~n_rst)
 	begin
 		A  <=0;
 		B  <=0;
+		mul_a<=0;
+		mul_b<=0;
+		mul_c<=0;
+		mul_d<=0;
+		mul_e<=0;
+		mul_f<=0;
+		mul_g<=0;
 		A_a<=0;
 		B_a<=0;
 		A_b<=0;
@@ -93,11 +102,8 @@ else
 			A <=i_data_A;
 			B <=i_data_B;
 		end
-	else
-		begin
-			A<=0;
-			B<=0;
-		end
+	mul_a<=i_con_mul;
+	mul_b<=mul_a;
 	A_a<=A1;
 	B_a<=B1;
 	A_b<=A2;
@@ -131,7 +137,7 @@ else
 	A_p<=A16;
 	B_p<=B16;
 	
-
+	mul_c<=mul_b;
 	C_a <= C1;
 	C_b <= C2;
 	C_c <= C3;
@@ -149,18 +155,22 @@ else
 	C_o <= C15;
 	C_p <= C16;
 
+	mul_d<=mul_c;
 	D_a <= D1;
 	D_b <= D2;
 	D_c <= D3;
 	D_d <= D4;
 
+	mul_e<=mul_d;
 	E_a <= E1;
 	E_b <= E2;
 	E_c <= E3;
 	E_d <= E4;
 
+	mul_f<=mul_e;
 	F_b <= F1;
 
+	mul_g<=mul_f;
 	F_a <= F2;
 	end
 
@@ -232,5 +242,6 @@ end
     E_mulg mulg_0 (.A_a(E_d), .A_b(D_d[7:0]), .A_c(C_m[7:0]), .B(F_a[31:16]), .C(o_data_Hi));
 
     assign o_data_Lo = {F_a[15:0], D_a[7:0], C_a[7:0]};
+    assign o_con_mul = mul_g;
     
 endmodule

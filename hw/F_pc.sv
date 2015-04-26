@@ -17,7 +17,7 @@ begin
 	if(~i_rst_n) begin
 		program_counter <= 0;
 	end 
-	else if (i_con_stall||i_con_mulpause) begin
+	else if (i_con_stall&&~i_con_mulpause) begin
 		program_counter <= i_addr_next_pc;
 	end
 	else 
