@@ -23,8 +23,8 @@ module decode(
 	input logic [4:0] i_addr_rtW,///////////
 	input logic i_con_memreadM,///////////
 	input logic i_con_memreadW,/////////
+	input logic [31:0] i_data_Mmemout,
 	input logic [31:0] i_data_Wmemout,
-
 	//register bank
 	output logic [31:0] o_data_rs,
 	output logic [31:0] o_data_rt,
@@ -54,9 +54,10 @@ module decode(
 	//data
 	output logic [31:0] o_data_signext,
 	//forward unit/////////////////
-	output logic [2:0] o_con_Efamux,
-	output logic [2:0] o_con_Efbmux,
-	output logic [31:0] o_data_Fmemout
+	output logic [1:0] o_con_Efamux,
+	output logic [1:0] o_con_Efbmux,
+	output logic [31:0] o_data_Famemout,
+	output logic [31:0] o_data_Fbmemout
 	);
 
 // ====================
@@ -123,24 +124,24 @@ wire [4:0] for_i_addr_rdE;
 wire [4:0] for_i_addr_rdM;
 wire for_i_con_regwriteE;
 wire for_i_con_regwriteM;
-wire [2:0] for_o_con_fa;
-wire [2:0] for_o_con_fb;
 wire [4:0] for_i_addr_rtM;////////////
 wire [4:0] for_i_addr_rtW;//////////
 wire for_i_con_memreadM;///////////
 wire for_i_con_memreadW;/////////
-// wire for_o_con_cmpalu;//////////////
-// wire for_o_con_cmpmem;/////////////
-// //cmpmux//////////////////////////
-// wire [31:0] cmpmux_i_data_rs;
-// wire [31:0] cmpmux_i_data_aluresE;
-// wire cmpmux_i_con_cmpalu;
-// wire [31:0] cmpmux_o_data_cmprs;
-// //cmpmux2/////////////////
-// wire [31:0] cmpmux2_i_data_rs;
-// wire [31:0] cmpmux2_i_data_memout;
-// wire cmpmux2_i_con_cmpmem;
-// wire [31:0] cmpmux2_o_data_cmprs;
+wire [1:0] for_o_con_fa;
+wire [1:0] for_o_con_fb;
+wire for_o_con_famem;
+wire for_o_con_fbmem;
+//famemmux
+wire [31:0] famemmux_i_data_Mmemout;
+wire [31:0] famemmux_i_data_Wmemout;
+wire famemmux_i_con_fmem;
+wire [31:0] famemmux_o_data_fmem;
+//fbmemmux
+wire [31:0] fbmemmux_i_data_Mmemout;
+wire [31:0] fbmemmux_i_data_Wmemout;
+wire fbmemmux_i_con_fmem;
+wire [31:0] fbmemmux_o_data_fmem;
 
 // ====================
 // Registers
@@ -163,9 +164,10 @@ logic pipe_con_Wmemtoreg;
 logic pipe_con_Wregwrite;
 logic [31:0]pipe_signext_o_data_immD;
 //forward//////////////////////
-logic [2:0] pipe_con_Efamux;
-logic [2:0] pipe_con_Efbmux;
-logic [31:0] pipe_FWmemout;
+logic [1:0] pipe_con_Efamux;
+logic [1:0] pipe_con_Efbmux;
+logic [31:0] pipe_Famemout;
+logic [31:0] pipe_Fbmemout;
 //branch
 logic [31:0] pipe_addr_branch;
 logic [2:0] pipe_bop;
@@ -192,7 +194,8 @@ begin
 		//forward///////////////////
 		pipe_con_Efamux <= 0;
 		pipe_con_Efbmux <= 0;
-		pipe_FWmemout <= 0;
+		pipe_Famemout <= 0;
+		pipe_Fbmemout <= 0;
 		//branch
 		pipe_addr_branch <= 0;
 		pipe_bop <= 0;
@@ -217,7 +220,8 @@ begin
 		//forward/////////////////////
 		pipe_con_Efamux <= for_o_con_fa;
 		pipe_con_Efbmux <= for_o_con_fb;
-		pipe_FWmemout <= i_data_Wmemout;
+		pipe_Famemout <= famemmux_o_data_fmem;
+		pipe_Fbmemout <= fbmemmux_o_data_fmem;
 		//branch
 		pipe_addr_branch <= pcadd_o_addr_pcbranchE;
 		pipe_bop <= jbcon_o_con_bop;
@@ -266,14 +270,14 @@ assign for_i_addr_rtM = i_addr_rtM;/////////////
 assign for_i_addr_rtW = i_addr_rtW;///////////
 assign for_i_con_memreadM = i_con_memreadM;///////////
 assign for_i_con_memreadW = i_con_memreadW;/////////
-// //cmpmux/////////////////////
-// assign cmpmux_i_data_rs = regbank_o_data_Rs;
-// assign cmpmux_i_data_aluresE = i_data_aluresE;
-// assign cmpmux_i_con_cmpalu = for_o_con_cmpalu;
-// //cmpmux2/////////////////
-// assign cmpmux2_i_data_rs = cmpmux_o_data_cmprs;
-// assign cmpmux2_i_data_memout = i_data_memoutM;
-// assign cmpmux2_i_con_cmpmem = for_o_con_cmpmem;
+//famemmux
+assign famemmux_i_data_Mmemout = i_data_Mmemout;
+assign famemmux_i_data_Wmemout = i_data_Wmemout;
+assign famemmux_i_con_fmem = for_o_con_famem;
+//fbmemmux
+assign fbmemmux_i_data_Mmemout = i_data_Mmemout;
+assign fbmemmux_i_data_Wmemout = i_data_Wmemout;
+assign fbmemmux_i_con_fmem = for_o_con_fbmem;
 
 
 //outputs
@@ -308,7 +312,8 @@ assign o_data_signext = pipe_signext_o_data_immD;
 //forward unit///////////////////////////////
 assign o_con_Efamux = pipe_con_Efamux;
 assign o_con_Efbmux = pipe_con_Efbmux;
-assign o_data_Fmemout = pipe_FWmemout;
+assign o_data_Famemout = pipe_Famemout;
+assign o_data_Fbmemout = pipe_Fbmemout;
 
 
 
@@ -401,9 +406,24 @@ D_forward u_forward(
 .i_con_memreadM(for_i_con_memreadM),
 .i_con_memreadW(for_i_con_memreadW),
 .o_con_fa(for_o_con_fa), 
-.o_con_fb(for_o_con_fb)
-//.o_con_cmpalu(for_o_con_cmpalu),
-//.o_con_cmpmem(for_o_con_cmpmem)
+.o_con_fb(for_o_con_fb),
+.o_con_famem(for_o_con_famem),
+.o_con_fbmem(for_o_con_fbmem)
 );
+
+//famemmux
+D_fmemmux u_famemmux(
+.i_data_Mmemout(famemmux_i_data_Mmemout),
+.i_data_Wmemout(famemmux_i_data_Wmemout),
+.i_con_fmem(famemmux_i_con_fmem),
+.o_data_fmem(famemmux_o_data_fmem)
+	);
+//fbmemmux
+D_fmemmux u_fbmemmux(
+.i_data_Mmemout(fbmemmux_i_data_Mmemout),
+.i_data_Wmemout(fbmemmux_i_data_Wmemout),
+.i_con_fmem(fbmemmux_i_con_fmem),
+.o_data_fmem(fbmemmux_o_data_fmem)
+	);
 
 endmodule

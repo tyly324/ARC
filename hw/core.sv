@@ -23,11 +23,12 @@ wire [31:0]id_data_instr;
 wire [31:0]id_data_Wregwrite;
 wire [4:0] id_addr_Wregwrite;
 ///////////////forward in decode/////////////////////
-wire [2:0] for_o_con_Efamux;
-wire [2:0] for_o_con_Efbmux;
+wire [1:0] for_o_con_Efamux;
+wire [1:0] for_o_con_Efbmux;
 wire [4:0] for_addr_rtM;
 wire [4:0] for_addr_rtW;
-wire [31:0] for_memout;
+wire [31:0] for_famemout;
+wire [31:0] for_fbmemout;
 //wire [31:0] for_aluresE;
 //execute
 wire [2:0] ex_con_bop;////////////
@@ -106,6 +107,7 @@ decode u_decode(
 	.i_addr_rtW(for_addr_rtW),///////////
 	.i_con_memreadM(mem_read),///////////
 	.i_con_memreadW(for_FWmemread),/////////
+	.i_data_Mmemout(read_data),
 	.i_data_Wmemout(wb_data_memout),
 
 	//registers
@@ -139,7 +141,8 @@ decode u_decode(
 	//forward unit/////////////////
 	.o_con_Efamux(for_o_con_Efamux),
 	.o_con_Efbmux(for_o_con_Efbmux),
-	.o_data_Fmemout(for_memout)
+	.o_data_Famemout(for_famemout),
+	.o_data_Fbmemout(for_fbmemout)
 	);
 
 
@@ -156,8 +159,10 @@ execute u_execute(
 	//forward
 	.i_data_FEalures(ex_data_alures),
 	.i_data_FMalures(mem_data_alures),
-	.i_data_FMmemout(wb_data_memout),////////////
-	.i_data_FWmemout(for_memout),////////////
+	// .i_data_FMmemout(wb_data_memout),////////////
+	// .i_data_FWmemout(for_memout),////////////
+	.i_data_famemout(for_famemout),
+	.i_data_fbmemout(for_fbmemout),
 	.i_con_Efamux(for_o_con_Efamux),
 	.i_con_Efbmux(for_o_con_Efbmux),
 	//control
