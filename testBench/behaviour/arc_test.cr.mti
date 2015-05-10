@@ -1,218 +1,289 @@
-H:/arc_test/E_rdmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_rdmux.sv
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module E_rdmux
+H:/ARC/testBench/behaviour/E_forward.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_forward.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
 
-Top level modules:
-	E_rdmux
-
-} {} {}} H:/arc_test/decode.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\decode.sv}
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module decode
-
-Top level modules:
-	decode
-
-} {} {}} H:/arc_test/D_shiftleft.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_shiftleft.sv
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module D_shiftleft
-
-Top level modules:
-	D_shiftleft
-
-} {} {}} H:/arc_test/writeback.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/writeback.sv
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module writeback
-
-Top level modules:
-	writeback
-
-} {} {}} H:/arc_test/F_branchmux.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\F_branchmux.sv}
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module F_branchmux
-
-Top level modules:
-	F_branchmux
-
-} {} {}} H:/arc_test/E_alu_control.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_alu_control.sv
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module E_alu_control
-
-Top level modules:
-	E_alu_control
-
-} {} {}} H:/arc_test/D_jb_control.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\D_jb_control.sv}
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module D_jb_control
-
-Top level modules:
-	D_jb_control
-
-} {} {}} H:/arc_test/D_pcadd.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_pcadd.sv
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module D_pcadd
-
-Top level modules:
-	D_pcadd
-
-} {} {}} H:/arc_test/E_forward.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_forward.sv
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module E_forward
 
 Top level modules:
 	E_forward
 
-} {} {}} H:/arc_test/fetch.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/fetch.sv
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module fetch
+} {} {}} H:/ARC/testBench/behaviour/W_resmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/W_resmux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
 
-Top level modules:
-	fetch
-
-} {} {}} H:/arc_test/D_compare.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\D_compare.sv}
-Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module D_compare
-
-Top level modules:
-	D_compare
-
-} {} {}} H:/arc_test/W_resmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/W_resmux.sv
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module W_resmux
 
 Top level modules:
 	W_resmux
 
-} {} {}} H:/arc_test/W_datamux.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/W_datamux.sv
+} {} {}} H:/ARC/testBench/behaviour/W_datamux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/W_datamux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module W_datamux
 
 Top level modules:
 	W_datamux
 
-} {} {}} H:/arc_test/F_jumpmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/F_jumpmux.sv
+} {} {}} H:/ARC/testBench/behaviour/fetch.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/fetch.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module F_jumpmux
+-- Compiling module fetch
 
 Top level modules:
-	F_jumpmux
+	fetch
 
-} {} {}} H:/arc_test/E_fbmux5.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_fbmux5.sv
+} {} {}} H:/ARC/testBench/behaviour/D_compare.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_compare.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module E_fbmux5
+-- Compiling module D_compare
 
 Top level modules:
-	E_fbmux5
+	D_compare
 
-} {} {}} H:/arc_test/D_sign_extend.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_sign_extend.sv
+} {} {}} H:/arc_test/E_alu_control.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_alu_control.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
--- Compiling module D_sign_extend
+-- Compiling module E_alu_control
 
 Top level modules:
-	D_sign_extend
+	E_alu_control
 
-} {} {}} H:/arc_test/W_loadmux3.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/W_loadmux3.sv
+} {} {}} H:/ARC/testBench/behaviour/W_loadmux3.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/W_loadmux3.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module W_loadmux3
 
 Top level modules:
 	W_loadmux3
 
-} {} {}} H:/arc_test/D_control.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_control.sv
+} {} {}} H:/ARC/testBench/behaviour/F_jumpmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/F_jumpmux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module F_jumpmux
+
+Top level modules:
+	F_jumpmux
+
+} {} {}} H:/ARC/testBench/behaviour/E_fbmux5.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_fbmux5.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module E_fbmux5
+
+Top level modules:
+	E_fbmux5
+
+} {} {}} H:/ARC/testBench/behaviour/D_sign_extend.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_sign_extend.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module D_sign_extend
+
+Top level modules:
+	D_sign_extend
+
+} {} {}} H:/ARC/testBench/behaviour/D_control.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_control.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module D_control
 
 Top level modules:
 	D_control
 
-} {} {}} H:/arc_test/D_cmpmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_cmpmux.sv
+} {} {}} H:/ARC/testBench/behaviour/D_cmpmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_cmpmux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module D_cmpmux
 
 Top level modules:
 	D_cmpmux
 
-} {} {}} H:/arc_test/E_alu.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_alu.sv
+} {} {}} H:/ARC/testBench/behaviour/E_alu.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_alu.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module E_alu
 
 Top level modules:
 	E_alu
 
-} {} {}} H:/arc_test/mem.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/mem.sv
+} {} {}} H:/ARC/testBench/behaviour/mem.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/mem.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module mem
 
 Top level modules:
 	mem
 
-} {} {}} H:/arc_test/D_jump_ext.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_jump_ext.sv
+} {} {}} H:/ARC/testBench/behaviour/D_jump_ext.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_jump_ext.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module D_jump_ext
 
 Top level modules:
 	D_jump_ext
 
-} {} {}} H:/arc_test/D_cmpmux2.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\D_cmpmux2.sv}
+} {} {}} H:/ARC/testBench/behaviour/D_cmpmux2.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_cmpmux2.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module D_cmpmux2
 
 Top level modules:
 	D_cmpmux2
 
-} {} {}} H:/arc_test/testbench_core.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/testbench_core.sv
+} {} {}} H:/ARC/testBench/behaviour/testbench_core.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/testbench_core.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module testbench_core
 
 Top level modules:
 	testbench_core
 
-} {} {}} H:/arc_test/F_pc.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/F_pc.sv
+} {} {}} H:/ARC/testBench/behaviour/F_pc.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/F_pc.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module F_pc
 
 Top level modules:
 	F_pc
 
-} {} {}} H:/arc_test/core.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\core.sv}
+} {} {}} H:/ARC/testBench/behaviour/core.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/core.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module core
 
 Top level modules:
 	core
 
-} {} {}} H:/arc_test/F_add4.sv {1 {vlog -work work -vopt -sv -stats=none {H:\arc_test\F_add4.sv}
+} {} {}} H:/ARC/testBench/behaviour/F_add4.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/F_add4.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module F_add4
 
 Top level modules:
 	F_add4
 
-} {} {}} H:/arc_test/E_famux5.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_famux5.sv
+} {} {}} H:/ARC/testBench/behaviour/E_famux5.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_famux5.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module E_famux5
 
 Top level modules:
 	E_famux5
 
-} {} {}} H:/arc_test/E_alubmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/E_alubmux.sv
+} {} {}} H:/ARC/testBench/behaviour/E_alubmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_alubmux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module E_alubmux
 
 Top level modules:
 	E_alubmux
 
-} {} {}} H:/arc_test/execute.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/execute.sv
+} {} {}} H:/ARC/testBench/behaviour/execute.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/execute.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module execute
 
 Top level modules:
 	execute
 
-} {} {}} H:/arc_test/D_register_bank.sv {1 {vlog -work work -vopt -sv -stats=none H:/arc_test/D_register_bank.sv
+} {} {}} H:/ARC/testBench/behaviour/D_register_bank.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_register_bank.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
 Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
 -- Compiling module D_register_bank
 
 Top level modules:
 	D_register_bank
+
+} {} {}} H:/ARC/testBench/behaviour/E_rdmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_rdmux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module E_rdmux
+
+Top level modules:
+	E_rdmux
+
+} {} {}} H:/ARC/testBench/behaviour/decode.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/decode.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module decode
+
+Top level modules:
+	decode
+
+} {} {}} H:/ARC/testBench/behaviour/D_shiftleft.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_shiftleft.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module D_shiftleft
+
+Top level modules:
+	D_shiftleft
+
+} {} {}} H:/ARC/testBench/behaviour/writeback.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/writeback.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module writeback
+
+Top level modules:
+	writeback
+
+} {} {}} H:/ARC/testBench/behaviour/F_branchmux.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/F_branchmux.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module F_branchmux
+
+Top level modules:
+	F_branchmux
+
+} {} {}} H:/ARC/testBench/behaviour/E_alu_control.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/E_alu_control.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module E_alu_control
+
+Top level modules:
+	E_alu_control
+
+} {} {}} H:/ARC/testBench/behaviour/D_pcadd.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_pcadd.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module D_pcadd
+
+Top level modules:
+	D_pcadd
+
+} {} {}} H:/ARC/testBench/behaviour/D_jb_control.sv {1 {vlog -work work -vopt -sv -stats=none H:/ARC/testBench/behaviour/D_jb_control.sv
+** Note: (vlog-1901) OptionFile "C:/modeltech64_10.3c/examples/vlog.opt" not found. Ignored.
+
+Model Technology ModelSim SE-64 vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module D_jb_control
+
+Top level modules:
+	D_jb_control
 
 } {} {}}
