@@ -50,6 +50,7 @@ wire [31:0] mem_data_alures;
 wire [4:0] mem_addr_regdst;
 //wire [1:0] mem_con_Wloadmux;
 //write back
+wire [31:0] wb_data_pc8;
 wire [31:0] wb_data_memout;
 //wire [1:0] wb_con_Wloadmux;
 
@@ -57,7 +58,8 @@ wire if_con_b, id_con_Wregwrite, ex_con_Ealusrc,
 ex_con_Eregdst, ex_con_Mmemread, ex_con_Mmemwrite, 
 ex_con_Wmemtoreg, ex_con_Malupc8, ex_con_Wregwrite, 
 mem_con_Malupc8, mem_con_Wregwrite, mem_con_Wmemtoreg, 
-wb_con_Wmemtoreg, if_con_ifstall, for_FWmemread;
+wb_con_Malupc8, wb_con_Wmemtoreg, 
+if_con_ifstall, for_FWmemread;
 
 
 
@@ -216,6 +218,7 @@ mem u_mem(
 	.o_con_FWmemread(for_FWmemread),
 	.o_addr_Wrt(for_addr_rtW)
 );
+
 
 
 writeback u_writeback(
